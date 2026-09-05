@@ -301,12 +301,11 @@
 
   .cast-detail{
     grid-column:1 / -1;
-    max-height:0; overflow:hidden;
-    transition:max-height 0.35s ease;
+    display:none;
     border:1px solid rgba(138,106,168,0.35);
     background:rgba(255,255,255,0.7);
   }
-  .cast-detail.open{ max-height:420px; }
+  .cast-detail.open{ display:block; }
   .cast-detail-inner{ padding:16px 16px 18px; }
   .cast-detail-title{
     font-family:'Shippori Mincho', serif; font-weight:700; font-size:14px;
@@ -548,7 +547,7 @@
         <div class="cast-card" data-target="detail-1">
           <div class="cast-photo-wrap">
             <svg class="cast-silhouette" viewBox="0 0 64 64"><circle cx="32" cy="22" r="13" fill="#cda44e" opacity="0.85"/><path d="M8 60c0-15 10-24 24-24s24 9 24 24H8Z" fill="#cda44e" opacity="0.85"/></svg>
-            <img class="cast-photo" src="cast-yuri-1.jpg" alt="立凪ゆうり" onerror="this.remove()">
+            <img class="cast-photo" src="cast-yuri-1.JPG" alt="立凪ゆうり" onerror="this.remove()">
           </div>
           <div class="cast-name">立凪ゆうり</div>
           <div class="cast-no">28歳・優しい</div>
@@ -558,7 +557,7 @@
         <div class="cast-card" data-target="detail-2">
           <div class="cast-photo-wrap">
             <svg class="cast-silhouette" viewBox="0 0 64 64"><circle cx="32" cy="22" r="13" fill="#cda44e" opacity="0.85"/><path d="M8 60c0-15 10-24 24-24s24 9 24 24H8Z" fill="#cda44e" opacity="0.85"/></svg>
-            <img class="cast-photo" src="cast-natsuki-1.jpg" alt="なつき" onerror="this.remove()">
+            <img class="cast-photo" src="cast-natsuki-1.JPG" alt="なつき" onerror="this.remove()">
           </div>
           <div class="cast-name">なつき</div>
           <div class="cast-no">27歳・クールで情熱的</div>
@@ -576,9 +575,9 @@
           <div class="cast-detail-inner">
             <div class="cast-detail-title">立凪ゆうり のご案内 <span class="close-x" data-close="detail-1">閉じる</span></div>
             <div class="photo-scroll">
-              <img src="cast-yuri-1.jpg" alt="立凪ゆうり" onerror="this.remove()">
-              <img src="cast-yuri-2.jpg" alt="立凪ゆうり" onerror="this.remove()">
-              <img src="cast-yuri-3.jpg" alt="立凪ゆうり" onerror="this.remove()">
+              <img src="cast-yuri-1.JPG" alt="立凪ゆうり" onerror="this.remove()">
+              <img src="cast-yuri-2.JPG" alt="立凪ゆうり" onerror="this.remove()">
+              <img src="cast-yuri-3.JPG" alt="立凪ゆうり" onerror="this.remove()">
             </div>
             <div class="detail-row"><span class="label">本日の出勤</span><span>近日公開</span></div>
             <div class="opening-badge">今だけオープニング価格（初回指名料込み）</div>
@@ -593,8 +592,8 @@
           <div class="cast-detail-inner">
             <div class="cast-detail-title">なつき のご案内 <span class="close-x" data-close="detail-2">閉じる</span></div>
             <div class="photo-scroll">
-              <img src="cast-natsuki-1.jpg" alt="なつき" onerror="this.remove()">
-              <img src="cast-natsuki-2.jpg" alt="なつき" onerror="this.remove()">
+              <img src="cast-natsuki-1.JPG" alt="なつき" onerror="this.remove()">
+              <img src="cast-natsuki-2.JPG" alt="なつき" onerror="this.remove()">
               <img src="cast-natsuki-3.jpg" alt="なつき" onerror="this.remove()">
             </div>
             <div class="detail-row"><span class="label">本日の出勤</span><span>近日公開</span></div>

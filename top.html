@@ -247,28 +247,30 @@
   .intro-body strong{ color:var(--gold-dim); }
 
   /* ---------- cast list ---------- */
-  .cast-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .cast-grid{ display:flex; flex-direction:column; gap:14px; }
   .cast-card{
-    position:relative; border:1px solid rgba(138,106,168,0.35);
-    background:radial-gradient(ellipse at 50% 25%, rgba(255,255,255,0.75), rgba(243,235,247,0.55) 75%);
-    padding:20px 8px 14px; text-align:center; overflow:hidden;
+    position:relative; display:flex; align-items:center; gap:14px;
+    border:1px solid rgba(138,106,168,0.35);
+    background:radial-gradient(ellipse at 15% 50%, rgba(255,255,255,0.75), rgba(243,235,247,0.55) 75%);
+    padding:14px 16px; text-align:left; overflow:hidden;
     cursor:pointer; -webkit-tap-highlight-color:transparent;
   }
   .cast-card::before{
     content:""; position:absolute; inset:4px;
     border:1px solid rgba(184,146,63,0.3); pointer-events:none;
   }
-  .cast-silhouette{ width:58px; height:58px; margin:0 auto 8px; opacity:0.92; }
+  .cast-silhouette{ width:58px; height:58px; margin:0; opacity:0.92; flex-shrink:0; }
   .cast-photo-wrap{
-    position:relative; width:88px; height:88px; margin:0 auto 8px;
-    border-radius:50%; overflow:hidden;
+    position:relative; width:72px; height:72px; margin:0; flex-shrink:0;
+    border-radius:10px; overflow:hidden;
   }
-  .cast-photo-wrap .cast-silhouette{ margin:14px auto 0; }
+  .cast-photo-wrap .cast-silhouette{ margin:7px auto 0; }
   .cast-photo{
     position:absolute; inset:0; width:100%; height:100%;
     object-fit:cover; object-position:top center;
-    border-radius:50%;
+    border-radius:10px;
   }
+  .cast-card-info{ flex:1; min-width:0; }
   .photo-scroll{
     display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch;
     margin-bottom:14px; padding-bottom:4px;
@@ -279,8 +281,8 @@
   }
   .cast-card.new-cast{
     display:flex; flex-direction:column; align-items:center; justify-content:center;
-    text-decoration:none; cursor:pointer;
-    border-style:dashed;
+    text-decoration:none; cursor:pointer; text-align:center;
+    border-style:dashed; padding:20px 8px 14px;
   }
   .cast-card.new-cast .new-cast-icon{
     width:58px; height:58px; margin:0 auto 8px;
@@ -549,27 +551,12 @@
             <svg class="cast-silhouette" viewBox="0 0 64 64"><circle cx="32" cy="22" r="13" fill="#cda44e" opacity="0.85"/><path d="M8 60c0-15 10-24 24-24s24 9 24 24H8Z" fill="#cda44e" opacity="0.85"/></svg>
             <img class="cast-photo" src="cast-yuri-1.JPG" alt="立凪ゆうり" onerror="this.remove()">
           </div>
-          <div class="cast-name">立凪ゆうり</div>
-          <div class="cast-no">28歳・優しい</div>
-          <div class="cast-tap-hint">タップして詳細</div>
-        </div>
-
-        <div class="cast-card" data-target="detail-2">
-          <div class="cast-photo-wrap">
-            <svg class="cast-silhouette" viewBox="0 0 64 64"><circle cx="32" cy="22" r="13" fill="#cda44e" opacity="0.85"/><path d="M8 60c0-15 10-24 24-24s24 9 24 24H8Z" fill="#cda44e" opacity="0.85"/></svg>
-            <img class="cast-photo" src="cast-natsuki-1.JPG" alt="なつき" onerror="this.remove()">
+          <div class="cast-card-info">
+            <div class="cast-name">立凪ゆうり</div>
+            <div class="cast-no">28歳・優しい</div>
+            <div class="cast-tap-hint">タップして詳細</div>
           </div>
-          <div class="cast-name">なつき</div>
-          <div class="cast-no">27歳・クールで情熱的</div>
-          <div class="cast-tap-hint">タップして詳細</div>
         </div>
-
-        <a href="love-secret-cast-lp.html" class="cast-card new-cast">
-          <div class="new-cast-icon">?</div>
-          <div class="cast-name">NEW CAST</div>
-          <div class="cast-no">coming soon</div>
-          <div class="cast-tap-hint">セラピスト募集中</div>
-        </a>
 
         <div class="cast-detail" id="detail-1">
           <div class="cast-detail-inner">
@@ -588,6 +575,19 @@
             <div class="other-course-note">※その他コースもございます。<br>詳しくは料金ページをご覧ください。</div>
           </div>
         </div>
+
+        <div class="cast-card" data-target="detail-2">
+          <div class="cast-photo-wrap">
+            <svg class="cast-silhouette" viewBox="0 0 64 64"><circle cx="32" cy="22" r="13" fill="#cda44e" opacity="0.85"/><path d="M8 60c0-15 10-24 24-24s24 9 24 24H8Z" fill="#cda44e" opacity="0.85"/></svg>
+            <img class="cast-photo" src="cast-natsuki-1.JPG" alt="なつき" onerror="this.remove()">
+          </div>
+          <div class="cast-card-info">
+            <div class="cast-name">なつき</div>
+            <div class="cast-no">27歳・クールで情熱的</div>
+            <div class="cast-tap-hint">タップして詳細</div>
+          </div>
+        </div>
+
         <div class="cast-detail" id="detail-2">
           <div class="cast-detail-inner">
             <div class="cast-detail-title">なつき のご案内 <span class="close-x" data-close="detail-2">閉じる</span></div>
@@ -605,6 +605,13 @@
             <div class="other-course-note">※その他コースもございます。<br>詳しくは料金ページをご覧ください。</div>
           </div>
         </div>
+
+        <a href="love-secret-cast-lp.html" class="cast-card new-cast">
+          <div class="new-cast-icon">?</div>
+          <div class="cast-name">NEW CAST</div>
+          <div class="cast-no">coming soon</div>
+          <div class="cast-tap-hint">セラピスト募集中</div>
+        </a>
 
       </div>
     </div>

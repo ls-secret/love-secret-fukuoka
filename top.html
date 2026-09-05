@@ -259,6 +259,36 @@
     border:1px solid rgba(184,146,63,0.3); pointer-events:none;
   }
   .cast-silhouette{ width:58px; height:58px; margin:0 auto 8px; opacity:0.92; }
+  .cast-photo-wrap{
+    position:relative; width:88px; height:88px; margin:0 auto 8px;
+    border-radius:50%; overflow:hidden;
+  }
+  .cast-photo-wrap .cast-silhouette{ margin:14px auto 0; }
+  .cast-photo{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:top center;
+    border-radius:50%;
+  }
+  .photo-scroll{
+    display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch;
+    margin-bottom:14px; padding-bottom:4px;
+  }
+  .photo-scroll img{
+    flex:0 0 auto; width:120px; height:150px; object-fit:cover;
+    border:1px solid rgba(138,106,168,0.3);
+  }
+  .cast-card.new-cast{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-decoration:none; cursor:pointer;
+    border-style:dashed;
+  }
+  .cast-card.new-cast .new-cast-icon{
+    width:58px; height:58px; margin:0 auto 8px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cinzel', serif; font-size:26px; color:var(--gold-dim);
+    border:1px dashed var(--gold-dim); border-radius:50%;
+  }
+  .cast-card.new-cast .cast-name{ font-size:13px; letter-spacing:0.05em; }
   .cast-name{
     font-family:'Cinzel', serif; font-size:15px; letter-spacing:0.1em;
     color:var(--plum);
@@ -294,6 +324,19 @@
   }
   .detail-row:last-child{ border-bottom:none; }
   .detail-row .label{ color:var(--plum); font-family:'Shippori Mincho', serif; }
+  .detail-row .strike{
+    text-decoration:line-through; color:var(--plum-dim); font-size:11.5px; margin-right:5px;
+  }
+  .detail-row .now-price{ font-weight:700; color:var(--gold-dim); }
+  .opening-badge{
+    text-align:center; font-size:11px; color:var(--gold-dim);
+    background:rgba(184,146,63,0.1); border:1px solid rgba(184,146,63,0.3);
+    padding:6px 8px; margin-bottom:10px; letter-spacing:0.02em;
+  }
+  .other-course-note{
+    text-align:center; font-size:10.5px; color:var(--plum-dim);
+    margin-top:10px; letter-spacing:0.02em;
+  }
   .cast-note{
     text-align:center; font-size:12.5px; color:var(--plum-dim);
     margin-top:18px; letter-spacing:0.03em; line-height:1.7;
@@ -473,7 +516,7 @@
     </p>
   </section>
 
-  <a href="love-secret-cast-lp.html#youkou" class="recruit-banner">
+  <a href="love-secret-cast-lp.html" class="recruit-banner">
     <span class="tag">NEW</span>
     <span class="txt">セラピスト大募集中！未経験歓迎</span>
     <span class="arrow">→</span>
@@ -485,7 +528,7 @@
       <p class="intro-body">
         <strong>LOVE＆SECRET FUKUOKA</strong>は、<br>
         女性のお客様のための出張セラピーサービスです。<br>
-        厳選されたセラピストが、ご指定の場所へお伺いし、<br>
+        厳選されたセラピストが、ご指定の場所へお伺いし、
         心と身体をゆっくりとほぐしていきます。<br>
         初めての方も、安心してご利用いただけます。
       </p>
@@ -503,68 +546,64 @@
       <div class="cast-grid" id="castGrid">
 
         <div class="cast-card" data-target="detail-1">
-          <svg class="cast-silhouette" viewBox="0 0 64 64"><circle cx="32" cy="22" r="13" fill="#cda44e" opacity="0.85"/><path d="M8 60c0-15 10-24 24-24s24 9 24 24H8Z" fill="#cda44e" opacity="0.85"/></svg>
-          <div class="cast-name">YUKI</div>
-          <div class="cast-no">CAST 01</div>
+          <div class="cast-photo-wrap">
+            <svg class="cast-silhouette" viewBox="0 0 64 64"><circle cx="32" cy="22" r="13" fill="#cda44e" opacity="0.85"/><path d="M8 60c0-15 10-24 24-24s24 9 24 24H8Z" fill="#cda44e" opacity="0.85"/></svg>
+            <img class="cast-photo" src="cast-yuri-1.jpg" alt="立凪ゆうり" onerror="this.remove()">
+          </div>
+          <div class="cast-name">立凪ゆうり</div>
+          <div class="cast-no">28歳・優しい</div>
           <div class="cast-tap-hint">タップして詳細</div>
         </div>
 
         <div class="cast-card" data-target="detail-2">
-          <svg class="cast-silhouette" viewBox="0 0 64 64"><circle cx="32" cy="22" r="13" fill="#cda44e" opacity="0.85"/><path d="M8 60c0-15 10-24 24-24s24 9 24 24H8Z" fill="#cda44e" opacity="0.85"/></svg>
-          <div class="cast-name">SHO</div>
-          <div class="cast-no">CAST 02</div>
+          <div class="cast-photo-wrap">
+            <svg class="cast-silhouette" viewBox="0 0 64 64"><circle cx="32" cy="22" r="13" fill="#cda44e" opacity="0.85"/><path d="M8 60c0-15 10-24 24-24s24 9 24 24H8Z" fill="#cda44e" opacity="0.85"/></svg>
+            <img class="cast-photo" src="cast-natsuki-1.jpg" alt="なつき" onerror="this.remove()">
+          </div>
+          <div class="cast-name">なつき</div>
+          <div class="cast-no">27歳・クールで情熱的</div>
           <div class="cast-tap-hint">タップして詳細</div>
         </div>
 
+        <a href="love-secret-cast-lp.html" class="cast-card new-cast">
+          <div class="new-cast-icon">?</div>
+          <div class="cast-name">NEW CAST</div>
+          <div class="cast-no">coming soon</div>
+          <div class="cast-tap-hint">セラピスト募集中</div>
+        </a>
+
         <div class="cast-detail" id="detail-1">
           <div class="cast-detail-inner">
-            <div class="cast-detail-title">YUKI のご案内 <span class="close-x" data-close="detail-1">閉じる</span></div>
+            <div class="cast-detail-title">立凪ゆうり のご案内 <span class="close-x" data-close="detail-1">閉じる</span></div>
+            <div class="photo-scroll">
+              <img src="cast-yuri-1.jpg" alt="立凪ゆうり" onerror="this.remove()">
+              <img src="cast-yuri-2.jpg" alt="立凪ゆうり" onerror="this.remove()">
+              <img src="cast-yuri-3.jpg" alt="立凪ゆうり" onerror="this.remove()">
+            </div>
             <div class="detail-row"><span class="label">本日の出勤</span><span>近日公開</span></div>
-            <div class="detail-row"><span class="label">60分コース</span><span>近日公開</span></div>
-            <div class="detail-row"><span class="label">90分コース</span><span>近日公開</span></div>
-            <div class="detail-row"><span class="label">120分コース</span><span>近日公開</span></div>
+            <div class="opening-badge">今だけオープニング価格（初回指名料込み）</div>
+            <div class="detail-row"><span class="label">デートコース 90分</span><span><span class="strike">8,000円</span><span class="now-price">4,000円</span></span></div>
+            <div class="detail-row"><span class="label">デートコース 120分</span><span><span class="strike">10,000円</span><span class="now-price">5,000円</span></span></div>
+            <div class="detail-row"><span class="label">ファンタジー 90分</span><span><span class="strike">15,000円</span><span class="now-price">7,500円</span></span></div>
+            <div class="detail-row"><span class="label">ファンタジー 120分</span><span><span class="strike">20,000円</span><span class="now-price">10,000円</span></span></div>
+            <div class="other-course-note">※その他コースもございます。<br>詳しくは料金ページをご覧ください。</div>
           </div>
         </div>
         <div class="cast-detail" id="detail-2">
           <div class="cast-detail-inner">
-            <div class="cast-detail-title">SHO のご案内 <span class="close-x" data-close="detail-2">閉じる</span></div>
+            <div class="cast-detail-title">なつき のご案内 <span class="close-x" data-close="detail-2">閉じる</span></div>
+            <div class="photo-scroll">
+              <img src="cast-natsuki-1.jpg" alt="なつき" onerror="this.remove()">
+              <img src="cast-natsuki-2.jpg" alt="なつき" onerror="this.remove()">
+              <img src="cast-natsuki-3.jpg" alt="なつき" onerror="this.remove()">
+            </div>
             <div class="detail-row"><span class="label">本日の出勤</span><span>近日公開</span></div>
-            <div class="detail-row"><span class="label">60分コース</span><span>近日公開</span></div>
-            <div class="detail-row"><span class="label">90分コース</span><span>近日公開</span></div>
-            <div class="detail-row"><span class="label">120分コース</span><span>近日公開</span></div>
-          </div>
-        </div>
-
-        <div class="cast-card" data-target="detail-3">
-          <svg class="cast-silhouette" viewBox="0 0 64 64"><circle cx="32" cy="22" r="13" fill="#cda44e" opacity="0.85"/><path d="M8 60c0-15 10-24 24-24s24 9 24 24H8Z" fill="#cda44e" opacity="0.85"/></svg>
-          <div class="cast-name">HARU</div>
-          <div class="cast-no">CAST 03</div>
-          <div class="cast-tap-hint">タップして詳細</div>
-        </div>
-
-        <div class="cast-card" data-target="detail-4">
-          <svg class="cast-silhouette" viewBox="0 0 64 64"><circle cx="32" cy="22" r="13" fill="#cda44e" opacity="0.85"/><path d="M8 60c0-15 10-24 24-24s24 9 24 24H8Z" fill="#cda44e" opacity="0.85"/></svg>
-          <div class="cast-name">KAI</div>
-          <div class="cast-no">CAST 04</div>
-          <div class="cast-tap-hint">タップして詳細</div>
-        </div>
-
-        <div class="cast-detail" id="detail-3">
-          <div class="cast-detail-inner">
-            <div class="cast-detail-title">HARU のご案内 <span class="close-x" data-close="detail-3">閉じる</span></div>
-            <div class="detail-row"><span class="label">本日の出勤</span><span>近日公開</span></div>
-            <div class="detail-row"><span class="label">60分コース</span><span>近日公開</span></div>
-            <div class="detail-row"><span class="label">90分コース</span><span>近日公開</span></div>
-            <div class="detail-row"><span class="label">120分コース</span><span>近日公開</span></div>
-          </div>
-        </div>
-        <div class="cast-detail" id="detail-4">
-          <div class="cast-detail-inner">
-            <div class="cast-detail-title">KAI のご案内 <span class="close-x" data-close="detail-4">閉じる</span></div>
-            <div class="detail-row"><span class="label">本日の出勤</span><span>近日公開</span></div>
-            <div class="detail-row"><span class="label">60分コース</span><span>近日公開</span></div>
-            <div class="detail-row"><span class="label">90分コース</span><span>近日公開</span></div>
-            <div class="detail-row"><span class="label">120分コース</span><span>近日公開</span></div>
+            <div class="opening-badge">今だけオープニング価格（初回指名料込み）</div>
+            <div class="detail-row"><span class="label">デートコース 90分</span><span><span class="strike">8,000円</span><span class="now-price">4,000円</span></span></div>
+            <div class="detail-row"><span class="label">デートコース 120分</span><span><span class="strike">10,000円</span><span class="now-price">5,000円</span></span></div>
+            <div class="detail-row"><span class="label">ファンタジー 90分</span><span><span class="strike">15,000円</span><span class="now-price">7,500円</span></span></div>
+            <div class="detail-row"><span class="label">ファンタジー 120分</span><span><span class="strike">20,000円</span><span class="now-price">10,000円</span></span></div>
+            <div class="other-course-note">※その他コースもございます。<br>詳しくは料金ページをご覧ください。</div>
           </div>
         </div>
 
@@ -607,7 +646,7 @@
     <div class="recruit-box">
       <div class="eyebrow-small">JOIN US</div>
       <p class="lead">私たちと一緒に<br><b>夢を叶えませんか？</b></p>
-      <a href="love-secret-cast-lp.html#youkou" class="recruit-button">セラピスト募集はこちら</a>
+      <a href="love-secret-cast-lp.html" class="recruit-button">セラピスト募集はこちら</a>
     </div>
   </section>
 
@@ -642,8 +681,9 @@
 
   // cast tap-to-expand
   document.querySelectorAll('.cast-card').forEach(card => {
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (e) => {
       const id = card.getAttribute('data-target');
+      if(!id) return;
       const panel = document.getElementById(id);
       const wasOpen = panel.classList.contains('open');
       document.querySelectorAll('.cast-detail.open').forEach(p => p.classList.remove('open'));

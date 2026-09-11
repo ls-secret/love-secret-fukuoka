@@ -348,6 +348,33 @@
     display:flex; align-items:center; justify-content:center; gap:18px;
     text-align:center;
   }
+  .shukkin-cast{ margin-bottom:18px; }
+  .shukkin-cast:last-of-type{ margin-bottom:12px; }
+  .shukkin-name{
+    font-family:'Shippori Mincho', serif; font-weight:700; font-size:14px;
+    color:var(--plum); margin-bottom:8px;
+  }
+  .shukkin-slots{ display:flex; flex-wrap:wrap; gap:6px; }
+  .slot-pill{
+    font-size:11px; padding:5px 9px;
+    border:1px solid rgba(138,106,168,0.3); border-radius:3px;
+    color:var(--plum-dim);
+  }
+  .slot-pill.slot-open{
+    background:rgba(184,146,63,0.12); border-color:rgba(184,146,63,0.45);
+    color:var(--gold-dim); font-weight:700;
+  }
+  .slot-pill.slot-closed{
+    background:rgba(138,106,168,0.06); color:var(--plum-dim);
+    text-decoration:line-through; opacity:0.7;
+  }
+  .slot-full{ font-size:12px; color:var(--plum-dim); }
+  .slot-error{ font-size:11.5px; color:var(--plum-dim); }
+  .shukkin-note{
+    font-size:10.5px; color:var(--plum-dim);
+    margin-top:8px; line-height:1.8;
+  }
+
   .hours-box .big{
     font-family:'Cinzel', serif; font-size:26px; color:var(--plum);
     letter-spacing:0.05em;
@@ -493,6 +520,7 @@
     <div class="name">LOVE &amp; SECRET FUKUOKA</div>
   </div>
   <a href="top.html" class="menu-link">HOME</a>
+  <a href="top.html#shukkin" class="menu-link">本日の出勤</a>
   <a href="ryokin.html" class="menu-link">料金について</a>
   <a href="hajimete.html" class="menu-link">初めての方へ</a>
   <a href="love-secret-cast-lp.html" class="menu-link">セラピスト募集</a>
@@ -566,7 +594,7 @@
               <img src="cast-yuri-2.JPG" alt="立凪ゆうり" onerror="this.remove()">
               <img src="cast-yuri-3.JPG" alt="立凪ゆうり" onerror="this.remove()">
             </div>
-            <div class="detail-row"><span class="label">本日の出勤</span><span>近日公開</span></div>
+            <div class="detail-row" style="flex-direction:column; align-items:flex-start; gap:6px;"><span class="label">本日の出勤</span><div class="shukkin-slots" id="slots-yuri-mini" style="width:100%;">読み込み中…</div></div>
             <div class="opening-badge">今だけオープニング価格（初回指名料込み）</div>
             <div class="detail-row"><span class="label">デートコース 90分</span><span><span class="strike">8,000円</span><span class="now-price">4,000円</span></span></div>
             <div class="detail-row"><span class="label">デートコース 120分</span><span><span class="strike">10,000円</span><span class="now-price">5,000円</span></span></div>
@@ -596,7 +624,7 @@
               <img src="cast-natsuki-2.JPG" alt="なつき" onerror="this.remove()">
               <img src="cast-natsuki-3.jpg" alt="なつき" onerror="this.remove()">
             </div>
-            <div class="detail-row"><span class="label">本日の出勤</span><span>近日公開</span></div>
+            <div class="detail-row" style="flex-direction:column; align-items:flex-start; gap:6px;"><span class="label">本日の出勤</span><div class="shukkin-slots" id="slots-natsuki-mini" style="width:100%;">読み込み中…</div></div>
             <div class="opening-badge">今だけオープニング価格（初回指名料込み）</div>
             <div class="detail-row"><span class="label">デートコース 90分</span><span><span class="strike">8,000円</span><span class="now-price">4,000円</span></span></div>
             <div class="detail-row"><span class="label">デートコース 120分</span><span><span class="strike">10,000円</span><span class="now-price">5,000円</span></span></div>
@@ -614,6 +642,23 @@
         </a>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ============ 本日の出勤 ============ -->
+  <section class="section reveal" id="shukkin">
+    <div class="section-title">本日の出勤</div>
+    <div class="frame">
+      <div class="shukkin-cast">
+        <div class="shukkin-name">立凪ゆうり</div>
+        <div class="shukkin-slots" id="slots-yuri">読み込み中…</div>
+      </div>
+      <div class="shukkin-cast">
+        <div class="shukkin-name">なつき</div>
+        <div class="shukkin-slots" id="slots-natsuki">読み込み中…</div>
+      </div>
+      <div class="shukkin-note">※翌2:00以降のご希望は、公式LINEにて直接お問い合わせください。</div>
+      <div class="shukkin-note">※表示は目安です。ご希望のお時間は、必ず公式LINEにてご確認ください。</div>
     </div>
   </section>
 
@@ -665,6 +710,71 @@
 </div>
 
 <script>
+  // 本日の出勤 (live calendar availability)
+  const GCAL_API_KEY = 'AIzaSyBlPFzRTMWwI7y5__jWUrmzJ47_cKgK-i4';
+  const SHUKKIN_CASTS = [
+    { shiftCal: 'd06f73bfdc05d49c5e81de0b821b2bd5cb683049f66dcfad633f9d60b35a6a1e@group.calendar.google.com',
+      bookingCal: '5e8b78cada3609c3452a74a9b4e276334346d21c2d342d93db0e401bde8bdb78@group.calendar.google.com',
+      els: ['slots-yuri', 'slots-yuri-mini'] },
+    { shiftCal: '457a8eb10e2e9a17414ef1c980ea4aa6e2b1a5d73ed7bd72a77b1f4200e9396f@group.calendar.google.com',
+      bookingCal: 'bd1e689f6b07cb6b7019b9a10f687b06984d8401581627153247ffa0b924097f@group.calendar.google.com',
+      els: ['slots-natsuki', 'slots-natsuki-mini'] },
+  ];
+  const SHUKKIN_SLOTS = [[11,14],[14,17],[17,20],[20,23],[23,26]];
+
+  function shukkinPad(n){ return n.toString().padStart(2,'0'); }
+  function shukkinSlotLabel(h){ return h>=24 ? '翌'+shukkinPad(h-24) : shukkinPad(h); }
+
+  async function shukkinFetchBusy(calendarIds, timeMin, timeMax){
+    const url = `https://www.googleapis.com/calendar/v3/freeBusy?key=${GCAL_API_KEY}`;
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ timeMin, timeMax, items: calendarIds.map(id => ({ id })) }),
+    });
+    if(!res.ok) throw new Error('freebusy fetch failed');
+    const data = await res.json();
+    return data.calendars || {};
+  }
+
+  function shukkinOverlaps(busyArr, slotStart, slotEnd){
+    return (busyArr || []).some(b => new Date(b.start) < slotEnd && new Date(b.end) > slotStart);
+  }
+
+  async function loadShukkin(){
+    const now = new Date();
+    const y = now.getFullYear(), m = now.getMonth(), d = now.getDate();
+    const timeMin = new Date(y, m, d, 0, 0, 0).toISOString();
+    const timeMax = new Date(y, m, d, 26, 0, 0).toISOString();
+
+    for(const cast of SHUKKIN_CASTS){
+      const containers = cast.els.map(id => document.getElementById(id)).filter(Boolean);
+      if(!containers.length) continue;
+      try{
+        const calendars = await shukkinFetchBusy([cast.shiftCal, cast.bookingCal], timeMin, timeMax);
+        const shiftBusy = (calendars[cast.shiftCal] || {}).busy || [];
+        const bookingBusy = (calendars[cast.bookingCal] || {}).busy || [];
+
+        let anyOpen = false;
+        const pills = SHUKKIN_SLOTS.map(([sh, eh]) => {
+          const slotStart = new Date(y, m, d, sh, 0, 0);
+          const slotEnd = new Date(y, m, d, eh, 0, 0);
+          const onShift = shukkinOverlaps(shiftBusy, slotStart, slotEnd);
+          const isBooked = shukkinOverlaps(bookingBusy, slotStart, slotEnd);
+          const open = onShift && !isBooked;
+          if(open) anyOpen = true;
+          return `<span class="slot-pill ${open ? 'slot-open' : 'slot-closed'}">${shukkinSlotLabel(sh)}-${shukkinSlotLabel(eh)} ${open ? '○' : '×'}</span>`;
+        }).join('');
+
+        const html = anyOpen ? pills : '<span class="slot-full">本日満予約</span>';
+        containers.forEach(c => { c.innerHTML = html; });
+      }catch(err){
+        containers.forEach(c => { c.innerHTML = '<span class="slot-error">現在情報を取得できません。LINEにてご確認ください。</span>'; });
+      }
+    }
+  }
+  loadShukkin();
+
   // hamburger menu
   const menuBtn = document.getElementById('menuBtn');
   const menuClose = document.getElementById('menuClose');

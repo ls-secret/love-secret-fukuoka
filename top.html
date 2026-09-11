@@ -349,9 +349,21 @@
   }
   .shukkin-cast{ margin-bottom:18px; }
   .shukkin-cast:last-of-type{ margin-bottom:12px; }
+  .shukkin-header{
+    display:flex; align-items:center; gap:10px; margin-bottom:8px;
+  }
+  .shukkin-photo-wrap{
+    position:relative; width:40px; height:40px; flex-shrink:0;
+    border-radius:8px; overflow:hidden;
+  }
+  .shukkin-photo-wrap .cast-silhouette{ width:40px; height:40px; margin:0; }
+  .shukkin-photo{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:top center; border-radius:8px;
+  }
   .shukkin-name{
     font-family:'Shippori Mincho', serif; font-weight:700; font-size:14px;
-    color:var(--plum); margin-bottom:8px;
+    color:var(--plum); margin-bottom:0;
   }
   .shukkin-slots{ display:flex; flex-wrap:wrap; gap:6px; }
   .slot-pill{
@@ -410,9 +422,15 @@
   }
 
   /* ---------- recruit banner (top, prominent) ---------- */
+  .recruit-banner-wrap{
+    display:block; margin-top:26px; text-decoration:none;
+  }
+  .recruit-banner-img{
+    width:100%; height:auto; display:block;
+  }
   .recruit-banner{
     display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:10px 12px;
-    margin-top:26px; padding:20px 18px;
+    padding:20px 18px;
     background:linear-gradient(90deg, var(--gold-dim), var(--gold-light) 45%, var(--gold) 55%, var(--gold-dim));
     background-size:220% 100%;
     border-top:2px solid var(--gold-light);
@@ -423,8 +441,9 @@
     animation: banner-glow 2.2s ease-in-out infinite, banner-shine 5s linear infinite;
   }
   .recruit-banner .txt{
-    font-family:'Shippori Mincho', serif; font-weight:800; font-size:18px;
-    letter-spacing:0.06em; color:var(--plum);
+    font-family:'Shippori Mincho', serif; font-weight:800; font-size:23px;
+    letter-spacing:0.06em; color:var(--plum); line-height:1.5;
+    text-align:center;
     text-shadow:0 1px 0 rgba(255,255,255,0.4);
   }
   .recruit-banner .tag{
@@ -544,10 +563,14 @@
     </p>
   </section>
 
-  <a href="love-secret-cast-lp.html" class="recruit-banner">
-    <span class="tag">NEW</span>
-    <span class="txt">セラピスト大募集中！未経験歓迎</span>
-    <span class="arrow">→</span>
+  <a href="love-secret-cast-lp.html" class="recruit-banner-wrap">
+    <img src="recruit-banner.jpg" alt="セラピスト大募集中！未経験歓迎" class="recruit-banner-img"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="recruit-banner" style="display:none;">
+      <span class="tag">NEW</span>
+      <span class="txt">セラピスト大募集中！<br>未経験歓迎</span>
+      <span class="arrow">→</span>
+    </div>
   </a>
 
   <!-- ============ INTRO ============ -->
@@ -649,15 +672,27 @@
     <div class="section-title">本日の出勤</div>
     <div class="frame">
       <div class="shukkin-cast">
-        <div class="shukkin-name">立凪ゆうり</div>
+        <div class="shukkin-header">
+          <div class="shukkin-photo-wrap">
+            <svg class="cast-silhouette" viewBox="0 0 64 64"><circle cx="32" cy="22" r="13" fill="#cda44e" opacity="0.85"/><path d="M8 60c0-15 10-24 24-24s24 9 24 24H8Z" fill="#cda44e" opacity="0.85"/></svg>
+            <img class="shukkin-photo" src="cast-yuri-1.JPG" alt="立凪ゆうり" onerror="this.remove()">
+          </div>
+          <div class="shukkin-name">立凪ゆうり</div>
+        </div>
         <div class="shukkin-slots" id="slots-yuri">読み込み中…</div>
       </div>
       <div class="shukkin-cast">
-        <div class="shukkin-name">なつき</div>
+        <div class="shukkin-header">
+          <div class="shukkin-photo-wrap">
+            <svg class="cast-silhouette" viewBox="0 0 64 64"><circle cx="32" cy="22" r="13" fill="#cda44e" opacity="0.85"/><path d="M8 60c0-15 10-24 24-24s24 9 24 24H8Z" fill="#cda44e" opacity="0.85"/></svg>
+            <img class="shukkin-photo" src="cast-natsuki-1.JPG" alt="なつき" onerror="this.remove()">
+          </div>
+          <div class="shukkin-name">なつき</div>
+        </div>
         <div class="shukkin-slots" id="slots-natsuki">読み込み中…</div>
       </div>
       <div class="shukkin-note">※翌2:00以降のご希望は、公式LINEにて直接お問い合わせください。</div>
-      <div class="shukkin-note">※表示は目安です。ご希望のお時間は、必ず公式LINEにてご確認ください。</div>
+      <div class="shukkin-note">※表示は目安です。<br>ご希望のお時間は、必ず公式LINEにてご確認ください。</div>
     </div>
   </section>
 

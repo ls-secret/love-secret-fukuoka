@@ -125,6 +125,30 @@
 
   .wrap{ position:relative; z-index:1; max-width:640px; margin:0 auto; padding:0 20px 80px; }
 
+  .opening-banner-wrap{
+    display:block; margin-top:20px;
+  }
+  .opening-banner-img{
+    width:100%; height:auto; display:block;
+  }
+  .opening-banner-fallback{
+    display:none; align-items:center; justify-content:center; gap:10px;
+    padding:16px 18px; text-align:center;
+    background:linear-gradient(90deg, var(--gold-dim), var(--gold-light) 45%, var(--gold) 55%, var(--gold-dim));
+    background-size:220% 100%;
+    border-top:2px solid var(--gold-light);
+    border-bottom:2px solid var(--gold-light);
+  }
+  .opening-banner-fallback .txt{
+    font-family:'Shippori Mincho', serif; font-weight:800; font-size:18px;
+    letter-spacing:0.05em; color:var(--plum);
+    text-shadow:0 1px 0 rgba(255,255,255,0.4);
+  }
+  .booking-steps-wrap{ margin-bottom:14px; }
+  .booking-steps-img{
+    width:100%; height:auto; display:block;
+    border:1px solid rgba(138,106,168,0.3);
+  }
   .page-hero{ padding:36px 0 20px; text-align:center; }
   .page-title{
     font-family:'Shippori Mincho', serif; font-weight:800;
@@ -248,6 +272,14 @@
 
 <div class="wrap">
 
+  <div class="opening-banner-wrap">
+    <img src="opening-banner.jpg" alt="今だけオープニング価格 半額" class="opening-banner-img"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="opening-banner-fallback">
+      <span class="txt">今だけオープニング価格<br>半額！</span>
+    </div>
+  </div>
+
   <div class="page-hero">
     <div class="page-title">料金について</div>
     <div class="page-sub">PRICE LIST</div>
@@ -281,6 +313,15 @@
     <div class="note-box">
       ※オープニング価格は指名料込みです。2026年9月末までのご予約が対象となります。
     </div>
+  </div>
+
+  <!-- ============ ご予約ステップ ============ -->
+  <div class="section">
+    <div class="booking-steps-wrap">
+      <img src="booking-steps.jpg" alt="簡単4ステップでお申し込み" class="booking-steps-img"
+           onerror="this.style.display='none';">
+    </div>
+    <a href="https://line.me/ti/p/KB7wdAMGRY" class="cta-button" target="_blank" rel="noopener">LINEで予約・お問い合わせ</a>
   </div>
 
   <!-- ============ 各種料金 ============ -->

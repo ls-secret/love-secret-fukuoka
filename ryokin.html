@@ -144,7 +144,12 @@
     letter-spacing:0.05em; color:var(--plum);
     text-shadow:0 1px 0 rgba(255,255,255,0.4);
   }
-  .booking-steps-wrap{ margin-bottom:14px; }
+  .choose-therapist-wrap{ display:block; }
+  .choose-therapist-img{
+    width:100%; height:auto; display:block;
+    border:1px solid rgba(138,106,168,0.3);
+  }
+  .booking-steps-wrap{ display:block; margin-bottom:14px; }
   .booking-steps-img{
     width:100%; height:auto; display:block;
     border:1px solid rgba(138,106,168,0.3);
@@ -317,10 +322,10 @@
 
   <!-- ============ ご予約ステップ ============ -->
   <div class="section">
-    <div class="booking-steps-wrap">
-      <img src="booking-steps.jpg" alt="簡単4ステップでお申し込み" class="booking-steps-img"
-           onerror="this.style.display='none';">
-    </div>
+    <a href="https://line.me/ti/p/KB7wdAMGRY" class="booking-steps-wrap" target="_blank" rel="noopener">
+      <img src="booking-steps.jpg" alt="簡単4ステップでお申し込み 今すぐお申し込みする！" class="booking-steps-img"
+           onerror="this.parentElement.style.display='none';">
+    </a>
     <a href="https://line.me/ti/p/KB7wdAMGRY" class="cta-button" target="_blank" rel="noopener">LINEで予約・お問い合わせ</a>
   </div>
 
@@ -353,6 +358,14 @@
         <tr><th>2日前より前</th><td>無料</td></tr>
       </table>
     </div>
+  </div>
+
+  <!-- ============ セラピストを選ぶ ============ -->
+  <div class="section">
+    <a href="top.html#castGrid" class="choose-therapist-wrap">
+      <img src="choose-therapist.jpg" alt="セラピストを選ぶ" class="choose-therapist-img"
+           onerror="this.parentElement.style.display='none';">
+    </a>
   </div>
 
   <!-- ============ ご利用にあたって ============ -->

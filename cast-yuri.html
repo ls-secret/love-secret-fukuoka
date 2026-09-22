@@ -232,7 +232,10 @@
   }
   .jukkin-date .dow-sat{ color:#4a6fb5; }
   .jukkin-date .dow-sun{ color:#c1476a; }
-  .jukkin-hours{ flex:1; font-size:13px; color:var(--plum-dim); }
+  .jukkin-hours{
+    flex:1; min-width:0; font-size:13px; color:var(--plum-dim);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
   .jukkin-btn{
     flex:0 0 auto; display:inline-block; font-family:'Shippori Mincho', serif; font-size:11.5px; font-weight:700;
     padding:7px 12px; border-radius:16px; border:1px solid var(--gold);
@@ -320,7 +323,7 @@
 
   <section class="profile-hero reveal">
     <div class="profile-name">立凪ゆうり</div>
-    <div class="profile-catch">笑顔と優しさが自慢</div>
+    <div class="profile-catch">太陽の笑顔で貴女を優しく包み込む王子様</div>
     <div class="profile-meta">
       <span>年齢 <b>27歳</b></span>
       <span>身長 <b>178cm</b></span>
@@ -541,7 +544,7 @@
       const hoursLabel = range || 'お問い合わせください';
       const actionHtml = range
         ? `<button type="button" class="jukkin-btn" data-day="${i}">空き状況</button>`
-        : `<a href="https://line.me/ti/p/KB7wdAMGRY" target="_blank" rel="noopener" class="jukkin-btn jukkin-btn-line">LINEで問合せ</a>`;
+        : `<a href="https://line.me/ti/p/KB7wdAMGRY" target="_blank" rel="noopener" class="jukkin-btn jukkin-btn-line">問合せ</a>`;
       html += `<div class="jukkin-row${i===0?' is-today':''}">
         <div class="jukkin-date">${dateLabel}</div>
         <div class="jukkin-hours">${hoursLabel}</div>

@@ -232,7 +232,10 @@
   }
   .jukkin-date .dow-sat{ color:#4a6fb5; }
   .jukkin-date .dow-sun{ color:#c1476a; }
-  .jukkin-hours{ flex:1; font-size:13px; color:var(--plum-dim); }
+  .jukkin-hours{
+    flex:1; min-width:0; font-size:13px; color:var(--plum-dim);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
   .jukkin-btn{
     flex:0 0 auto; display:inline-block; font-family:'Shippori Mincho', serif; font-size:11.5px; font-weight:700;
     padding:7px 12px; border-radius:16px; border:1px solid var(--gold);
@@ -320,7 +323,7 @@
 
   <section class="profile-hero reveal">
     <div class="profile-name">はじめ</div>
-    <div class="profile-catch"><span class="qna-pending">未定</span></div>
+    <div class="profile-catch">甘くて可愛いフェイスと大人なトークのギャップにキュン♡</div>
     <div class="profile-meta">
       <span>年齢 <b>32歳</b></span>
       <span>身長 <b>ー</b></span>
@@ -344,24 +347,28 @@
     <div class="section-title">セラピストに質問</div>
     <div class="frame">
             <div class="qna-row">
-              <div class="qna-q">Q. 血液型は？</div>
-              <div class="qna-a">A. <span class="qna-pending">準備中</span></div>
+              <div class="qna-q">Q. 趣味は？</div>
+              <div class="qna-a">A. ドライブ・ショッピング・観光地巡り</div>
             </div>
             <div class="qna-row">
-              <div class="qna-q">Q. 趣味やすきなことは？</div>
-              <div class="qna-a">A. <span class="qna-pending">準備中</span></div>
+              <div class="qna-q">Q. 好きな食べ物は？</div>
+              <div class="qna-a">A. 麺類</div>
             </div>
             <div class="qna-row">
-              <div class="qna-q">Q. 休日の過ごし方は？</div>
-              <div class="qna-a">A. <span class="qna-pending">準備中</span></div>
+              <div class="qna-q">Q. 好きな漫画は？</div>
+              <div class="qna-a">A. ドラゴンボール、葬送のフリーレン、ヒカルの碁</div>
             </div>
             <div class="qna-row">
-              <div class="qna-q">Q. 好きな女性のタイプは？</div>
-              <div class="qna-a">A. <span class="qna-pending">準備中</span></div>
+              <div class="qna-q">Q. 好きな映画は？</div>
+              <div class="qna-a">A. プリティーウーマン</div>
             </div>
             <div class="qna-row">
-              <div class="qna-q">Q. お客様に一言</div>
-              <div class="qna-a">A. <span class="qna-pending">準備中</span></div>
+              <div class="qna-q">Q. 好きな動物は？</div>
+              <div class="qna-a">A. 犬・猫</div>
+            </div>
+            <div class="qna-row">
+              <div class="qna-q">Q. 好きなスポーツは？</div>
+              <div class="qna-a">A. 野球</div>
             </div>
     </div>
   </section>
@@ -382,7 +389,20 @@
   <section class="section reveal" id="comment">
     <div class="section-title">セラピストからのコメント</div>
     <div class="frame">
-      <div class="placeholder-box">準備中です。<br>はじめからのコメントを近日公開いたします。</div>
+      <div class="comment-text">普段から良く食べ、良く笑い、誰とでもすぐ仲良くなれる性格です。
+自分自身、身体を動かしたり、美容や健康に気を使ったりすることが好きで、無理なく身体を鍛えながら、清潔感のある身だしなみを心がけています。
+
+せっかく一緒に過ごす時間だからこそ、
+「会ってよかった」「なんだか安心する」「また会いたい」「楽しかった」
+と思ってもらえるような時間にしたいと思っています。
+
+お話しするのも好きなので、たくさん話して笑いたい方も、普段なかなか人には言えないことをゆっくり話したい方も大歓迎です。
+もちろん、会話よりもゆっくり癒されたい日もあると思います。その日の気分や希望に合わせて、無理に距離を縮めるのではなく、あなたが心地よいと思えるペースを大切にします。
+
+初めてで緊張している方も、「女性用風俗ってちょっと興味はあるけど、どんな人が来るんだろう……」という方も、気軽な気持ちで会いに来てもらえたら嬉しいです。
+日常では味わえない、少し特別な時間を一緒に過ごしましょう。
+
+あなたにとって、心も身体もほっとできるような存在になれたら嬉しいです。</div>
     </div>
   </section>
 
@@ -536,7 +556,7 @@
       const hoursLabel = range || 'お問い合わせください';
       const actionHtml = range
         ? `<button type="button" class="jukkin-btn" data-day="${i}">空き状況</button>`
-        : `<a href="https://line.me/ti/p/KB7wdAMGRY" target="_blank" rel="noopener" class="jukkin-btn jukkin-btn-line">LINEで問合せ</a>`;
+        : `<a href="https://line.me/ti/p/KB7wdAMGRY" target="_blank" rel="noopener" class="jukkin-btn jukkin-btn-line">問合せ</a>`;
       html += `<div class="jukkin-row${i===0?' is-today':''}">
         <div class="jukkin-date">${dateLabel}</div>
         <div class="jukkin-hours">${hoursLabel}</div>

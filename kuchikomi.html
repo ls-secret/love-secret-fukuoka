@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="apple-touch-icon" href="icon.png">
+<meta name="apple-mobile-web-app-title" content="LOVE＆SECRET">
+<link rel="icon" href="icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>口コミを投稿する｜LOVE&SECRET FUKUOKA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Shippori+Mincho:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --lavender-base: #ccb2d8;
+    --lavender-pale: #f3ebf7;
+    --lavender-mid: #b596c9;
+    --lavender-deep: #8a6aa8;
+    --plum: #4a2f63;
+    --plum-dim: rgba(74,47,99,0.7);
+    --gold: #b8923f;
+    --gold-light: #d4af6a;
+    --gold-dim: #8f701f;
+    --white: #ffffff;
+    --line-green: #06C755;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--lavender-pale);
+    color:var(--plum);
+    font-family:'Noto Sans JP', sans-serif;
+    overflow-x:hidden;
+    position:relative;
+  }
+  .ambient{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse 70% 50% at 20% 8%, rgba(255,255,255,0.65), transparent 60%),
+      radial-gradient(ellipse 60% 45% at 88% 14%, rgba(255,255,255,0.45), transparent 62%),
+      radial-gradient(ellipse 85% 60% at 50% 55%, rgba(204,178,216,0.55), transparent 70%),
+      radial-gradient(ellipse 90% 60% at 50% 100%, rgba(181,150,201,0.55), transparent 72%),
+      linear-gradient(180deg, #f8f3fa 0%, #ecdff2 30%, #ccb2d8 65%, #b596c9 100%);
+  }
+  .wrap{ position:relative; z-index:1; max-width:640px; margin:0 auto; padding:0 20px 100px; }
+
+  /* ---------- sticky top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:10;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:10px 14px;
+    background:rgba(255,255,255,0.78);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(138,106,168,0.3);
+    gap:8px;
+  }
+  .topbar .brand{
+    font-family:'Cinzel', serif; font-size:11.5px; letter-spacing:0.06em;
+    color:var(--plum); white-space:nowrap; flex-shrink:0;
+  }
+  .topbar .hours{
+    font-family:'Shippori Mincho', serif; font-size:11px;
+    color:var(--plum-dim); text-align:right; line-height:1.4; flex-shrink:0;
+  }
+
+  /* ---------- hamburger menu ---------- */
+  .menu-btn{
+    display:flex; flex-direction:column; justify-content:center;
+    width:32px; height:32px; padding:0;
+    background:none; border:none; cursor:pointer; flex-shrink:0;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .menu-btn span{ display:block; width:20px; height:2px; background:var(--plum); border-radius:2px; margin:2px 0; }
+  .menu-overlay{
+    position:fixed; inset:0; z-index:98;
+    background:rgba(74,47,99,0.35); opacity:0; pointer-events:none;
+    transition:opacity 0.3s ease;
+  }
+  .menu-overlay.open{ opacity:1; pointer-events:auto; }
+  .menu-panel{
+    position:fixed; top:0; left:0; bottom:0; z-index:99;
+    width:78%; max-width:300px;
+    background:linear-gradient(180deg, #f8f3fa, #ecdff2);
+    box-shadow:4px 0 30px rgba(74,47,99,0.25);
+    transform:translateX(-100%);
+    transition:transform 0.32s cubic-bezier(.4,0,.2,1);
+    padding:26px 22px; display:flex; flex-direction:column;
+  }
+  .menu-panel.open{ transform:translateX(0); }
+  .menu-close{
+    align-self:flex-end; width:32px; height:32px;
+    background:none; border:none; cursor:pointer;
+    font-family:'Cinzel', serif; font-size:20px; color:var(--plum-dim);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .menu-panel-brand{ text-align:center; margin:6px 0 30px; }
+  .menu-panel-brand .crest-mini{ width:56px; height:56px; margin:0 auto 10px; }
+  .menu-panel-brand .crest-mini img{ width:100%; height:100%; border-radius:50%; display:block; }
+  .menu-panel-brand .name{ font-family:'Cinzel', serif; font-size:12px; letter-spacing:0.1em; color:var(--plum); }
+  .menu-link{
+    display:block; padding:16px 4px;
+    font-family:'Shippori Mincho', serif; font-size:15px;
+    color:var(--plum); text-decoration:none;
+    border-bottom:1px solid rgba(138,106,168,0.25); letter-spacing:0.03em;
+  }
+  .menu-link.line-link{
+    margin-top:20px; text-align:center;
+    background:linear-gradient(180deg, var(--lavender-mid), var(--lavender-deep));
+    color:var(--white); border-bottom:none; padding:14px; font-weight:700;
+  }
+
+  .back-link{
+    display:inline-flex; align-items:center; gap:4px;
+    margin:16px 0 4px; font-family:'Shippori Mincho', serif; font-size:12.5px;
+    color:var(--plum-dim); text-decoration:none;
+  }
+
+  .page-hero{ padding:14px 0 8px; text-align:center; }
+  .page-title{
+    font-family:'Shippori Mincho', serif; font-weight:800; font-size:23px;
+    color:var(--plum); letter-spacing:0.04em;
+  }
+  .page-lead{
+    margin-top:12px; font-family:'Shippori Mincho', serif; font-size:13.5px;
+    line-height:2; color:var(--plum-dim);
+  }
+
+  .section{ padding:20px 0; scroll-margin-top:60px; }
+  .frame{
+    position:relative; border:1px solid rgba(138,106,168,0.35);
+    background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(243,235,247,0.6));
+    padding:22px 18px; box-shadow:0 8px 30px rgba(138,106,168,0.15);
+  }
+  .frame::before{
+    content:""; position:absolute; inset:6px;
+    border:1px solid rgba(184,146,63,0.35); pointer-events:none;
+  }
+
+  /* ---------- form ---------- */
+  .form-row{ margin-bottom:18px; }
+  .form-label{
+    display:block; font-family:'Shippori Mincho', serif; font-weight:700; font-size:13px;
+    color:var(--plum); margin-bottom:7px; letter-spacing:0.03em;
+  }
+  .form-label .req{ color:#c1476a; font-size:11px; margin-left:4px; }
+  .form-label .opt{ color:var(--plum-dim); font-size:11px; margin-left:4px; font-weight:400; }
+  select.form-input, input.form-input, textarea.form-input{
+    width:100%; padding:12px 12px; font-family:'Noto Sans JP', sans-serif; font-size:14px;
+    color:var(--plum); background:rgba(255,255,255,0.85);
+    border:1px solid rgba(138,106,168,0.4); border-radius:2px;
+    -webkit-appearance:none; appearance:none;
+  }
+  select.form-input{
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%238a6aa8' d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat:no-repeat; background-position:right 12px center; background-size:18px;
+    padding-right:36px;
+  }
+  textarea.form-input{ min-height:120px; resize:vertical; line-height:1.7; }
+  .form-input:focus{ outline:none; border-color:var(--gold); }
+
+  .submit-btn{
+    display:block; width:100%; margin-top:6px; padding:15px 20px; text-align:center;
+    background:var(--line-green); color:#fff; border:none;
+    font-family:'Shippori Mincho', serif; font-weight:700; font-size:15px;
+    letter-spacing:0.06em; cursor:pointer;
+    box-shadow:0 6px 20px rgba(6,199,85,0.3);
+  }
+  .submit-note{
+    text-align:center; font-size:11px; color:var(--plum-dim); margin-top:10px; line-height:1.8;
+  }
+  .form-error{
+    text-align:center; font-size:12px; color:#c1476a; margin-top:10px; display:none;
+  }
+  .form-error.show{ display:block; }
+  .form-success{
+    text-align:center; font-family:'Shippori Mincho', serif; font-size:13.5px;
+    color:var(--gold-dim); background:rgba(184,146,63,0.1); border:1px solid rgba(184,146,63,0.35);
+    padding:16px 14px; margin-top:14px; line-height:1.9; display:none;
+  }
+  .form-success.show{ display:block; }
+
+  .caution-box{
+    font-size:11.5px; color:var(--plum-dim); line-height:1.9; margin-top:16px;
+  }
+
+  .footer{ text-align:center; padding:40px 0 10px; }
+  .footer-name{ font-family:'Cinzel', serif; font-size:14px; letter-spacing:0.15em; color:var(--plum); }
+  .footer-rep{ font-family:'Shippori Mincho', serif; font-size:14px; color:var(--plum-dim); margin-top:8px; }
+  .footer-rep b{ font-family:'Cinzel', serif; color:var(--plum); letter-spacing:0.1em; margin-left:6px; }
+</style>
+</head>
+<body>
+
+<div class="ambient"></div>
+
+<div class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
+  <div class="brand">LOVE &amp; SECRET FUKUOKA</div>
+  <div class="hours">受付時間<br>11:00〜翌2:00</div>
+</div>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="menu-panel" id="menuPanel">
+  <button class="menu-close" id="menuClose">×</button>
+  <div class="menu-panel-brand">
+    <div class="name">LOVE &amp; SECRET FUKUOKA</div>
+  </div>
+  <a href="top.html" class="menu-link">HOME</a>
+  <a href="top.html#shukkin" class="menu-link">出勤スケジュール</a>
+  <a href="ryokin.html" class="menu-link">料金について</a>
+  <a href="hajimete.html" class="menu-link">初めての方へ</a>
+  <a href="kuchikomi.html" class="menu-link">口コミを投稿する</a>
+  <a href="love-secret-cast-lp.html" class="menu-link">セラピスト募集</a>
+  <a href="https://line.me/ti/p/KB7wdAMGRY" class="menu-link line-link" target="_blank" rel="noopener">LINEで予約する</a>
+</nav>
+
+<div class="wrap">
+
+  <a href="top.html" class="back-link">← トップページに戻る</a>
+
+  <section class="page-hero reveal">
+    <div class="page-title">口コミを投稿する</div>
+    <p class="page-lead">
+      ご利用いただいたご感想を、ぜひお聞かせください。<br>
+      いただいた内容は、確認のうえサイトに掲載させていただく<br>
+      場合があります。ニックネームは空欄でも構いません。
+    </p>
+  </section>
+
+  <section class="section reveal">
+    <div class="frame">
+      <div class="form-row">
+        <label class="form-label" for="courseSelect">ご利用コース<span class="req">必須</span></label>
+        <select class="form-input" id="courseSelect">
+          <option value="">選択してください</option>
+          <option value="デートコース 90分">デートコース 90分</option>
+          <option value="デートコース 120分">デートコース 120分</option>
+          <option value="ファンタジーコース 90分">ファンタジーコース 90分</option>
+          <option value="ファンタジーコース 120分">ファンタジーコース 120分</option>
+          <option value="ファンタジーコース 150分">ファンタジーコース 150分</option>
+          <option value="ファンタジーコース 180分">ファンタジーコース 180分</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="castSelect">セラピスト<span class="req">必須</span></label>
+        <select class="form-input" id="castSelect">
+          <option value="">選択してください</option>
+          <option value="立凪ゆうり">立凪ゆうり</option>
+          <option value="なつき">なつき</option>
+          <option value="はじめ">はじめ</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="nicknameInput">お客様のニックネーム<span class="opt">匿名可・空欄でもOK</span></label>
+        <input class="form-input" id="nicknameInput" type="text" placeholder="例）ゆか、匿名希望　など">
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="reviewInput">口コミ本文<span class="req">必須</span></label>
+        <textarea class="form-input" id="reviewInput" placeholder="ご感想を自由にお書きください"></textarea>
+      </div>
+
+      <button type="button" class="submit-btn" id="submitBtn">内容をコピーしてLINEで送る</button>
+      <div class="form-error" id="formError">コース・セラピスト・口コミ本文をご入力ください。</div>
+      <div class="form-success" id="formSuccess">
+        内容をコピーしました。<br>
+        開いたLINEのトーク画面に貼り付けて送信してください。
+      </div>
+
+      <div class="caution-box">
+        ※ボタンを押すと入力内容がコピーされ、公式LINEのトーク画面が開きます。<br>
+        ※貼り付け（ペースト）してそのまま送信してください。<br>
+        ※誹謗中傷など、口コミとしてふさわしくない内容は掲載を見送らせていただく場合があります。
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer reveal">
+    <div class="footer-name">LOVE &amp; SECRET FUKUOKA</div>
+    <div class="footer-rep">LOVE&amp;SECRET FUKUOKA代表 <b>YOKO</b></div>
+  </footer>
+
+</div>
+
+<script>
+  // pre-select cast from ?cast=yuri / natsuki / hajime
+  (function(){
+    const params = new URLSearchParams(window.location.search);
+    const castKey = params.get('cast');
+    const map = { yuri: '立凪ゆうり', natsuki: 'なつき', hajime: 'はじめ' };
+    if(castKey && map[castKey]){
+      const sel = document.getElementById('castSelect');
+      if(sel) sel.value = map[castKey];
+    }
+  })();
+
+  const LINE_URL = 'https://line.me/ti/p/KB7wdAMGRY';
+
+  document.getElementById('submitBtn').addEventListener('click', async () => {
+    const course = document.getElementById('courseSelect').value;
+    const cast = document.getElementById('castSelect').value;
+    const nickname = document.getElementById('nicknameInput').value.trim();
+    const review = document.getElementById('reviewInput').value.trim();
+    const errorEl = document.getElementById('formError');
+    const successEl = document.getElementById('formSuccess');
+    successEl.classList.remove('show');
+
+    if(!course || !cast || !review){
+      errorEl.classList.add('show');
+      return;
+    }
+    errorEl.classList.remove('show');
+
+    const text = '【口コミ投稿】\n'
+      + 'コース：' + course + '\n'
+      + 'セラピスト：' + cast + '\n'
+      + 'ニックネーム：' + (nickname || '匿名希望') + '\n'
+      + '口コミ：\n' + review;
+
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        await navigator.clipboard.writeText(text);
+      }
+    }catch(err){ /* clipboard not available, still open LINE */ }
+
+    successEl.classList.add('show');
+    window.open(LINE_URL, '_blank', 'noopener');
+  });
+
+  // hamburger menu
+  const menuBtn = document.getElementById('menuBtn');
+  const menuClose = document.getElementById('menuClose');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const menuPanel = document.getElementById('menuPanel');
+  function openMenu(){ menuOverlay.classList.add('open'); menuPanel.classList.add('open'); }
+  function closeMenu(){ menuOverlay.classList.remove('open'); menuPanel.classList.remove('open'); }
+  if(menuBtn){ menuBtn.addEventListener('click', openMenu); }
+  if(menuClose){ menuClose.addEventListener('click', closeMenu); }
+  if(menuOverlay){ menuOverlay.addEventListener('click', closeMenu); }
+</script>
+
+</body>
+</html>

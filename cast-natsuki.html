@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-title" content="LOVE＆SECRET">
 <link rel="icon" href="icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>なつき｜LOVE&SECRET FUKUOKA</title>
+<title>菜月｜LOVE&SECRET FUKUOKA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Shippori+Mincho:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -187,8 +187,19 @@
     font-size:13.5px; color:var(--plum-dim); line-height:1.9;
   }
   .comment-text{
-    font-family:'Shippori Mincho', serif; font-size:14px; color:var(--plum);
-    line-height:2.1; text-align:center; white-space:pre-line; padding:6px 4px;
+    font-family:'Noto Sans JP', sans-serif; font-size:14px; color:var(--plum);
+    line-height:1.95; text-align:left; white-space:pre-line; padding:6px 4px;
+  }
+  .recommend-list{ list-style:none; margin:0; padding:0; }
+  .recommend-item{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:14px 2px; border-bottom:1px solid rgba(138,106,168,0.2);
+  }
+  .recommend-item:last-child{ border-bottom:none; }
+  .recommend-icon{ color:var(--gold); font-size:14px; margin-top:2px; flex-shrink:0; }
+  .recommend-text{
+    font-family:'Noto Sans JP', sans-serif; font-size:14px; color:var(--plum);
+    line-height:1.95;
   }
 
   /* ---------- LINE cta ---------- */
@@ -322,19 +333,19 @@
   <a href="top.html#castGrid" class="back-link">← セラピスト一覧に戻る</a>
 
   <section class="profile-hero reveal">
-    <div class="profile-name">なつき</div>
+    <div class="profile-name">菜月</div>
     <div class="profile-catch">クールな優しさと鍛えあげたスレンダーボディで癒します</div>
     <div class="profile-meta">
       <span>年齢 <b>27歳</b></span>
-      <span>身長 <b>ー</b></span>
+      <span>身長 <b>174cm</b></span>
     </div>
   </section>
 
   <div class="photo-scroll">
-              <img src="cast-natsuki-1.JPG" alt="なつき" onerror="this.remove()">
-              <img src="cast-natsuki-2.JPG" alt="なつき" onerror="this.remove()">
-              <img src="cast-natsuki-3.jpg" alt="なつき" onerror="this.remove()">
-              <img src="cast-natsuki-4.JPG" alt="なつき" onerror="this.remove()">
+              <img src="cast-natsuki-1.JPG" alt="菜月" onerror="this.remove()">
+              <img src="cast-natsuki-2.JPG" alt="菜月" onerror="this.remove()">
+              <img src="cast-natsuki-3.jpg" alt="菜月" onerror="this.remove()">
+              <img src="cast-natsuki-4.JPG" alt="菜月" onerror="this.remove()">
   </div>
 
   <div class="tab-btn-row">
@@ -348,24 +359,52 @@
     <div class="section-title">セラピストに質問</div>
     <div class="frame">
             <div class="qna-row">
-              <div class="qna-q">Q. 血液型は？</div>
-              <div class="qna-a">A. <span class="qna-pending">準備中</span></div>
+              <div class="qna-q">Q. 体重は？</div>
+              <div class="qna-a">A. 60kg</div>
             </div>
             <div class="qna-row">
-              <div class="qna-q">Q. 趣味やすきなことは？</div>
-              <div class="qna-a">A. <span class="qna-pending">準備中</span></div>
+              <div class="qna-q">Q. 好きな食べ物は？</div>
+              <div class="qna-a">A. スイーツ、フルーツ、野菜</div>
             </div>
             <div class="qna-row">
-              <div class="qna-q">Q. 休日の過ごし方は？</div>
-              <div class="qna-a">A. <span class="qna-pending">準備中</span></div>
+              <div class="qna-q">Q. 好きな動物は？</div>
+              <div class="qna-a">A. 大型犬・猫</div>
             </div>
             <div class="qna-row">
-              <div class="qna-q">Q. 好きな女性のタイプは？</div>
-              <div class="qna-a">A. <span class="qna-pending">準備中</span></div>
+              <div class="qna-q">Q. 好きなスポーツは？</div>
+              <div class="qna-a">A. MMA（総合格闘技）・水泳</div>
             </div>
             <div class="qna-row">
-              <div class="qna-q">Q. お客様に一言</div>
-              <div class="qna-a">A. <span class="qna-pending">準備中</span></div>
+              <div class="qna-q">Q. 好きなアニメは？</div>
+              <div class="qna-a">A. ハイキュー！！</div>
+            </div>
+            <div class="qna-row">
+              <div class="qna-q">Q. 好きな漫画は？</div>
+              <div class="qna-a">A. キングダム</div>
+            </div>
+            <div class="qna-row">
+              <div class="qna-q">Q. 好きな映画は？</div>
+              <div class="qna-a">A. 華麗なるギャツビー</div>
+            </div>
+            <div class="qna-row">
+              <div class="qna-q">Q. デートで連れて行きたい場所は？</div>
+              <div class="qna-a">A. 閉館間際の静かな水族館、星空が見える客室露天風呂のある隠れ宿</div>
+            </div>
+            <div class="qna-row">
+              <div class="qna-q">Q. 好きな本は？</div>
+              <div class="qna-a">A. 星の王子さま</div>
+            </div>
+            <div class="qna-row">
+              <div class="qna-q">Q. 大切にしている言葉は？</div>
+              <div class="qna-a">A. 「大切なものは、目に見えない」</div>
+            </div>
+            <div class="qna-row">
+              <div class="qna-q">Q. 飲むなら何が好き？</div>
+              <div class="qna-a">A. ハイボール</div>
+            </div>
+            <div class="qna-row">
+              <div class="qna-q">Q. 怖いものは？</div>
+              <div class="qna-a">A. ホラー映画</div>
             </div>
     </div>
   </section>
@@ -376,7 +415,24 @@
   <section class="section reveal" id="recommend">
     <div class="section-title">お店からのおすすめポイント</div>
     <div class="frame">
-      <div class="placeholder-box">準備中です。<br>近日公開いたします。</div>
+      <ul class="recommend-list">
+            <li class="recommend-item">
+              <span class="recommend-icon">✦</span>
+              <span class="recommend-text">MMA（総合格闘技）・水泳で鍛えた引き締まったボディと、<br>クールな表情の奥にのぞく優しさのギャップに癒されます。</span>
+            </li>
+            <li class="recommend-item">
+              <span class="recommend-icon">✦</span>
+              <span class="recommend-text">「星の王子さま」や<br>「大切なものは、目に見えない」という言葉を大事にする、<br>芯のある大人な雰囲気。<br>ハイボール片手にゆったり語り合える時間を。</span>
+            </li>
+            <li class="recommend-item">
+              <span class="recommend-icon">✦</span>
+              <span class="recommend-text">閉館間際の静かな水族館や、<br>星空の見える露天風呂付きの隠れ宿など、<br>特別な非日常を演出するのが得意です。</span>
+            </li>
+            <li class="recommend-item">
+              <span class="recommend-icon">✦</span>
+              <span class="recommend-text">指先まで意識を集中させた快感マッサージで、<br>緊張をゆっくりとほぐしていきます。<br>クールな表情から一転、<br>優しく寄り添う施術に心から癒されると評判です。</span>
+            </li>
+            </ul>
     </div>
   </section>
 
@@ -386,7 +442,31 @@
   <section class="section reveal" id="comment">
     <div class="section-title">セラピストからのコメント</div>
     <div class="frame">
-      <div class="placeholder-box">準備中です。<br>なつきからのコメントを近日公開いたします。</div>
+      <div class="comment-text">初めまして、菜月です。
+
+クールに見られがちですが、
+実は一人の時間も、
+誰かと過ごす時間も、
+どちらも大切にしたいタイプです。
+
+運動も、静かな読書も好きで、
+オンとオフの切り替えを大事にしています。
+
+お会いした時は、
+肩の力を抜いて、
+ありのままのあなたでいてください。
+
+「大切なものは、目に見えない」
+——そんな言葉を胸に、
+言葉にならない想いにも、
+そっと寄り添える人でありたいと思っています。
+
+ふとした瞬間に見せる素の表情に、
+きっと惹き込まれてしまうはず。
+二人きりだからこそ見せる優しさで、
+ゆっくりと溶かしていきます。
+
+よろしくお願いします。</div>
     </div>
   </section>
 

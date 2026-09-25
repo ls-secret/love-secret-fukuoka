@@ -248,7 +248,7 @@
         <select class="form-input" id="castSelect">
           <option value="">選択してください</option>
           <option value="立凪ゆうり">立凪ゆうり</option>
-          <option value="なつき">なつき</option>
+          <option value="菜月">菜月</option>
           <option value="はじめ">はじめ</option>
           <option value="その他">その他</option>
         </select>
@@ -291,7 +291,7 @@
   (function(){
     const params = new URLSearchParams(window.location.search);
     const castKey = params.get('cast');
-    const map = { yuri: '立凪ゆうり', natsuki: 'なつき', hajime: 'はじめ' };
+    const map = { yuri: '立凪ゆうり', natsuki: '菜月', hajime: 'はじめ' };
     if(castKey && map[castKey]){
       const sel = document.getElementById('castSelect');
       if(sel) sel.value = map[castKey];

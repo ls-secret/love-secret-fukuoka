@@ -187,8 +187,19 @@
     font-size:13.5px; color:var(--plum-dim); line-height:1.9;
   }
   .comment-text{
-    font-family:'Shippori Mincho', serif; font-size:14px; color:var(--plum);
-    line-height:2.1; text-align:center; white-space:pre-line; padding:6px 4px;
+    font-family:'Noto Sans JP', sans-serif; font-size:14px; color:var(--plum);
+    line-height:1.95; text-align:left; white-space:pre-line; padding:6px 4px;
+  }
+  .recommend-list{ list-style:none; margin:0; padding:0; }
+  .recommend-item{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:14px 2px; border-bottom:1px solid rgba(138,106,168,0.2);
+  }
+  .recommend-item:last-child{ border-bottom:none; }
+  .recommend-icon{ color:var(--gold); font-size:14px; margin-top:2px; flex-shrink:0; }
+  .recommend-text{
+    font-family:'Noto Sans JP', sans-serif; font-size:14px; color:var(--plum);
+    line-height:1.95;
   }
 
   /* ---------- LINE cta ---------- */
@@ -379,7 +390,24 @@
   <section class="section reveal" id="recommend">
     <div class="section-title">お店からのおすすめポイント</div>
     <div class="frame">
-      <div class="placeholder-box">準備中です。<br>近日公開いたします。</div>
+      <ul class="recommend-list">
+            <li class="recommend-item">
+              <span class="recommend-icon">✦</span>
+              <span class="recommend-text">甘くて可愛いお顔立ちなのに、<br>話してみると大人な余裕たっぷり。<br>そのギャップにキュンとするお客様が多数います。</span>
+            </li>
+            <li class="recommend-item">
+              <span class="recommend-icon">✦</span>
+              <span class="recommend-text">よく食べ、よく笑う気さくな性格で、<br>初対面でもすぐ打ち解けられる聞き上手。<br>たくさん話したい日も、静かに癒されたい日も、<br>気分に合わせてくれる懐の広さが魅力です。</span>
+            </li>
+            <li class="recommend-item">
+              <span class="recommend-icon">✦</span>
+              <span class="recommend-text">体づくりや美容にも気を使い、<br>清潔感のある身だしなみを大切にしている、<br>まさに「会ってよかった」と思える存在です。</span>
+            </li>
+            <li class="recommend-item">
+              <span class="recommend-icon">✦</span>
+              <span class="recommend-text">力加減も丁寧に確認しながら進める、<br>気持ちよさにこだわった施術。<br>日々の疲れを忘れられる、<br>極上の癒しのひとときを過ごせます。</span>
+            </li>
+            </ul>
     </div>
   </section>
 
@@ -389,20 +417,43 @@
   <section class="section reveal" id="comment">
     <div class="section-title">セラピストからのコメント</div>
     <div class="frame">
-      <div class="comment-text">普段から良く食べ、良く笑い、誰とでもすぐ仲良くなれる性格です。
-自分自身、身体を動かしたり、美容や健康に気を使ったりすることが好きで、無理なく身体を鍛えながら、清潔感のある身だしなみを心がけています。
+      <div class="comment-text">普段から良く食べ、良く笑い、
+誰とでもすぐ仲良くなれる性格です。
+身体を動かしたり、美容や健康に気を使うのも好きで、
+無理なく身体を鍛えながら、
+清潔感のある身だしなみを心がけています。
 
 せっかく一緒に過ごす時間だからこそ、
-「会ってよかった」「なんだか安心する」「また会いたい」「楽しかった」
-と思ってもらえるような時間にしたいと思っています。
+「会ってよかった」
+「なんだか安心する」
+「また会いたい」
+「楽しかった」
+と思ってもらえる時間にしたいと思っています。
 
-お話しするのも好きなので、たくさん話して笑いたい方も、普段なかなか人には言えないことをゆっくり話したい方も大歓迎です。
-もちろん、会話よりもゆっくり癒されたい日もあると思います。その日の気分や希望に合わせて、無理に距離を縮めるのではなく、あなたが心地よいと思えるペースを大切にします。
+お話しするのも好きなので、
+たくさん話して笑いたい方も、
+普段なかなか人には言えないことを
+ゆっくり話したい方も大歓迎です。
 
-初めてで緊張している方も、「女性用風俗ってちょっと興味はあるけど、どんな人が来るんだろう……」という方も、気軽な気持ちで会いに来てもらえたら嬉しいです。
+もちろん、会話よりもゆっくり癒されたい日もあると思います。
+その日の気分や希望に合わせて、
+無理に距離を縮めるのではなく、
+あなたが心地よいと思えるペースを大切にします。
+
+初めてで緊張している方も、
+「女性用風俗ってちょっと興味はあるけど、
+どんな人が来るんだろう……」という方も、
+気軽な気持ちで会いに来てもらえたら嬉しいです。
 日常では味わえない、少し特別な時間を一緒に過ごしましょう。
 
-あなたにとって、心も身体もほっとできるような存在になれたら嬉しいです。</div>
+あなたにとって、心も身体もほっとできるような
+存在になれたら嬉しいです。
+
+甘えた声でそっと囁かれたら、
+きっと心臓が高鳴ってしまうはず。
+優しい手つきに、
+いつの間にか力が抜けていく——
+そんな時間をお約束します。</div>
     </div>
   </section>
 

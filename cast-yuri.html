@@ -187,8 +187,19 @@
     font-size:13.5px; color:var(--plum-dim); line-height:1.9;
   }
   .comment-text{
-    font-family:'Shippori Mincho', serif; font-size:14px; color:var(--plum);
-    line-height:2.1; text-align:center; white-space:pre-line; padding:6px 4px;
+    font-family:'Noto Sans JP', sans-serif; font-size:14px; color:var(--plum);
+    line-height:1.95; text-align:left; white-space:pre-line; padding:6px 4px;
+  }
+  .recommend-list{ list-style:none; margin:0; padding:0; }
+  .recommend-item{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:14px 2px; border-bottom:1px solid rgba(138,106,168,0.2);
+  }
+  .recommend-item:last-child{ border-bottom:none; }
+  .recommend-icon{ color:var(--gold); font-size:14px; margin-top:2px; flex-shrink:0; }
+  .recommend-text{
+    font-family:'Noto Sans JP', sans-serif; font-size:14px; color:var(--plum);
+    line-height:1.95;
   }
 
   /* ---------- LINE cta ---------- */
@@ -376,7 +387,24 @@
   <section class="section reveal" id="recommend">
     <div class="section-title">お店からのおすすめポイント</div>
     <div class="frame">
-      <div class="placeholder-box">準備中です。<br>近日公開いたします。</div>
+      <ul class="recommend-list">
+            <li class="recommend-item">
+              <span class="recommend-icon">✦</span>
+              <span class="recommend-text">178cmのすらりとした高身長と、<br>太陽のように屈託のない笑顔が魅力。<br>並んで歩くだけで気分が上がると評判です。</span>
+            </li>
+            <li class="recommend-item">
+              <span class="recommend-icon">✦</span>
+              <span class="recommend-text">日焼け対策やスキンケア、<br>体型維持の筋トレを欠かさない努力家。<br>清潔感と品のある佇まいはお墨付きです。</span>
+            </li>
+            <li class="recommend-item">
+              <span class="recommend-icon">✦</span>
+              <span class="recommend-text">映画館・水族館・ドライブなど、<br>デートの引き出しが多く、<br>終始笑顔でリードしてくれる安心感があります。</span>
+            </li>
+            <li class="recommend-item">
+              <span class="recommend-icon">✦</span>
+              <span class="recommend-text">丁寧な施術で、<br>心も身体もじんわりとほぐれていく極上のリラクゼーション。<br>気持ちよさに思わず力が抜けてしまうような、<br>深い癒しの時間をお届けします。</span>
+            </li>
+            </ul>
     </div>
   </section>
 
@@ -386,10 +414,17 @@
   <section class="section reveal" id="comment">
     <div class="section-title">セラピストからのコメント</div>
     <div class="frame">
-      <div class="comment-text">ずっと手を繋いで、僕が笑顔でエスコートします。
+      <div class="comment-text">ずっと手を繋いで、
+僕が笑顔でエスコートします。
 一緒に楽しい時間が過ごせたら嬉しいです。
 
-いつでも笑顔と優しさで、あなたを癒します。
+いつでも笑顔と優しさで、
+あなたを癒します。
+
+ふと見せる真剣な眼差しに、
+思わずドキッとしてしまうかもしれません。
+二人きりの時間だからこそ、
+甘く蕩けるようなひとときをお約束します。
 よろしくお願いします！</div>
     </div>
   </section>

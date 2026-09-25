@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ls-secret.github.io/love-secret-fukuoka/sitemap.xml
+Sitemap: https://love-secret-fukuoka.com/sitemap.xml

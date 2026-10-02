@@ -647,10 +647,10 @@
       const dowClass = dow === '土' ? 'dow-sat' : (dow === '日' ? 'dow-sun' : '');
       const dateLabel = i === 0 ? '本日' : `${shukkinPad(dt.getMonth()+1)}/${shukkinPad(dt.getDate())}(<span class="${dowClass}">${dow}</span>)`;
       const range = shukkinDayShiftRangeLabel(dt);
-      const hoursLabel = range || 'お問い合わせください';
+      const hoursLabel = range || '満席';
       const actionHtml = range
         ? `<button type="button" class="jukkin-btn" data-day="${i}">空き状況</button>`
-        : `<a href="https://line.me/ti/p/KB7wdAMGRY" target="_blank" rel="noopener" class="jukkin-btn jukkin-btn-line">問合せ</a>`;
+        : `<a href="https://line.me/ti/p/KB7wdAMGRY" target="_blank" rel="noopener" class="jukkin-btn jukkin-btn-line">キャンセル待ち</a>`;
       html += `<div class="jukkin-row${i===0?' is-today':''}">
         <div class="jukkin-date">${dateLabel}</div>
         <div class="jukkin-hours">${hoursLabel}</div>

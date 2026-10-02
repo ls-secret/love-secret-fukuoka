@@ -619,7 +619,7 @@
       if(open) anyOpen = true;
       return `<span class="slot-pill ${open ? 'slot-open' : 'slot-closed'}">${shukkinSlotLabel(sh)}-${shukkinSlotLabel(eh)} ${open ? '○' : '×'}</span>`;
     }).join('');
-    return anyOpen ? pills : '<span class="slot-full">この日は満予約、またはお休みです</span>';
+    return anyOpen ? pills : '<span class="slot-full">この日は満予約</span>';
   }
 
   function shukkinSelectDay(dayOffset, scroll){

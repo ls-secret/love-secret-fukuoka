@@ -7,341 +7,171 @@
 <link rel="icon" href="icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>口コミを投稿する｜LOVE&SECRET FUKUOKA</title>
+<link rel="canonical" href="https://love-secret-fukuoka.com/kuchikomi.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Shippori+Mincho:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Great+Vibes&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --lavender-base: #ccb2d8;
-    --lavender-pale: #f3ebf7;
-    --lavender-mid: #b596c9;
-    --lavender-deep: #8a6aa8;
-    --plum: #4a2f63;
-    --plum-dim: rgba(74,47,99,0.7);
-    --gold: #b8923f;
-    --gold-light: #d4af6a;
-    --gold-dim: #8f701f;
-    --white: #ffffff;
-    --line-green: #06C755;
-  }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  html{ scroll-behavior:smooth; }
-  body{
-    background:var(--lavender-pale);
-    color:var(--plum);
-    font-family:'Noto Sans JP', sans-serif;
-    overflow-x:hidden;
-    position:relative;
-  }
-  .ambient{
-    position:fixed; inset:0; z-index:0; pointer-events:none;
-    background:
-      radial-gradient(ellipse 70% 50% at 20% 8%, rgba(255,255,255,0.65), transparent 60%),
-      radial-gradient(ellipse 60% 45% at 88% 14%, rgba(255,255,255,0.45), transparent 62%),
-      radial-gradient(ellipse 85% 60% at 50% 55%, rgba(204,178,216,0.55), transparent 70%),
-      radial-gradient(ellipse 90% 60% at 50% 100%, rgba(181,150,201,0.55), transparent 72%),
-      linear-gradient(180deg, #f8f3fa 0%, #ecdff2 30%, #ccb2d8 65%, #b596c9 100%);
-  }
-  .wrap{ position:relative; z-index:1; max-width:640px; margin:0 auto; padding:0 20px 100px; }
+*{box-sizing:border-box}
+body{margin:0;background:#FFF7F7;font-family:'M PLUS Rounded 1c',sans-serif;color:#5E3A2C}
+h1,p{margin:0}
+a{color:#C8436C}
+.m3-nav a{color:#5E3A2C;text-decoration:none;padding:8px 2px;border-bottom:2px solid transparent;font-size:14px;letter-spacing:.08em}
+.m3-nav a:hover{color:#C8436C}
+.m3-nav a.on{border-bottom-color:#E28AA4}
+.m3-pill{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#D2557C;color:#fff !important;text-decoration:none;border-radius:999px;letter-spacing:.12em;min-height:48px;box-shadow:0 8px 24px rgba(210,85,124,.25)}
+.m3-pill:hover{background:#BC4268}
+.m3-card{background:rgba(255,255,255,.9);border:1px solid #E5C9A2;box-shadow:inset 0 0 0 4px #fff,inset 0 0 0 5px #F2E1C8,0 10px 30px rgba(140,80,80,.07);padding:24px 20px;display:flex;flex-direction:column;gap:10px}
 
-  /* ---------- sticky top bar ---------- */
-  .topbar{
-    position:sticky; top:0; z-index:10;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:10px 14px;
-    background:rgba(255,255,255,0.78);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid rgba(138,106,168,0.3);
-    gap:8px;
-  }
-  .topbar .brand{
-    font-family:'Cinzel', serif; font-size:11.5px; letter-spacing:0.06em;
-    color:var(--plum); white-space:nowrap; flex-shrink:0;
-  }
-  .topbar .hours{
-    font-family:'Shippori Mincho', serif; font-size:11px;
-    color:var(--plum-dim); text-align:right; line-height:1.4; flex-shrink:0;
-  }
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-bottom:1px solid #F4DDE2}
+.m3-header-inner{max-width:1280px;margin:0 auto;padding:10px 28px;display:flex;align-items:center;gap:32px}
+.m3-brand{text-decoration:none;display:flex;flex-direction:column;align-items:center;line-height:1}
+.m3-brand .word{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;letter-spacing:.08em;color:#8A5530;white-space:nowrap}
+.m3-brand .word .amp{color:#B8894A;padding:0 .06em}
+.m3-brand .kana{font-size:10px;letter-spacing:.5em;color:#9A6436;margin-top:4px}
+.m3-reserve-wrap{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0;margin-left:auto}
+.m3-reserve-label{display:none;font-size:9px;color:#8A5E4E;letter-spacing:.02em;white-space:nowrap}
+.m3-hdr-btn{padding:0 26px;font-size:14px}
+.m3-hdr-btn-short{display:none}
+.m3-hamburger{display:none;flex-direction:column;justify-content:center;gap:4px;width:36px;height:36px;padding:0;background:none;border:none;cursor:pointer;flex-shrink:0}
+.m3-hamburger span{display:block;width:22px;height:2px;background:#8A5530;border-radius:2px}
 
-  /* ---------- hamburger menu ---------- */
-  .menu-btn{
-    display:flex; flex-direction:column; justify-content:center;
-    width:32px; height:32px; padding:0;
-    background:none; border:none; cursor:pointer; flex-shrink:0;
-    -webkit-tap-highlight-color:transparent;
-  }
-  .menu-btn span{ display:block; width:20px; height:2px; background:var(--plum); border-radius:2px; margin:2px 0; }
-  .menu-overlay{
-    position:fixed; inset:0; z-index:98;
-    background:rgba(74,47,99,0.35); opacity:0; pointer-events:none;
-    transition:opacity 0.3s ease;
-  }
-  .menu-overlay.open{ opacity:1; pointer-events:auto; }
-  .menu-panel{
-    position:fixed; top:0; left:0; bottom:0; z-index:99;
-    width:78%; max-width:300px;
-    background:linear-gradient(180deg, #f8f3fa, #ecdff2);
-    box-shadow:4px 0 30px rgba(74,47,99,0.25);
-    transform:translateX(-100%);
-    transition:transform 0.32s cubic-bezier(.4,0,.2,1);
-    padding:26px 22px; display:flex; flex-direction:column;
-  }
-  .menu-panel.open{ transform:translateX(0); }
-  .menu-close{
-    align-self:flex-end; width:32px; height:32px;
-    background:none; border:none; cursor:pointer;
-    font-family:'Cinzel', serif; font-size:20px; color:var(--plum-dim);
-    -webkit-tap-highlight-color:transparent;
-  }
-  .menu-panel-brand{ text-align:center; margin:6px 0 30px; }
-  .menu-panel-brand .crest-mini{ width:56px; height:56px; margin:0 auto 10px; }
-  .menu-panel-brand .crest-mini img{ width:100%; height:100%; border-radius:50%; display:block; }
-  .menu-panel-brand .name{ font-family:'Cinzel', serif; font-size:12px; letter-spacing:0.1em; color:var(--plum); }
-  .menu-link{
-    display:block; padding:16px 4px;
-    font-family:'Shippori Mincho', serif; font-size:15px;
-    color:var(--plum); text-decoration:none;
-    border-bottom:1px solid rgba(138,106,168,0.25); letter-spacing:0.03em;
-  }
-  .menu-link.line-link{
-    margin-top:20px; text-align:center;
-    background:linear-gradient(180deg, var(--lavender-mid), var(--lavender-deep));
-    color:var(--white); border-bottom:none; padding:14px; font-weight:700;
-  }
+@media (max-width:960px){
+  .m3-nav{display:none !important}
+  .m3-hamburger{display:flex !important}
+  .m3-header-inner{padding:8px 14px;gap:10px}
+  .m3-brand{flex:1}
+  .m3-brand .word{font-size:17px}
+  .m3-brand .kana{font-size:8px;letter-spacing:.35em}
+  .m3-reserve-wrap{margin-left:0}
+  .m3-reserve-label{display:block}
+  .m3-hdr-btn{padding:0 14px}
+  .m3-hdr-btn-full{display:none}
+  .m3-hdr-btn-short{display:inline}
+  .m3-hdr-btn svg:last-child{display:none}
+}
 
-  .back-link{
-    display:inline-flex; align-items:center; gap:4px;
-    margin:16px 0 4px; font-family:'Shippori Mincho', serif; font-size:12.5px;
-    color:var(--plum-dim); text-decoration:none;
-  }
+/* mobile menu */
+.m3-menu-overlay{position:fixed;inset:0;z-index:98;background:rgba(94,58,44,.35);opacity:0;pointer-events:none;transition:opacity .3s ease}
+.m3-menu-overlay.open{opacity:1;pointer-events:auto}
+.m3-menu-panel{position:fixed;top:0;left:0;bottom:0;z-index:99;width:78%;max-width:300px;background:linear-gradient(180deg,#FFF9F8,#FDEAEF);box-shadow:4px 0 30px rgba(94,58,44,.25);transform:translateX(-100%);transition:transform .32s cubic-bezier(.4,0,.2,1);padding:24px 22px;display:flex;flex-direction:column}
+.m3-menu-panel.open{transform:translateX(0)}
+.m3-menu-close{align-self:flex-end;width:32px;height:32px;background:none;border:none;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:26px;color:#8A5E4E}
+.m3-menu-brand{text-align:center;margin:4px 0 24px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;letter-spacing:.08em;color:#8A5530}
+.m3-menu-brand .amp{color:#B8894A}
+.m3-menu-brand .kana{font-size:10px;letter-spacing:.4em;color:#9A6436;display:block;margin-top:2px}
+.m3-menu-link{display:block;padding:13px 4px;font-size:15px;color:#5E3A2C;text-decoration:none;border-bottom:1px solid #F4DDE2;letter-spacing:.04em}
+.m3-menu-link.m3-menu-cta{margin-top:18px;text-align:center;background:#D2557C;color:#fff !important;border-bottom:none;padding:14px;font-weight:600;border-radius:999px}
 
-  .page-hero{ padding:14px 0 8px; text-align:center; }
-  .page-title{
-    font-family:'Shippori Mincho', serif; font-weight:800; font-size:23px;
-    color:var(--plum); letter-spacing:0.04em;
-  }
-  .page-lead{
-    margin-top:12px; font-family:'Shippori Mincho', serif; font-size:13.5px;
-    line-height:2; color:var(--plum-dim);
-  }
-
-  .section{ padding:20px 0; scroll-margin-top:60px; }
-  .frame{
-    position:relative; border:1px solid rgba(138,106,168,0.35);
-    background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(243,235,247,0.6));
-    padding:22px 18px; box-shadow:0 8px 30px rgba(138,106,168,0.15);
-  }
-  .frame::before{
-    content:""; position:absolute; inset:6px;
-    border:1px solid rgba(184,146,63,0.35); pointer-events:none;
-  }
-
-  /* ---------- form ---------- */
-  .form-row{ margin-bottom:18px; }
-  .form-label{
-    display:block; font-family:'Shippori Mincho', serif; font-weight:700; font-size:13px;
-    color:var(--plum); margin-bottom:7px; letter-spacing:0.03em;
-  }
-  .form-label .req{ color:#c1476a; font-size:11px; margin-left:4px; }
-  .form-label .opt{ color:var(--plum-dim); font-size:11px; margin-left:4px; font-weight:400; }
-  select.form-input, input.form-input, textarea.form-input{
-    width:100%; padding:12px 12px; font-family:'Noto Sans JP', sans-serif; font-size:14px;
-    color:var(--plum); background:rgba(255,255,255,0.85);
-    border:1px solid rgba(138,106,168,0.4); border-radius:2px;
-    -webkit-appearance:none; appearance:none;
-  }
-  select.form-input{
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%238a6aa8' d='M7 10l5 5 5-5z'/></svg>");
-    background-repeat:no-repeat; background-position:right 12px center; background-size:18px;
-    padding-right:36px;
-  }
-  textarea.form-input{ min-height:120px; resize:vertical; line-height:1.7; }
-  .form-input:focus{ outline:none; border-color:var(--gold); }
-
-  .submit-btn{
-    display:block; width:100%; margin-top:6px; padding:15px 20px; text-align:center;
-    background:var(--line-green); color:#fff; border:none;
-    font-family:'Shippori Mincho', serif; font-weight:700; font-size:15px;
-    letter-spacing:0.06em; cursor:pointer;
-    box-shadow:0 6px 20px rgba(6,199,85,0.3);
-  }
-  .submit-note{
-    text-align:center; font-size:11px; color:var(--plum-dim); margin-top:10px; line-height:1.8;
-  }
-  .form-error{
-    text-align:center; font-size:12px; color:#c1476a; margin-top:10px; display:none;
-  }
-  .form-error.show{ display:block; }
-  .form-success{
-    text-align:center; font-family:'Shippori Mincho', serif; font-size:13.5px;
-    color:var(--gold-dim); background:rgba(184,146,63,0.1); border:1px solid rgba(184,146,63,0.35);
-    padding:16px 14px; margin-top:14px; line-height:1.9; display:none;
-  }
-  .form-success.show{ display:block; }
-
-  .caution-box{
-    font-size:11.5px; color:var(--plum-dim); line-height:1.9; margin-top:16px;
-  }
-
-  .footer{ text-align:center; padding:40px 0 10px; }
-  .footer-name{ font-family:'Cinzel', serif; font-size:14px; letter-spacing:0.15em; color:var(--plum); }
-  .footer-rep{ font-family:'Shippori Mincho', serif; font-size:14px; color:var(--plum-dim); margin-top:8px; }
-  .footer-rep b{ font-family:'Cinzel', serif; color:var(--plum); letter-spacing:0.1em; margin-left:6px; }
+/* page content */
+.m3-wrap{max-width:620px;margin:0 auto;padding:0 20px 64px}
+.m3-page-hero{padding:40px 0 10px;text-align:center}
+.m3-page-eyebrow{font-family:'Great Vibes',cursive;font-size:40px;line-height:1;color:#C9A063}
+.m3-page-title{font-size:26px;font-weight:500;color:#6E4636;letter-spacing:.1em;margin-bottom:14px}
+.m3-page-lead{font-size:15px;line-height:2.1;color:#8A5E4E;margin-bottom:30px;letter-spacing:.02em}
+.m3-kuchikomi-label{font-size:15.5px;font-weight:700;color:#C8436C;line-height:1.7}
+.m3-kuchikomi-label .opt{display:block;font-weight:400;font-size:12.5px;color:#8A5E4E;margin-top:6px;line-height:1.7}
+.m3-submit-note{text-align:center;font-size:13px;color:#8A5E4E;line-height:1.95}
+.m3-caution-box{font-size:12.5px;color:#8A5E4E;line-height:2;text-align:center;margin-top:4px}
 </style>
 </head>
 <body>
+<div style="font-family:'M PLUS Rounded 1c',sans-serif;color:#5E3A2C;background:#FFF7F7">
 
-<div class="ambient"></div>
-
-<div class="topbar">
-  <button class="menu-btn" id="menuBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
-  <div class="brand">LOVE &amp; SECRET FUKUOKA</div>
-  <div class="hours">受付時間<br>11:00〜翌2:00</div>
-</div>
-
-<div class="menu-overlay" id="menuOverlay"></div>
-<nav class="menu-panel" id="menuPanel">
-  <button class="menu-close" id="menuClose">×</button>
-  <div class="menu-panel-brand">
-    <div class="name">LOVE &amp; SECRET FUKUOKA</div>
-  </div>
-  <a href="top.html" class="menu-link">HOME</a>
-  <a href="top.html#shukkin" class="menu-link">出勤スケジュール</a>
-  <a href="ryokin.html" class="menu-link">料金について</a>
-  <a href="hajimete.html" class="menu-link">初めての方へ</a>
-  <a href="kuchikomi.html" class="menu-link">口コミを投稿する</a>
-  <a href="love-secret-cast-lp.html" class="menu-link">セラピスト募集</a><a href="privacy.html" class="menu-link">プライバシーポリシー</a>
-  <a href="https://line.me/ti/p/KB7wdAMGRY" class="menu-link line-link" target="_blank" rel="noopener">LINEで予約する</a>
-</nav>
-
-<div class="wrap">
-
-  <a href="top.html" class="back-link">← トップページに戻る</a>
-
-  <section class="page-hero reveal">
-    <div class="page-title">口コミを投稿する</div>
-    <p class="page-lead">
-      ご利用いただいたご感想を、ぜひお聞かせください。<br>
-      いただいた内容は、確認のうえサイトに掲載させていただく<br>
-      場合があります。ニックネームは空欄でも構いません。
-    </p>
-  </section>
-
-  <section class="section reveal">
-    <div class="frame">
-      <div class="form-row">
-        <label class="form-label" for="courseSelect">ご利用コース<span class="req">必須</span></label>
-        <select class="form-input" id="courseSelect">
-          <option value="">選択してください</option>
-          <option value="デートコース 90分">デートコース 90分</option>
-          <option value="デートコース 120分">デートコース 120分</option>
-          <option value="ファンタジーコース 90分">ファンタジーコース 90分</option>
-          <option value="ファンタジーコース 120分">ファンタジーコース 120分</option>
-          <option value="ファンタジーコース 150分">ファンタジーコース 150分</option>
-          <option value="ファンタジーコース 180分">ファンタジーコース 180分</option>
-          <option value="その他">その他</option>
-        </select>
+  <!-- Header -->
+  <header>
+    <div class="m3-header-inner">
+      <button type="button" class="m3-hamburger" id="menuBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
+      <a href="top.html" class="m3-brand">
+        <span class="word">LOVE <span class="amp">&amp;</span> SECRET</span>
+        <span class="kana">FUKUOKA</span>
+      </a>
+      <nav class="m3-nav" style="display:flex;gap:30px;flex-grow:1">
+        <a href="top.html">トップ</a>
+        <a href="top.html#cast">セラピスト</a>
+        <a href="ryokin.html">料金</a>
+        <a href="hajimete.html">初めての方へ</a>
+        <a href="kuchikomi.html" class="on">口コミ</a>
+      </nav>
+      <div class="m3-reserve-wrap">
+        <span class="m3-reserve-label">本日の出勤</span>
+        <a href="top.html#today-shift" class="m3-pill m3-hdr-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+          <span class="m3-hdr-btn-full">ご予約はこちら</span>
+          <span class="m3-hdr-btn-short">予約</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+        </a>
       </div>
+    </div>
+  </header>
 
-      <div class="form-row">
-        <label class="form-label" for="castSelect">セラピスト<span class="req">必須</span></label>
-        <select class="form-input" id="castSelect">
-          <option value="">選択してください</option>
-          <option value="立凪ゆうり">立凪ゆうり</option>
-          <option value="菜月">菜月</option>
-          <option value="はじめ">はじめ</option>
-          <option value="その他">その他</option>
-        </select>
-      </div>
+  <!-- Mobile menu -->
+  <div class="m3-menu-overlay" id="menuOverlay"></div>
+  <nav class="m3-menu-panel" id="menuPanel">
+    <button type="button" class="m3-menu-close" id="menuClose" aria-label="閉じる">×</button>
+    <div class="m3-menu-brand">LOVE <span class="amp">&amp;</span> SECRET<span class="kana">FUKUOKA</span></div>
+    <a href="top.html" class="m3-menu-link">トップ</a>
+    <a href="top.html#cast" class="m3-menu-link">セラピスト</a>
+    <a href="top.html#today-shift" class="m3-menu-link">本日の出勤</a>
+    <a href="top.html#flow" class="m3-menu-link">ご利用の流れ</a>
+    <a href="top.html#faq" class="m3-menu-link">よくある質問</a>
+    <a href="ryokin.html" class="m3-menu-link">料金について</a>
+    <a href="hajimete.html" class="m3-menu-link">初めての方へ</a>
+    <a href="kuchikomi.html" class="m3-menu-link">口コミを投稿する</a>
+    <a href="love-secret-cast-lp.html" class="m3-menu-link">セラピスト募集</a>
+    <a href="privacy.html" class="m3-menu-link">プライバシーポリシー</a>
+    <a href="https://line.me/ti/p/KB7wdAMGRY" class="m3-menu-link m3-menu-cta" target="_blank" rel="noopener">LINEで予約する</a>
+  </nav>
 
-      <div class="form-row">
-        <label class="form-label" for="nicknameInput">お客様のニックネーム<span class="opt">匿名可・空欄でもOK</span></label>
-        <input class="form-input" id="nicknameInput" type="text" placeholder="例）ゆか、匿名希望　など">
-      </div>
+  <div class="m3-wrap">
 
-      <div class="form-row">
-        <label class="form-label" for="reviewInput">口コミ本文<span class="req">必須</span></label>
-        <textarea class="form-input" id="reviewInput" placeholder="ご感想を自由にお書きください"></textarea>
-      </div>
+    <div class="m3-page-hero">
+      <span class="m3-page-eyebrow">Voice</span>
+      <h1 class="m3-page-title">口コミを投稿する</h1>
+      <p class="m3-page-lead">
+        ご利用いただいたご感想を、ぜひお聞かせください。いただいた内容は、確認のうえサイトに掲載させていただく場合があります。ニックネームは空欄でも構いません。
+      </p>
+    </div>
 
-      <button type="button" class="submit-btn" id="submitBtn">内容をコピーしてLINEで送る</button>
-      <div class="form-error" id="formError">コース・セラピスト・口コミ本文をご入力ください。</div>
-      <div class="form-success" id="formSuccess">
-        内容をコピーしました。<br>
-        開いたLINEのトーク画面に貼り付けて送信してください。
-      </div>
-
-      <div class="caution-box">
-        ※ボタンを押すと入力内容がコピーされ、公式LINEのトーク画面が開きます。<br>
-        ※貼り付け（ペースト）してそのまま送信してください。<br>
+    <div class="m3-card">
+      <div class="m3-kuchikomi-label">Googleに口コミを書いてくださる方はこちら<span class="opt">検索結果にも表示されます</span></div>
+      <a href="https://g.page/r/CdRoQXsHnksdECE/review" target="_blank" rel="noopener" class="m3-pill" style="width:100%;font-size:15px">Googleで口コミを書く</a>
+      <div class="m3-submit-note">Googleアカウントでの投稿となります。アカウント名が公開されますので、あらかじめご了承ください。</div>
+      <div class="m3-caution-box">
         ※誹謗中傷など、口コミとしてふさわしくない内容は掲載を見送らせていただく場合があります。
       </div>
     </div>
-  </section>
 
-  <footer class="footer reveal">
-    <div class="footer-name">LOVE &amp; SECRET FUKUOKA</div>
-    <div class="footer-rep">LOVE&amp;SECRET FUKUOKA代表 <b>YOKO</b></div>
+    <div class="m3-card" style="margin-top:20px">
+      <div class="m3-kuchikomi-label">完全匿名で送りたい方はこちら<span class="opt">名前・LINEアカウントは一切分かりません</span></div>
+      <a href="https://forms.gle/4Yv4cnkT28ji44VP8" target="_blank" rel="noopener" class="m3-pill" style="width:100%;font-size:15px;background:#8A5530">匿名フォームで口コミを送る</a>
+      <div class="m3-submit-note">こちらはGoogleフォームが開きます。送信者情報は記録されません。</div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer style="background:#FFF9F8;border-top:1px solid #F4DDE2;padding:44px 28px;text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center;font-size:12.5px;color:#8A5E4E">
+    <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;line-height:1.2;letter-spacing:.08em;color:#8A5530">LOVE <span style="color:#B8894A">&amp;</span> SECRET</span>
+    <span>福岡 女風 ／ 女性のための出張型リラクゼーション</span>
+    <span>18歳未満の方はご利用いただけません</span>
+    <span>© LOVE＆SECRET FUKUOKA</span>
   </footer>
-
 </div>
 
 <script>
-  // pre-select cast from ?cast=yuri / natsuki / hajime
-  (function(){
-    const params = new URLSearchParams(window.location.search);
-    const castKey = params.get('cast');
-    const map = { yuri: '立凪ゆうり', natsuki: '菜月', hajime: 'はじめ' };
-    if(castKey && map[castKey]){
-      const sel = document.getElementById('castSelect');
-      if(sel) sel.value = map[castKey];
-    }
-  })();
-
-  const LINE_URL = 'https://line.me/ti/p/KB7wdAMGRY';
-
-  document.getElementById('submitBtn').addEventListener('click', async () => {
-    const course = document.getElementById('courseSelect').value;
-    const cast = document.getElementById('castSelect').value;
-    const nickname = document.getElementById('nicknameInput').value.trim();
-    const review = document.getElementById('reviewInput').value.trim();
-    const errorEl = document.getElementById('formError');
-    const successEl = document.getElementById('formSuccess');
-    successEl.classList.remove('show');
-
-    if(!course || !cast || !review){
-      errorEl.classList.add('show');
-      return;
-    }
-    errorEl.classList.remove('show');
-
-    const text = '【口コミ投稿】\n'
-      + 'コース：' + course + '\n'
-      + 'セラピスト：' + cast + '\n'
-      + 'ニックネーム：' + (nickname || '匿名希望') + '\n'
-      + '口コミ：\n' + review;
-
-    try{
-      if(navigator.clipboard && navigator.clipboard.writeText){
-        await navigator.clipboard.writeText(text);
-      }
-    }catch(err){ /* clipboard not available, still open LINE */ }
-
-    successEl.classList.add('show');
-    window.open(LINE_URL, '_blank', 'noopener');
-  });
-
-  // hamburger menu
-  const menuBtn = document.getElementById('menuBtn');
-  const menuClose = document.getElementById('menuClose');
-  const menuOverlay = document.getElementById('menuOverlay');
-  const menuPanel = document.getElementById('menuPanel');
+(function(){
+  var menuBtn = document.getElementById('menuBtn');
+  var menuOverlay = document.getElementById('menuOverlay');
+  var menuPanel = document.getElementById('menuPanel');
+  var menuClose = document.getElementById('menuClose');
   function openMenu(){ menuOverlay.classList.add('open'); menuPanel.classList.add('open'); }
   function closeMenu(){ menuOverlay.classList.remove('open'); menuPanel.classList.remove('open'); }
-  if(menuBtn){ menuBtn.addEventListener('click', openMenu); }
-  if(menuClose){ menuClose.addEventListener('click', closeMenu); }
-  if(menuOverlay){ menuOverlay.addEventListener('click', closeMenu); }
+  menuBtn.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
+  menuOverlay.addEventListener('click', closeMenu);
+})();
 </script>
-
 </body>
 </html>

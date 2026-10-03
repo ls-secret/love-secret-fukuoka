@@ -9,356 +9,204 @@
 <title>菜月｜LOVE&SECRET FUKUOKA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Shippori+Mincho:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Great+Vibes&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --lavender-base: #ccb2d8;
-    --lavender-pale: #f3ebf7;
-    --lavender-mid: #b596c9;
-    --lavender-deep: #8a6aa8;
-    --plum: #4a2f63;
-    --plum-dim: rgba(74,47,99,0.7);
-    --gold: #b8923f;
-    --gold-light: #d4af6a;
-    --gold-dim: #8f701f;
-    --white: #ffffff;
-    --line-green: #06C755;
-  }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  html{ scroll-behavior:smooth; }
-  body{
-    background:var(--lavender-pale);
-    color:var(--plum);
-    font-family:'Noto Sans JP', sans-serif;
-    overflow-x:hidden;
-    position:relative;
-  }
-  .ambient{
-    position:fixed; inset:0; z-index:0; pointer-events:none;
-    background:
-      radial-gradient(ellipse 70% 50% at 20% 8%, rgba(255,255,255,0.65), transparent 60%),
-      radial-gradient(ellipse 60% 45% at 88% 14%, rgba(255,255,255,0.45), transparent 62%),
-      radial-gradient(ellipse 85% 60% at 50% 55%, rgba(204,178,216,0.55), transparent 70%),
-      radial-gradient(ellipse 90% 60% at 50% 100%, rgba(181,150,201,0.55), transparent 72%),
-      linear-gradient(180deg, #f8f3fa 0%, #ecdff2 30%, #ccb2d8 65%, #b596c9 100%);
-  }
-  .wrap{ position:relative; z-index:1; max-width:640px; margin:0 auto; padding:0 20px 100px; }
+*{box-sizing:border-box}
+body{margin:0;background:#FFF7F7;font-family:'M PLUS Rounded 1c',sans-serif;color:#5E3A2C}
+h1,h2,h3,p{margin:0}
+a{color:#C8436C}
+.m3-nav a{color:#5E3A2C;text-decoration:none;padding:8px 2px;border-bottom:2px solid transparent;font-size:14px;letter-spacing:.08em}
+.m3-nav a:hover{color:#C8436C}
+.m3-pill{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#D2557C;color:#fff !important;text-decoration:none;border-radius:999px;letter-spacing:.12em;min-height:48px;box-shadow:0 8px 24px rgba(210,85,124,.25)}
+.m3-pill:hover{background:#BC4268}
 
-  /* ---------- sticky top bar ---------- */
-  .topbar{
-    position:sticky; top:0; z-index:10;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:10px 14px;
-    background:rgba(255,255,255,0.78);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid rgba(138,106,168,0.3);
-    gap:8px;
-  }
-  .topbar .brand{
-    font-family:'Cinzel', serif; font-size:13px; letter-spacing:0.06em;
-    color:var(--plum); white-space:nowrap; flex-shrink:0;
-  }
-  .topbar .hours{
-    font-family:'Shippori Mincho', serif; font-size:12.5px;
-    color:var(--plum-dim); text-align:right; line-height:1.4; flex-shrink:0;
-  }
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-bottom:1px solid #F4DDE2}
+.m3-header-inner{max-width:1280px;margin:0 auto;padding:10px 28px;display:flex;align-items:center;gap:32px}
+.m3-brand{text-decoration:none;display:flex;flex-direction:column;align-items:center;line-height:1}
+.m3-brand .word{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;letter-spacing:.08em;color:#8A5530;white-space:nowrap}
+.m3-brand .word .amp{color:#B8894A;padding:0 .06em}
+.m3-brand .kana{font-size:10px;letter-spacing:.5em;color:#9A6436;margin-top:4px}
+.m3-reserve-wrap{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0;margin-left:auto}
+.m3-reserve-label{display:none;font-size:9px;color:#8A5E4E;letter-spacing:.02em;white-space:nowrap}
+.m3-hdr-btn{padding:0 26px;font-size:14px}
+.m3-hdr-btn-short{display:none}
+.m3-hamburger{display:none;flex-direction:column;justify-content:center;gap:4px;width:36px;height:36px;padding:0;background:none;border:none;cursor:pointer;flex-shrink:0}
+.m3-hamburger span{display:block;width:22px;height:2px;background:#8A5530;border-radius:2px}
 
-  /* ---------- hamburger menu ---------- */
-  .menu-btn{
-    display:flex; flex-direction:column; justify-content:center;
-    width:32px; height:32px; padding:0;
-    background:none; border:none; cursor:pointer; flex-shrink:0;
-    -webkit-tap-highlight-color:transparent;
-  }
-  .menu-btn span{ display:block; width:20px; height:2px; background:var(--plum); border-radius:2px; margin:2px 0; }
-  .menu-overlay{
-    position:fixed; inset:0; z-index:98;
-    background:rgba(74,47,99,0.35); opacity:0; pointer-events:none;
-    transition:opacity 0.3s ease;
-  }
-  .menu-overlay.open{ opacity:1; pointer-events:auto; }
-  .menu-panel{
-    position:fixed; top:0; left:0; bottom:0; z-index:99;
-    width:78%; max-width:300px;
-    background:linear-gradient(180deg, #f8f3fa, #ecdff2);
-    box-shadow:4px 0 30px rgba(74,47,99,0.25);
-    transform:translateX(-100%);
-    transition:transform 0.32s cubic-bezier(.4,0,.2,1);
-    padding:26px 22px; display:flex; flex-direction:column;
-  }
-  .menu-panel.open{ transform:translateX(0); }
-  .menu-close{
-    align-self:flex-end; width:32px; height:32px;
-    background:none; border:none; cursor:pointer;
-    font-family:'Cinzel', serif; font-size:21.5px; color:var(--plum-dim);
-    -webkit-tap-highlight-color:transparent;
-  }
-  .menu-panel-brand{ text-align:center; margin:6px 0 30px; }
-  .menu-panel-brand .crest-mini{ width:56px; height:56px; margin:0 auto 10px; }
-  .menu-panel-brand .crest-mini img{ width:100%; height:100%; border-radius:50%; display:block; }
-  .menu-panel-brand .name{ font-family:'Cinzel', serif; font-size:14px; letter-spacing:0.1em; color:var(--plum); }
-  .menu-link{
-    display:block; padding:16px 4px;
-    font-family:'Shippori Mincho', serif; font-size:17px;
-    color:var(--plum); text-decoration:none;
-    border-bottom:1px solid rgba(138,106,168,0.25); letter-spacing:0.03em;
-  }
-  .menu-link.line-link{
-    margin-top:20px; text-align:center;
-    background:linear-gradient(180deg, var(--lavender-mid), var(--lavender-deep));
-    color:var(--white); border-bottom:none; padding:14px; font-weight:700;
-  }
+@media (max-width:960px){
+  .m3-nav{display:none !important}
+  .m3-hamburger{display:flex !important}
+  .m3-header-inner{padding:8px 14px;gap:10px}
+  .m3-brand{flex:1}
+  .m3-brand .word{font-size:17px}
+  .m3-brand .kana{font-size:8px;letter-spacing:.35em}
+  .m3-reserve-wrap{margin-left:0}
+  .m3-reserve-label{display:block}
+  .m3-hdr-btn{padding:0 14px}
+  .m3-hdr-btn-full{display:none}
+  .m3-hdr-btn-short{display:inline}
+  .m3-hdr-btn svg:last-child{display:none}
+}
 
-  /* ---------- back link ---------- */
-  .back-link{
-    display:inline-flex; align-items:center; gap:4px;
-    margin:16px 0 4px; font-family:'Shippori Mincho', serif; font-size:14.5px;
-    color:var(--plum-dim); text-decoration:none;
-  }
+/* mobile menu */
+.m3-menu-overlay{position:fixed;inset:0;z-index:98;background:rgba(94,58,44,.35);opacity:0;pointer-events:none;transition:opacity .3s ease}
+.m3-menu-overlay.open{opacity:1;pointer-events:auto}
+.m3-menu-panel{position:fixed;top:0;left:0;bottom:0;z-index:99;width:78%;max-width:300px;background:linear-gradient(180deg,#FFF9F8,#FDEAEF);box-shadow:4px 0 30px rgba(94,58,44,.25);transform:translateX(-100%);transition:transform .32s cubic-bezier(.4,0,.2,1);padding:24px 22px;display:flex;flex-direction:column}
+.m3-menu-panel.open{transform:translateX(0)}
+.m3-menu-close{align-self:flex-end;width:32px;height:32px;background:none;border:none;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:26px;color:#8A5E4E}
+.m3-menu-brand{text-align:center;margin:4px 0 24px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;letter-spacing:.08em;color:#8A5530}
+.m3-menu-brand .amp{color:#B8894A}
+.m3-menu-brand .kana{font-size:10px;letter-spacing:.4em;color:#9A6436;display:block;margin-top:2px}
+.m3-menu-link{display:block;padding:13px 4px;font-size:15px;color:#5E3A2C;text-decoration:none;border-bottom:1px solid #F4DDE2;letter-spacing:.04em}
+.m3-menu-link.m3-menu-cta{margin-top:18px;text-align:center;background:#D2557C;color:#fff !important;border-bottom:none;padding:14px;font-weight:600;border-radius:999px}
 
-  /* ---------- profile header ---------- */
-  .profile-hero{ padding:12px 0 20px; text-align:center; }
-  .profile-name{
-    font-family:'Shippori Mincho', serif; font-weight:800; font-size:28px;
-    color:var(--plum); letter-spacing:0.04em;
-  }
-  .profile-catch{
-    font-family:'Shippori Mincho', serif; font-size:15.5px;
-    color:var(--gold-dim); margin-top:6px; letter-spacing:0.06em;
-  }
-  .profile-meta{
-    display:flex; justify-content:center; gap:18px; margin-top:12px;
-    font-family:'Cinzel', serif; font-size:14px; letter-spacing:0.05em; color:var(--plum-dim);
-  }
-  .profile-meta span b{ color:var(--plum); font-family:'Noto Sans JP', sans-serif; }
+/* ---------- page wrap ---------- */
+.cp-wrap{max-width:640px;margin:0 auto;padding:0 20px 90px}
+.cp-back-link{display:inline-flex;align-items:center;gap:4px;margin:18px 0 4px;font-size:14px;color:#8A5E4E;text-decoration:none}
 
-  .photo-scroll{
-    display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch;
-    margin-bottom:6px; padding-bottom:4px;
-  }
-  .photo-scroll img{
-    flex:0 0 auto; width:150px; height:190px; object-fit:cover;
-    border:1px solid rgba(138,106,168,0.3);
-  }
+/* ---------- profile header ---------- */
+.cp-profile-hero{padding:10px 0 20px;text-align:center}
+.cp-profile-name{font-size:27px;font-weight:700;color:#6E4636;letter-spacing:.04em}
+.cp-profile-catch{font-family:'Great Vibes',cursive;font-size:17px;color:#C9A063;margin-top:8px;letter-spacing:.02em;line-height:1.5}
+.cp-profile-meta{display:flex;justify-content:center;gap:18px;margin-top:12px;font-size:14px;letter-spacing:.03em;color:#8A5E4E}
+.cp-profile-meta b{color:#5E3A2C}
 
-  /* ---------- tab button row ---------- */
-  .tab-btn-row{ display:flex; gap:8px; margin:18px 0; }
-  .tab-btn{
-    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    padding:12px 4px; text-align:center; text-decoration:none;
-    font-family:'Shippori Mincho', serif; font-weight:700; font-size:15.5px;
-    color:var(--plum); background:rgba(255,255,255,0.6);
-    border:1px solid rgba(138,106,168,0.35);
-    -webkit-tap-highlight-color:transparent;
-  }
-  .tab-btn small{ font-weight:400; font-size:11px; color:var(--plum-dim); margin-top:2px; }
-  .tab-btn-sns{
-    background:linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7); color:#fff; border:none;
-  }
-  .tab-btn-disabled{ color:var(--plum-dim); opacity:0.6; }
+.cp-photo-scroll{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:6px;padding-bottom:4px}
+.cp-photo-scroll img{flex:0 0 auto;width:150px;height:190px;object-fit:cover;border:1px solid #F0DCC2}
 
-  /* ---------- shared section ---------- */
-  .section{ padding:24px 0; scroll-margin-top:60px; }
-  .section-title{
-    font-family:'Shippori Mincho', serif; font-weight:700; font-size:20.5px;
-    text-align:center; color:var(--plum); letter-spacing:0.08em;
-    margin-bottom:16px;
-  }
-  .frame{
-    position:relative; border:1px solid rgba(138,106,168,0.35);
-    background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(243,235,247,0.6));
-    padding:22px 18px; box-shadow:0 8px 30px rgba(138,106,168,0.15);
-  }
-  .frame::before{
-    content:""; position:absolute; inset:6px;
-    border:1px solid rgba(184,146,63,0.35); pointer-events:none;
-  }
+/* ---------- tab button row ---------- */
+.cp-tab-btn-row{display:flex;gap:8px;margin:18px 0}
+.cp-tab-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 4px;text-align:center;text-decoration:none;font-weight:700;font-size:14.5px;color:#C8436C;background:rgba(255,255,255,.75);border:1px solid #E5C9A2}
+.cp-tab-btn small{font-weight:400;font-size:11px;color:#8A5E4E;margin-top:2px}
+.cp-tab-btn-sns{background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);color:#fff !important;border:none}
+.cp-tab-btn-disabled{color:#8A5E4E;opacity:.6}
 
-  /* ---------- Q&A ---------- */
-  .qna-row{ padding:12px 0; border-bottom:1px solid rgba(138,106,168,0.2); }
-  .qna-row:last-child{ border-bottom:none; }
-  .qna-q{ font-family:'Shippori Mincho', serif; font-weight:700; font-size:15.5px; color:var(--gold-dim); margin-bottom:4px; }
-  .qna-a{ font-family:'Noto Sans JP', sans-serif; font-size:15.5px; color:var(--plum); line-height:1.7; }
-  .qna-pending{ color:var(--plum-dim); font-style:italic; }
+/* ---------- shared section ---------- */
+.cp-section{padding:24px 0;scroll-margin-top:60px}
+.cp-section-title{font-size:19px;font-weight:600;color:#C8436C;text-align:center;letter-spacing:.06em;margin-bottom:16px}
+.cp-frame{background:rgba(255,255,255,.9);border:1px solid #E5C9A2;box-shadow:inset 0 0 0 4px #fff,inset 0 0 0 5px #F2E1C8,0 10px 30px rgba(140,80,80,.07);padding:22px 18px 24px}
 
-  /* ---------- recommend / comment placeholder ---------- */
-  .placeholder-box{
-    text-align:center; padding:24px 10px; font-family:'Shippori Mincho', serif;
-    font-size:15.5px; color:var(--plum-dim); line-height:1.9;
-  }
-  .comment-text{
-    font-family:'Noto Sans JP', sans-serif; font-size:16px; color:var(--plum);
-    line-height:1.95; text-align:left; white-space:pre-line; padding:6px 4px;
-  }
-  .recommend-list{ list-style:none; margin:0; padding:0; }
-  .recommend-item{
-    display:flex; align-items:flex-start; gap:10px;
-    padding:14px 2px; border-bottom:1px solid rgba(138,106,168,0.2);
-  }
-  .recommend-item:last-child{ border-bottom:none; }
-  .recommend-icon{ color:var(--gold); font-size:16px; margin-top:2px; flex-shrink:0; }
-  .recommend-text{
-    font-family:'Noto Sans JP', sans-serif; font-size:16px; color:var(--plum);
-    line-height:1.95;
-  }
+/* ---------- Q&A ---------- */
+.cp-qna-row{padding:12px 0;border-bottom:1px solid #F4DDE2}
+.cp-qna-row:last-child{border-bottom:none}
+.cp-qna-q{font-weight:700;font-size:15px;color:#C9A063;margin-bottom:4px}
+.cp-qna-a{font-size:15px;color:#5E3A2C;line-height:1.7}
+.cp-qna-pending{color:#8A5E4E;font-style:italic}
 
-  /* ---------- LINE cta ---------- */
-  .cta-button{
-    display:block; margin:18px auto; width:100%; max-width:340px;
-    padding:15px 20px; text-align:center;
-    background:var(--line-green); color:#fff;
-    font-family:'Shippori Mincho', serif; font-weight:700; font-size:17px;
-    letter-spacing:0.06em; text-decoration:none;
-    box-shadow:0 6px 20px rgba(6,199,85,0.3);
-  }
+/* ---------- recommend / comment ---------- */
+.cp-placeholder-box{text-align:center;padding:24px 10px;font-size:15px;color:#8A5E4E;line-height:1.9}
+.cp-comment-text{font-size:15.5px;color:#5E3A2C;line-height:1.95;text-align:left;white-space:pre-line;padding:6px 4px}
+.cp-recommend-list{list-style:none;margin:0;padding:0}
+.cp-recommend-item{display:flex;align-items:flex-start;gap:10px;padding:14px 2px;border-bottom:1px solid #F4DDE2}
+.cp-recommend-item:last-child{border-bottom:none}
+.cp-recommend-icon{color:#C9A063;font-size:16px;margin-top:2px;flex-shrink:0}
+.cp-recommend-text{font-size:15.5px;color:#5E3A2C;line-height:1.95}
 
-  /* ---------- pricing ---------- */
-  .opening-badge{
-    text-align:center; font-family:'Shippori Mincho', serif; font-weight:700; font-size:14px;
-    color:var(--gold-dim); background:rgba(184,146,63,0.1); border:1px solid rgba(184,146,63,0.3);
-    padding:6px 8px; margin-bottom:10px; letter-spacing:0.02em;
-  }
-  .detail-row{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:9px 0; border-bottom:1px solid rgba(138,106,168,0.2); font-size:15.5px;
-  }
-  .detail-row:last-child{ border-bottom:none; }
-  .detail-row .label{ color:var(--plum); font-family:'Shippori Mincho', serif; }
-  .detail-row .strike{ text-decoration:line-through; color:var(--plum-dim); font-size:14px; margin-right:8px; }
-  .detail-row .now-price{ font-weight:700; color:var(--gold-dim); }
-  .other-course-note{
-    text-align:center; font-size:12px; color:var(--plum-dim); margin-top:10px; letter-spacing:0.02em;
-  }
+/* ---------- pricing ---------- */
+.cp-opening-badge{text-align:center;font-weight:700;font-size:13.5px;color:#8A5E4E;background:#FFF4F2;border:1px solid #F0C9C9;padding:6px 8px;margin-bottom:10px;letter-spacing:.02em}
+.cp-detail-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid #F0DCC2;font-size:15px}
+.cp-detail-row:last-child{border-bottom:none}
+.cp-detail-row .label{color:#5E3A2C}
+.cp-detail-row .strike{text-decoration:line-through;color:#8A5E4E;font-size:13.5px;margin-right:8px}
+.cp-detail-row .now-price{font-weight:700;color:#C8436C;font-size:16.5px}
+.cp-other-course-note{text-align:center;font-size:12px;color:#8A5E4E;margin-top:10px;letter-spacing:.02em}
 
-  /* ---------- shift list ---------- */
-  .jukkin-list{ display:flex; flex-direction:column; }
-  .jukkin-row{
-    display:flex; align-items:center; gap:10px;
-    padding:12px 6px; border-bottom:1px solid rgba(138,106,168,0.2);
-  }
-  .jukkin-row:last-child{ border-bottom:none; }
-  .jukkin-row.is-today{ background:rgba(184,146,63,0.08); }
-  .jukkin-date{
-    flex:0 0 92px; font-family:'Shippori Mincho', serif; font-size:14.5px; color:var(--plum);
-  }
-  .jukkin-date .dow-sat{ color:#4a6fb5; }
-  .jukkin-date .dow-sun{ color:#c1476a; }
-  .jukkin-hours{
-    flex:1; min-width:0; font-size:15px; color:var(--plum-dim);
-    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-  }
-  .jukkin-btn{
-    flex:0 0 auto; display:inline-block; font-family:'Shippori Mincho', serif; font-size:13px; font-weight:700;
-    padding:7px 12px; border-radius:16px; border:1px solid var(--gold);
-    background:rgba(184,146,63,0.12); color:var(--gold-dim);
-    cursor:pointer; -webkit-tap-highlight-color:transparent;
-    text-decoration:none; text-align:center; white-space:nowrap;
-  }
-  .jukkin-btn.selected{ background:var(--plum); border-color:var(--plum); color:#fff; }
-  .jukkin-btn:disabled{
-    opacity:0.45; cursor:default; border-color:rgba(138,106,168,0.3); background:none; color:var(--plum-dim);
-  }
-  .jukkin-btn-line{
-    border-color:var(--line-green); background:rgba(6,199,85,0.1); color:#06a648;
-  }
+/* ---------- shift list ---------- */
+.cp-jukkin-list{display:flex;flex-direction:column}
+.cp-jukkin-row{display:flex;align-items:center;gap:10px;padding:12px 6px;border-bottom:1px solid #F4DDE2}
+.cp-jukkin-row:last-child{border-bottom:none}
+.cp-jukkin-row.is-today{background:#FFF4EC}
+.cp-jukkin-date{flex:0 0 92px;font-size:14px;color:#5E3A2C}
+.cp-jukkin-date .dow-sat{color:#4a6fb5}
+.cp-jukkin-date .dow-sun{color:#c1476a}
+.cp-jukkin-hours{flex:1;min-width:0;font-size:15px;font-weight:700;color:#C8436C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cp-jukkin-btn{flex:0 0 auto;display:inline-block;font-size:13px;font-weight:700;padding:7px 12px;border-radius:16px;border:1px solid #D2557C;background:#FDEAEF;color:#C8436C;cursor:pointer;-webkit-tap-highlight-color:transparent;text-decoration:none;text-align:center;white-space:nowrap}
+.cp-jukkin-btn.selected{background:#D2557C;border-color:#D2557C;color:#fff}
+.cp-jukkin-btn:disabled{opacity:.45;cursor:default;border-color:#E5C9A2;background:none;color:#8A5E4E}
+.cp-jukkin-btn-line{border-color:#06C755;background:rgba(6,199,85,.1);color:#06a648}
 
-  .shukkin-slots{ display:flex; flex-wrap:wrap; gap:6px; }
-  .slot-pill{
-    font-size:13px; padding:6px 10px; border:1px solid rgba(138,106,168,0.3);
-    border-radius:3px; color:var(--plum-dim);
-  }
-  .slot-pill.slot-open{
-    background:rgba(184,146,63,0.12); border-color:rgba(184,146,63,0.45); color:var(--gold-dim); font-weight:700;
-  }
-  .slot-pill.slot-closed{
-    background:rgba(138,106,168,0.06); color:var(--plum-dim); text-decoration:line-through; opacity:0.7;
-  }
-  .slot-full, .slot-error{ font-size:14.5px; color:var(--plum-dim); }
-  .reservation-date{
-    text-align:center; font-family:'Shippori Mincho', serif; font-weight:700; font-size:17px;
-    color:var(--plum); margin-bottom:14px;
-  }
-  .shukkin-note{ font-size:12px; color:var(--plum-dim); margin-top:14px; line-height:1.8; }
+.cp-shukkin-slots{display:flex;flex-wrap:wrap;gap:6px}
+.cp-slot-pill{font-size:13px;padding:6px 10px;border:1px solid #E5C9A2;border-radius:3px;color:#8A5E4E}
+.cp-slot-pill.slot-open{background:#FDEAEF;border-color:#E28AA4;color:#C8436C;font-weight:700}
+.cp-slot-pill.slot-closed{background:#FBF4F4;color:#8A5E4E;text-decoration:line-through;opacity:.7}
+.cp-slot-full, .cp-slot-error{font-size:14.5px;color:#8A5E4E}
+.cp-reservation-date{text-align:center;font-weight:700;font-size:17px;color:#5E3A2C;margin-bottom:14px}
+.cp-shukkin-note{font-size:12px;color:#8A5E4E;margin-top:14px;line-height:1.8}
 
-  /* ---------- reviews ---------- */
-  .review-placeholder{
-    text-align:center; padding:20px 10px; font-family:'Shippori Mincho', serif;
-    font-size:15px; color:var(--plum-dim); line-height:1.9;
-  }
-  .review-card{
-    padding:16px 4px; border-bottom:1px solid rgba(138,106,168,0.25);
-  }
-  .review-card:last-of-type{ border-bottom:none; }
-  .review-course{
-    font-family:'Shippori Mincho', serif; font-weight:700; font-size:14.5px;
-    color:var(--gold-dim); margin-bottom:10px; letter-spacing:0.02em;
-  }
-  .review-stars{ color:var(--gold-dim); font-size:15px; letter-spacing:2px; margin-bottom:8px; }
-  .review-text{
-    font-family:'Noto Sans JP', sans-serif; font-size:16.5px; line-height:2; color:var(--plum);
-    white-space:pre-line; text-align:left;
-  }
-  .review-meta{
-    margin-top:10px; font-size:13.5px; color:var(--plum-dim); text-align:right;
-  }
-  .review-post-btn{
-    display:block; max-width:260px; margin:4px auto 4px; padding:12px 16px;
-    text-align:center; text-decoration:none;
-    font-family:'Shippori Mincho', serif; font-weight:700; font-size:15px;
-    color:var(--gold-dim); background:rgba(184,146,63,0.1);
-    border:1px solid rgba(184,146,63,0.4);
-  }
-
-  /* ---------- footer ---------- */
-  .footer{ text-align:center; padding:40px 0 10px; }
-  .footer-name{
-    font-family:'Cinzel', serif; font-size:16px; letter-spacing:0.15em; color:var(--plum);
-  }
-  .footer-rep{ font-family:'Shippori Mincho', serif; font-size:16px; color:var(--plum-dim); margin-top:8px; }
-  .footer-rep b{ font-family:'Cinzel', serif; color:var(--plum); letter-spacing:0.1em; margin-left:6px; }
+/* ---------- reviews ---------- */
+.cp-review-placeholder{text-align:center;padding:20px 10px;font-size:15px;color:#8A5E4E;line-height:1.9}
+.cp-review-card{padding:16px 4px;border-bottom:1px solid #F4DDE2}
+.cp-review-card:last-of-type{border-bottom:none}
+.cp-review-course{font-weight:700;font-size:14px;color:#C9A063;margin-bottom:10px;letter-spacing:.02em}
+.cp-review-stars{color:#C9A063;font-size:15px;letter-spacing:2px;margin-bottom:8px}
+.cp-review-text{font-size:15.5px;line-height:2;color:#5E3A2C;white-space:pre-line;text-align:left}
+.cp-review-meta{margin-top:10px;font-size:13px;color:#8A5E4E;text-align:right}
+.cp-review-post-btn{display:block;max-width:260px;margin:4px auto 4px;padding:12px 16px;text-align:center;text-decoration:none;font-weight:700;font-size:14.5px;color:#C8436C;background:#FDEAEF;border:1px solid #E28AA4}
 </style>
 </head>
 <body>
+<div style="font-family:'M PLUS Rounded 1c',sans-serif;color:#5E3A2C;background:#FFF7F7">
 
-<div class="ambient"></div>
-
-<div class="topbar">
-  <button class="menu-btn" id="menuBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
-  <div class="brand">LOVE &amp; SECRET FUKUOKA</div>
-  <div class="hours">受付時間<br>11:00〜翌2:00</div>
-</div>
-
-<div class="menu-overlay" id="menuOverlay"></div>
-<nav class="menu-panel" id="menuPanel">
-  <button class="menu-close" id="menuClose">×</button>
-  <div class="menu-panel-brand">
-    <div class="crest-mini"><img src="crest.jpg" alt="LOVE&SECRET FUKUOKA"></div>
-    <div class="name">LOVE &amp; SECRET FUKUOKA</div>
-  </div>
-  <a href="top.html" class="menu-link">HOME</a>
-  <a href="top.html#shukkin" class="menu-link">出勤スケジュール</a>
-  <a href="ryokin.html" class="menu-link">料金について</a>
-  <a href="hajimete.html" class="menu-link">初めての方へ</a>
-  <a href="kuchikomi.html?cast=natsuki" class="menu-link">口コミを投稿する</a>
-  <a href="love-secret-cast-lp.html" class="menu-link">セラピスト募集</a>
-  <a href="privacy.html" class="menu-link">プライバシーポリシー</a>
-  <a href="https://line.me/ti/p/KB7wdAMGRY" class="menu-link line-link" target="_blank" rel="noopener">LINEで予約する</a>
-</nav>
-
-<div class="wrap">
-
-  <a href="top.html#castGrid" class="back-link">← セラピスト一覧に戻る</a>
-
-  <section class="profile-hero reveal">
-    <div class="profile-name">菜月</div>
-    <div class="profile-catch">クールな優しさと鍛えあげたスレンダーボディで癒します</div>
-    <div class="profile-meta">
-      <span>年齢 <b>27歳</b></span>
-      <span>身長 <b>174cm</b></span>
+  <!-- Header -->
+  <header>
+    <div class="m3-header-inner">
+      <button type="button" class="m3-hamburger" id="menuBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
+      <a href="top.html" class="m3-brand">
+        <span class="word">LOVE <span class="amp">&amp;</span> SECRET</span>
+        <span class="kana">FUKUOKA</span>
+      </a>
+      <nav class="m3-nav" style="display:flex;gap:30px;flex-grow:1">
+        <a href="top.html">トップ</a>
+        <a href="top.html#cast">セラピスト</a>
+        <a href="ryokin.html">料金</a>
+        <a href="hajimete.html">初めての方へ</a>
+        <a href="top.html#faq">よくある質問</a>
+      </nav>
+      <div class="m3-reserve-wrap">
+        <span class="m3-reserve-label">本日の出勤</span>
+        <a href="top.html#today-shift" class="m3-pill m3-hdr-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+          <span class="m3-hdr-btn-full">ご予約はこちら</span>
+          <span class="m3-hdr-btn-short">予約</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <div class="photo-scroll">
+  <!-- Mobile menu -->
+  <div class="m3-menu-overlay" id="menuOverlay"></div>
+  <nav class="m3-menu-panel" id="menuPanel">
+    <button type="button" class="m3-menu-close" id="menuClose" aria-label="閉じる">×</button>
+    <div class="m3-menu-brand">LOVE <span class="amp">&amp;</span> SECRET<span class="kana">FUKUOKA</span></div>
+    <a href="top.html" class="m3-menu-link">トップ</a>
+    <a href="top.html#cast" class="m3-menu-link">セラピスト</a>
+    <a href="top.html#today-shift" class="m3-menu-link">本日の出勤</a>
+    <a href="top.html#flow" class="m3-menu-link">ご利用の流れ</a>
+    <a href="top.html#faq" class="m3-menu-link">よくある質問</a>
+    <a href="ryokin.html" class="m3-menu-link">料金について</a>
+    <a href="hajimete.html" class="m3-menu-link">初めての方へ</a>
+    <a href="kuchikomi.html?cast=natsuki" class="m3-menu-link">口コミを投稿する</a>
+    <a href="love-secret-cast-lp.html" class="m3-menu-link">セラピスト募集</a>
+    <a href="privacy.html" class="m3-menu-link">プライバシーポリシー</a>
+    <a href="https://line.me/ti/p/KB7wdAMGRY" class="m3-menu-link m3-menu-cta" target="_blank" rel="noopener">LINEで予約する</a>
+  </nav>
+
+  <div class="cp-wrap">
+
+    <a href="top.html#cast" class="cp-back-link">← セラピスト一覧に戻る</a>
+
+    <section class="cp-profile-hero">
+      <div class="cp-profile-name">菜月</div>
+      <div class="cp-profile-catch">クールな優しさと鍛えあげたスレンダーボディで癒します</div>
+      <div class="cp-profile-meta">
+        <span>年齢 <b>27歳</b></span>
+        <span>身長 <b>174cm</b></span>
+      </div>
+    </section>
+
+    <div class="cp-photo-scroll">
               <img src="cast-natsuki-5.JPG" alt="菜月" onerror="this.remove()">
               <img src="cast-natsuki-3.jpg" alt="菜月" onerror="this.remove()">
               <img src="cast-natsuki-7.JPG" alt="菜月" onerror="this.remove()">
@@ -366,103 +214,103 @@
               <img src="cast-natsuki-4.JPG" alt="菜月" onerror="this.remove()">
               <img src="cast-natsuki-1.JPG" alt="菜月" onerror="this.remove()">
               <img src="cast-natsuki-2.JPG" alt="菜月" onerror="this.remove()">
-  </div>
-
-  <div class="tab-btn-row">
-    <a href="#shukkin" class="tab-btn">スケジュール</a>
-    <a href="https://www.instagram.com/natsuki___._?stkn=MWMyc2RvaG14aDZoNQ==" target="_blank" rel="noopener" class="tab-btn tab-btn-sns">SNS</a>
-    <a href="#reviews" class="tab-btn">口コミ</a>
-  </div>
-
-  <!-- ============ セラピストに質問 ============ -->
-  <section class="section reveal" id="qna">
-    <div class="section-title">セラピストに質問</div>
-    <div class="frame">
-            <div class="qna-row">
-              <div class="qna-q">Q. 体重は？</div>
-              <div class="qna-a">A. 60kg</div>
-            </div>
-            <div class="qna-row">
-              <div class="qna-q">Q. 好きな食べ物は？</div>
-              <div class="qna-a">A. スイーツ、フルーツ、野菜</div>
-            </div>
-            <div class="qna-row">
-              <div class="qna-q">Q. 好きな動物は？</div>
-              <div class="qna-a">A. 大型犬・猫</div>
-            </div>
-            <div class="qna-row">
-              <div class="qna-q">Q. 好きなスポーツは？</div>
-              <div class="qna-a">A. MMA（総合格闘技）・水泳</div>
-            </div>
-            <div class="qna-row">
-              <div class="qna-q">Q. 好きなアニメは？</div>
-              <div class="qna-a">A. ハイキュー！！</div>
-            </div>
-            <div class="qna-row">
-              <div class="qna-q">Q. 好きな漫画は？</div>
-              <div class="qna-a">A. キングダム</div>
-            </div>
-            <div class="qna-row">
-              <div class="qna-q">Q. 好きな映画は？</div>
-              <div class="qna-a">A. 華麗なるギャツビー</div>
-            </div>
-            <div class="qna-row">
-              <div class="qna-q">Q. デートで連れて行きたい場所は？</div>
-              <div class="qna-a">A. 閉館間際の静かな水族館、星空が見える客室露天風呂のある隠れ宿</div>
-            </div>
-            <div class="qna-row">
-              <div class="qna-q">Q. 好きな本は？</div>
-              <div class="qna-a">A. 星の王子さま</div>
-            </div>
-            <div class="qna-row">
-              <div class="qna-q">Q. 大切にしている言葉は？</div>
-              <div class="qna-a">A. 「大切なものは、目に見えない」</div>
-            </div>
-            <div class="qna-row">
-              <div class="qna-q">Q. 飲むなら何が好き？</div>
-              <div class="qna-a">A. ハイボール</div>
-            </div>
-            <div class="qna-row">
-              <div class="qna-q">Q. 怖いものは？</div>
-              <div class="qna-a">A. ホラー映画</div>
-            </div>
     </div>
-  </section>
 
-  <a href="https://line.me/ti/p/KB7wdAMGRY" class="cta-button" target="_blank" rel="noopener">LINEで予約・お問い合わせ</a>
+    <div class="cp-tab-btn-row">
+      <a href="#shukkin" class="cp-tab-btn">スケジュール</a>
+      <a href="https://www.instagram.com/natsuki___._?stkn=MWMyc2RvaG14aDZoNQ==" target="_blank" rel="noopener" class="cp-tab-btn cp-tab-btn-sns">SNS</a>
+      <a href="#reviews" class="cp-tab-btn">口コミ</a>
+    </div>
 
-  <!-- ============ お店からのおすすめポイント ============ -->
-  <section class="section reveal" id="recommend">
-    <div class="section-title">お店からのおすすめポイント</div>
-    <div class="frame">
-      <ul class="recommend-list">
-            <li class="recommend-item">
-              <span class="recommend-icon">✦</span>
-              <span class="recommend-text">MMA（総合格闘技）・水泳で鍛えた引き締まったボディと、<br>クールな表情の奥にのぞく優しさのギャップに癒されます。</span>
+    <!-- ============ セラピストに質問 ============ -->
+    <section class="cp-section" id="qna">
+      <div class="cp-section-title">セラピストに質問</div>
+      <div class="cp-frame">
+            <div class="cp-qna-row">
+              <div class="cp-qna-q">Q. 体重は？</div>
+              <div class="cp-qna-a">A. 60kg</div>
+            </div>
+            <div class="cp-qna-row">
+              <div class="cp-qna-q">Q. 好きな食べ物は？</div>
+              <div class="cp-qna-a">A. スイーツ、フルーツ、野菜</div>
+            </div>
+            <div class="cp-qna-row">
+              <div class="cp-qna-q">Q. 好きな動物は？</div>
+              <div class="cp-qna-a">A. 大型犬・猫</div>
+            </div>
+            <div class="cp-qna-row">
+              <div class="cp-qna-q">Q. 好きなスポーツは？</div>
+              <div class="cp-qna-a">A. MMA（総合格闘技）・水泳</div>
+            </div>
+            <div class="cp-qna-row">
+              <div class="cp-qna-q">Q. 好きなアニメは？</div>
+              <div class="cp-qna-a">A. ハイキュー！！</div>
+            </div>
+            <div class="cp-qna-row">
+              <div class="cp-qna-q">Q. 好きな漫画は？</div>
+              <div class="cp-qna-a">A. キングダム</div>
+            </div>
+            <div class="cp-qna-row">
+              <div class="cp-qna-q">Q. 好きな映画は？</div>
+              <div class="cp-qna-a">A. 華麗なるギャツビー</div>
+            </div>
+            <div class="cp-qna-row">
+              <div class="cp-qna-q">Q. デートで連れて行きたい場所は？</div>
+              <div class="cp-qna-a">A. 閉館間際の静かな水族館、星空が見える客室露天風呂のある隠れ宿</div>
+            </div>
+            <div class="cp-qna-row">
+              <div class="cp-qna-q">Q. 好きな本は？</div>
+              <div class="cp-qna-a">A. 星の王子さま</div>
+            </div>
+            <div class="cp-qna-row">
+              <div class="cp-qna-q">Q. 大切にしている言葉は？</div>
+              <div class="cp-qna-a">A. 「大切なものは、目に見えない」</div>
+            </div>
+            <div class="cp-qna-row">
+              <div class="cp-qna-q">Q. 飲むなら何が好き？</div>
+              <div class="cp-qna-a">A. ハイボール</div>
+            </div>
+            <div class="cp-qna-row">
+              <div class="cp-qna-q">Q. 怖いものは？</div>
+              <div class="cp-qna-a">A. ホラー映画</div>
+            </div>
+      </div>
+    </section>
+
+    <a href="https://line.me/ti/p/KB7wdAMGRY" class="m3-pill" style="width:100%;font-size:15px" target="_blank" rel="noopener">LINEで予約・お問い合わせ</a>
+
+    <!-- ============ お店からのおすすめポイント ============ -->
+    <section class="cp-section" id="recommend">
+      <div class="cp-section-title">お店からのおすすめポイント</div>
+      <div class="cp-frame">
+        <ul class="cp-recommend-list">
+            <li class="cp-recommend-item">
+              <span class="cp-recommend-icon">✦</span>
+              <span class="cp-recommend-text">MMA（総合格闘技）・水泳で鍛えた引き締まったボディと、<br>クールな表情の奥にのぞく優しさのギャップに癒されます。</span>
             </li>
-            <li class="recommend-item">
-              <span class="recommend-icon">✦</span>
-              <span class="recommend-text">「星の王子さま」や<br>「大切なものは、目に見えない」という言葉を大事にする、<br>芯のある大人な雰囲気。<br>ハイボール片手にゆったり語り合える時間を。</span>
+            <li class="cp-recommend-item">
+              <span class="cp-recommend-icon">✦</span>
+              <span class="cp-recommend-text">「星の王子さま」や<br>「大切なものは、目に見えない」という言葉を大事にする、<br>芯のある大人な雰囲気。<br>ハイボール片手にゆったり語り合える時間を。</span>
             </li>
-            <li class="recommend-item">
-              <span class="recommend-icon">✦</span>
-              <span class="recommend-text">閉館間際の静かな水族館や、<br>星空の見える露天風呂付きの隠れ宿など、<br>特別な非日常を演出するのが得意です。</span>
+            <li class="cp-recommend-item">
+              <span class="cp-recommend-icon">✦</span>
+              <span class="cp-recommend-text">閉館間際の静かな水族館や、<br>星空の見える露天風呂付きの隠れ宿など、<br>特別な非日常を演出するのが得意です。</span>
             </li>
-            <li class="recommend-item">
-              <span class="recommend-icon">✦</span>
-              <span class="recommend-text">指先まで意識を集中させた快感マッサージで、<br>緊張をゆっくりとほぐしていきます。<br>クールな表情から一転、<br>優しく寄り添う施術に心から癒されると評判です。</span>
+            <li class="cp-recommend-item">
+              <span class="cp-recommend-icon">✦</span>
+              <span class="cp-recommend-text">指先まで意識を集中させた快感マッサージで、<br>緊張をゆっくりとほぐしていきます。<br>クールな表情から一転、<br>優しく寄り添う施術に心から癒されると評判です。</span>
             </li>
             </ul>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <a href="https://line.me/ti/p/KB7wdAMGRY" class="cta-button" target="_blank" rel="noopener">LINEで予約・お問い合わせ</a>
+    <a href="https://line.me/ti/p/KB7wdAMGRY" class="m3-pill" style="width:100%;font-size:15px" target="_blank" rel="noopener">LINEで予約・お問い合わせ</a>
 
-  <!-- ============ セラピストからのコメント ============ -->
-  <section class="section reveal" id="comment">
-    <div class="section-title">セラピストからのコメント</div>
-    <div class="frame">
-      <div class="comment-text">初めまして、菜月です。
+    <!-- ============ セラピストからのコメント ============ -->
+    <section class="cp-section" id="comment">
+      <div class="cp-section-title">セラピストからのコメント</div>
+      <div class="cp-frame">
+        <div class="cp-comment-text">初めまして、菜月です。
 
 クールに見られがちですが、
 実は一人の時間も、
@@ -487,69 +335,76 @@
 ゆっくりと溶かしていきます。
 
 よろしくお願いします。</div>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <a href="https://line.me/ti/p/KB7wdAMGRY" class="cta-button" target="_blank" rel="noopener">LINEで予約・お問い合わせ</a>
+    <a href="https://line.me/ti/p/KB7wdAMGRY" class="m3-pill" style="width:100%;font-size:15px" target="_blank" rel="noopener">LINEで予約・お問い合わせ</a>
 
-  <!-- ============ 料金表 ============ -->
-  <section class="section reveal" id="pricing">
-    <div class="section-title">料金表</div>
-    <div class="frame">
-      <div class="opening-badge">今だけオープニング価格（初回指名料込み）</div>
-      <div class="detail-row"><span class="label">デートコース 90分</span><span><span class="strike">8,000円</span><span class="now-price">4,000円</span></span></div>
-      <div class="detail-row"><span class="label">デートコース 120分</span><span><span class="strike">10,000円</span><span class="now-price">5,000円</span></span></div>
-      <div class="detail-row"><span class="label">ファンタジー 90分</span><span><span class="strike">15,000円</span><span class="now-price">7,500円</span></span></div>
-      <div class="detail-row"><span class="label">ファンタジー 120分</span><span><span class="strike">22,000円</span><span class="now-price">10,000円</span></span></div>
-      <div class="other-course-note">※その他コースもございます。<br>詳しくは<a href="ryokin.html">料金ページ</a>をご覧ください。</div>
-    </div>
-  </section>
+    <!-- ============ 料金表 ============ -->
+    <section class="cp-section" id="pricing">
+      <div class="cp-section-title">料金表</div>
+      <div class="cp-frame">
+        <div class="cp-opening-badge">今だけオープニング価格</div>
+        <div class="cp-detail-row"><span class="label">デートコース 90分</span><span><span class="strike">8,000円</span><span class="now-price">4,000円</span></span></div>
+        <div class="cp-detail-row"><span class="label">デートコース 120分</span><span><span class="strike">10,000円</span><span class="now-price">5,000円</span></span></div>
+        <div class="cp-detail-row"><span class="label">ファンタジー 90分</span><span><span class="strike">15,000円</span><span class="now-price">7,500円</span></span></div>
+        <div class="cp-detail-row"><span class="label">ファンタジー 120分</span><span><span class="strike">22,000円</span><span class="now-price">10,000円</span></span></div>
+        <div class="cp-other-course-note">※その他コースもございます。<br>詳しくは<a href="ryokin.html">料金ページ</a>をご覧ください。</div>
+      </div>
+    </section>
 
-  <!-- ============ 出勤表 ============ -->
-  <section class="section reveal" id="shukkin">
-    <div class="section-title">出勤表</div>
-    <div class="frame">
-      <div class="jukkin-list" id="jukkinList">読み込み中…</div>
-    </div>
-  </section>
+    <!-- ============ 出勤表 ============ -->
+    <section class="cp-section" id="shukkin">
+      <div class="cp-section-title">出勤表</div>
+      <div class="cp-frame">
+        <div class="cp-jukkin-list" id="jukkinList">読み込み中…</div>
+        <div class="cp-shukkin-note">※表示時間は目安です。詳しいお時間は公式LINEにてお問い合わせください。</div>
+      </div>
+    </section>
 
-  <!-- ============ 予約状況 ============ -->
-  <section class="section reveal" id="reservationStatus">
-    <div class="section-title">予約状況</div>
-    <div class="frame">
-      <div class="reservation-date" id="reservationDate">−</div>
-      <div class="shukkin-slots" id="reservationSlots">出勤表から日付を選択してください</div>
-      <div class="shukkin-note">※翌2:00以降のご希望は、公式LINEにて直接お問い合わせください。</div>
-      <div class="shukkin-note">※表示は目安です。<br>ご希望のお時間は、必ず公式LINEにてご確認ください。</div>
-    </div>
-  </section>
+    <a href="https://line.me/ti/p/KB7wdAMGRY" class="m3-pill" style="width:100%;font-size:16px" target="_blank" rel="noopener">このスケジュールで予約する</a>
 
-  <a href="https://line.me/ti/p/KB7wdAMGRY" class="cta-button" target="_blank" rel="noopener">LINEで予約・お問い合わせ</a>
-
-  <!-- ============ お客様の声 ============ -->
-  <section class="section reveal" id="reviews">
-    <div class="section-title">お客様の声</div>
-    <div class="frame">
-            <div class="review-card">
-              <div class="review-course">【コース名】ファンタジーコース120分</div>
-              <div class="review-text">第一印象から丁寧な接客を心がけてくれて、安心して過ごせました。
+    <!-- ============ お客様の声 ============ -->
+    <section class="cp-section" id="reviews">
+      <div class="cp-section-title">お客様の声</div>
+      <div class="cp-frame">
+            <div class="cp-review-card">
+              <div class="cp-review-course">【コース名】ファンタジーコース120分</div>
+              <div class="cp-review-text">第一印象から丁寧な接客を心がけてくれて、安心して過ごせました。
 
 入室後は靴をしっかり整えてくれたり、施術前の説明も分かりやすく、細やかな気配りが伝わってきました。
 
 肌がスベスベ、もちもちで、マッサージが気持ちよかったです。
 
 リピートしたいです。</div>
-              <div class="review-meta">S様（匿名希望）</div>
+              <div class="cp-review-meta">S様（匿名希望）</div>
             </div>
-      <a href="kuchikomi.html?cast=natsuki" class="review-post-btn">口コミを投稿する</a>
-    </div>
-  </section>
+        <a href="kuchikomi.html?cast=natsuki" class="cp-review-post-btn">口コミを投稿する</a>
+      </div>
+    </section>
 
-  <footer class="footer reveal">
-    <div class="footer-name">LOVE &amp; SECRET FUKUOKA</div>
-    <div class="footer-rep">LOVE&amp;SECRET FUKUOKA代表 <b>YOKO</b></div>
+    <!-- ============ 予約状況（時間帯の空き確認） ============ -->
+    <section class="cp-section" id="reservationStatus">
+      <div class="cp-section-title">予約状況<span style="display:block;font-size:12px;font-weight:400;color:#8A5E4E;margin-top:4px">出勤表の「空き状況」から時間帯を確認できます</span></div>
+      <div class="cp-frame">
+        <div class="cp-reservation-date" id="reservationDate">−</div>
+        <div class="cp-shukkin-slots" id="reservationSlots">出勤表から日付を選択してください</div>
+        <div class="cp-shukkin-note">※翌2:00以降のご希望は、公式LINEにて直接お問い合わせください。</div>
+        <div class="cp-shukkin-note">※表示は目安です。<br>ご希望のお時間は、必ず公式LINEにてご確認ください。</div>
+      </div>
+    </section>
+
+    <a href="https://line.me/ti/p/KB7wdAMGRY" class="m3-pill" style="width:100%;font-size:15px" target="_blank" rel="noopener">LINEで予約・お問い合わせ</a>
+
+  </div>
+
+  <!-- Footer -->
+  <footer style="background:#FFF9F8;border-top:1px solid #F4DDE2;padding:44px 28px;text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center;font-size:12.5px;color:#8A5E4E">
+    <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;line-height:1.2;letter-spacing:.08em;color:#8A5530">LOVE <span style="color:#B8894A">&amp;</span> SECRET</span>
+    <span>福岡 女風 ／ 女性のための出張型リラクゼーション</span>
+    <span>18歳未満の方はご利用いただけません</span>
+    <span>© LOVE＆SECRET FUKUOKA</span>
   </footer>
-
 </div>
 
 <script>
@@ -617,15 +472,15 @@
       const isBooked = shukkinOverlaps(shukkinBookingBusy, slotStart, slotEnd);
       const open = onShift && !isBooked;
       if(open) anyOpen = true;
-      return `<span class="slot-pill ${open ? 'slot-open' : 'slot-closed'}">${shukkinSlotLabel(sh)}-${shukkinSlotLabel(eh)} ${open ? '○' : '×'}</span>`;
+      return `<span class="cp-slot-pill ${open ? 'slot-open' : 'slot-closed'}">${shukkinSlotLabel(sh)}-${shukkinSlotLabel(eh)} ${open ? '○' : '×'}</span>`;
     }).join('');
-    return anyOpen ? pills : '<span class="slot-full">この日は満予約</span>';
+    return anyOpen ? pills : '<span class="cp-slot-full">この日は満予約</span>';
   }
 
   function shukkinSelectDay(dayOffset, scroll){
     shukkinSelectedDay = dayOffset;
     const dt = shukkinDateFor(dayOffset);
-    document.querySelectorAll('.jukkin-btn').forEach(b => {
+    document.querySelectorAll('.cp-jukkin-btn').forEach(b => {
       b.classList.toggle('selected', parseInt(b.dataset.day, 10) === dayOffset);
     });
     const label = dayOffset === 0 ? '本日' : `${dt.getMonth()+1}月${shukkinPad(dt.getDate())}日(${SHUKKIN_DOW[dt.getDay()]})`;
@@ -649,16 +504,16 @@
       const range = shukkinDayShiftRangeLabel(dt);
       const hoursLabel = range || '満席';
       const actionHtml = range
-        ? `<button type="button" class="jukkin-btn" data-day="${i}">空き状況</button>`
-        : `<a href="https://line.me/ti/p/KB7wdAMGRY" target="_blank" rel="noopener" class="jukkin-btn jukkin-btn-line">キャンセル待ち</a>`;
-      html += `<div class="jukkin-row${i===0?' is-today':''}">
-        <div class="jukkin-date">${dateLabel}</div>
-        <div class="jukkin-hours">${hoursLabel}</div>
+        ? `<button type="button" class="cp-jukkin-btn" data-day="${i}">空き状況</button>`
+        : `<a href="https://line.me/ti/p/KB7wdAMGRY" target="_blank" rel="noopener" class="cp-jukkin-btn cp-jukkin-btn-line">キャンセル待ち</a>`;
+      html += `<div class="cp-jukkin-row${i===0?' is-today':''}">
+        <div class="cp-jukkin-date">${dateLabel}</div>
+        <div class="cp-jukkin-hours">${hoursLabel}</div>
         ${actionHtml}
       </div>`;
     }
     wrap.innerHTML = html;
-    wrap.querySelectorAll('.jukkin-btn:not(.jukkin-btn-line)').forEach(btn => {
+    wrap.querySelectorAll('.cp-jukkin-btn:not(.cp-jukkin-btn-line)').forEach(btn => {
       btn.addEventListener('click', () => {
         shukkinSelectDay(parseInt(btn.dataset.day, 10), true);
       });
@@ -692,15 +547,6 @@
   if(menuBtn){ menuBtn.addEventListener('click', openMenu); }
   if(menuClose){ menuClose.addEventListener('click', closeMenu); }
   if(menuOverlay){ menuOverlay.addEventListener('click', closeMenu); }
-
-  // reveal on scroll
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.1 });
-  revealEls.forEach(el => io.observe(el));
 </script>
 
 </body>

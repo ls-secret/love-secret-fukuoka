@@ -107,7 +107,11 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
 /* cast modal */
 .m3-cast-overlay{position:fixed;inset:0;z-index:40;background:rgba(94,58,44,.4);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .25s ease}
 .m3-cast-overlay.open{opacity:1;pointer-events:auto}
-.m3-cast-panel{position:relative;width:100%;max-width:540px;max-height:85vh;overflow-y:auto;background:#FFF9F8;border:1px solid #E5C9A2;box-shadow:0 20px 60px rgba(94,58,44,.3);padding:40px 32px;display:flex;flex-direction:column;gap:18px;opacity:0;transform:translateY(12px) scale(.98);transition:opacity .25s ease,transform .25s ease}
+.m3-cast-panel{position:relative;width:100%;max-width:540px;max-height:76vh;overflow-y:auto;background:#FFF9F8;border:1px solid #E5C9A2;box-shadow:0 20px 60px rgba(94,58,44,.3);padding:40px 32px;display:flex;flex-direction:column;gap:18px;opacity:0;transform:translateY(12px) scale(.98);transition:opacity .25s ease,transform .25s ease}
+@media (max-width:600px){
+  .m3-cast-overlay{padding:40px 16px}
+  .m3-cast-panel{max-height:70vh}
+}
 .m3-cast-overlay.open .m3-cast-panel{opacity:1;transform:translateY(0) scale(1)}
 .m3-cast-close{position:absolute;top:14px;right:14px;width:36px;height:36px;background:#fff;border:1px solid #E5C9A2;border-radius:50%;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:20px;color:#8A5E4E}
 .m3-cast-recommend{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
@@ -471,12 +475,12 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
         <label class="m3-field">電話番号 または LINE ID<input type="text" id="reserveContactInput"></label>
         <label class="m3-field">ご要望<textarea rows="3" id="reserveRequestInput"></textarea></label>
         <label style="display:flex;gap:10px;align-items:center;font-size:14px;min-height:44px"><input type="checkbox" id="reserveAgreeCheck" style="width:20px;height:20px;accent-color:#D2557C"> 18歳以上で、利用規約に同意します</label>
-        <button type="submit" class="m3-pill" style="font:inherit;font-size:16px;border:none;cursor:pointer;min-height:52px">予約内容をまとめる</button>
+        <button type="submit" class="m3-pill" style="font:inherit;font-size:16px;border:none;cursor:pointer;min-height:52px">この内容でLINEを開く</button>
       </form>
 
       <div id="reserveResult" class="m3-card" style="display:none;padding:28px 24px;gap:14px">
         <p style="font-size:14.5px;color:#5E3A2C;line-height:1.8;text-align:center">
-          以下の内容をコピーして、LINEのトーク画面に貼り付けて送信してください。
+          内容をコピーしてLINEを開きました。トーク画面に貼り付けて送信してください。
         </p>
         <div id="reserveResultText" style="white-space:pre-wrap;border:1px dashed #E28AA4;background:#FFF9F8;padding:16px;font-size:14px;line-height:1.9;color:#5E3A2C;user-select:all"></div>
         <div style="display:flex;flex-direction:column;gap:10px">
@@ -771,10 +775,15 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
     reserveResult.style.display = 'flex';
     reserveCopyMsg.style.display = 'none';
     reserveResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // open LINE right away (must happen synchronously in the click/submit
+    // handler so browsers don't treat it as a blocked popup), then copy
+    // the text to the clipboard so it's ready to paste.
+    window.open(LINE_URL, '_blank', 'noopener');
+    copyReserveText(text);
   });
 
-  reserveCopyBtn.addEventListener('click', function(){
-    var text = reserveResultText.textContent;
+  function copyReserveText(text){
     function showCopied(){
       reserveCopyMsg.style.display = 'block';
     }
@@ -794,6 +803,10 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
       sel.addRange(range);
       try{ document.execCommand('copy'); showCopied(); }catch(err){}
     }
+  }
+
+  reserveCopyBtn.addEventListener('click', function(){
+    copyReserveText(reserveResultText.textContent);
   });
 
   // load live shift data (today's shift strip + 10-day list in cast modal)

@@ -120,6 +120,8 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
 .m3-cast-photo,.m3-cast-photo-lg{width:100%;object-fit:cover;display:block}
 .m3-cast-photo{aspect-ratio:3/4}
 .m3-cast-photo-lg{aspect-ratio:4/3}
+.m3-cast-photo-scroll{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;margin:0 -32px;padding:0 32px 4px}
+.m3-cast-photo-scroll img{flex:0 0 auto;width:72%;max-width:280px;aspect-ratio:4/3;object-fit:cover;border:1px solid #F0DCC2;scroll-snap-align:start}
 
 /* banners */
 .m3-banner-wrap{display:block;text-decoration:none}
@@ -514,6 +516,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
   var castData = {
     yuri: {
       name: '立凪ゆうり', age: '27歳', copy: '太陽の笑顔で貴女を優しく包み込む王子様', photo: 'cast-yuri-9.JPG',
+      photos: ['cast-yuri-9.JPG','cast-yuri-8.JPG','cast-yuri-6.JPG','cast-yuri-7.JPG.jpg','cast-yuri-4.JPG','cast-yuri-1.JPG','cast-yuri-2.JPG','cast-yuri-3.JPG'],
       shiftCal: 'd06f73bfdc05d49c5e81de0b821b2bd5cb683049f66dcfad633f9d60b35a6a1e@group.calendar.google.com',
       comment: 'ずっと手を繋いで、僕が笑顔でエスコートします。一緒に楽しい時間が過ごせたら嬉しいです。\n\nいつでも笑顔と優しさで、あなたを癒します。\n\nふと見せる真剣な眼差しに、思わずドキッとしてしまうかもしれません。二人きりの時間だからこそ、甘く蕩けるようなひとときをお約束します。よろしくお願いします！',
       recommend: [
@@ -526,6 +529,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
     },
     natsuki: {
       name: '菜月', age: '27歳', copy: 'クールな優しさと鍛えあげたスレンダーボディで癒します', photo: 'cast-natsuki-5.JPG',
+      photos: ['cast-natsuki-5.JPG','cast-natsuki-3.jpg','cast-natsuki-7.JPG','cast-natsuki-6.JPG','cast-natsuki-4.JPG','cast-natsuki-1.JPG','cast-natsuki-2.JPG'],
       shiftCal: '457a8eb10e2e9a17414ef1c980ea4aa6e2b1a5d73ed7bd72a77b1f4200e9396f@group.calendar.google.com',
       comment: '初めまして、菜月です。\n\nクールに見られがちですが、実は一人の時間も、誰かと過ごす時間も、どちらも大切にしたいタイプです。\n\n運動も、静かな読書も好きで、オンとオフの切り替えを大事にしています。\n\nお会いした時は、肩の力を抜いて、ありのままのあなたでいてください。\n\n「大切なものは、目に見えない」——そんな言葉を胸に、言葉にならない想いにも、そっと寄り添える人でありたいと思っています。\n\nふとした瞬間に見せる素の表情に、きっと惹き込まれてしまうはず。二人きりだからこそ見せる優しさで、ゆっくりと溶かしていきます。\n\nよろしくお願いします。',
       recommend: [
@@ -538,6 +542,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
     },
     hajime: {
       name: 'はじめ', age: '32歳', copy: '甘くて可愛いフェイスと大人なトークのギャップにキュン♡', photo: 'cast-hajime-3.JPG',
+      photos: ['cast-hajime-3.JPG','cast-hajime-4.JPG','cast-hajime-6.JPG','cast-hajime-5.JPG','cast-hajime-1.JPG','cast-hajime-2.JPG'],
       shiftCal: '70ff70984ff6baa680f5e19dbc9de9fc53e2bbaf5a06ce11c5a904295427af52@group.calendar.google.com',
       comment: '普段から良く食べ、良く笑い、誰とでもすぐ仲良くなれる性格です。身体を動かしたり、美容や健康に気を使うのも好きで、無理なく身体を鍛えながら、清潔感のある身だしなみを心がけています。\n\nせっかく一緒に過ごす時間だからこそ、「会ってよかった」「なんだか安心する」「また会いたい」「楽しかった」と思ってもらえる時間にしたいと思っています。\n\nお話しするのも好きなので、たくさん話して笑いたい方も、普段なかなか人には言えないことをゆっくり話したい方も大歓迎です。\n\nもちろん、会話よりもゆっくり癒されたい日もあると思います。その日の気分や希望に合わせて、無理に距離を縮めるのではなく、あなたが心地よいと思えるペースを大切にします。\n\n初めてで緊張している方も、気軽な気持ちで会いに来てもらえたら嬉しいです。日常では味わえない、少し特別な時間を一緒に過ごしましょう。',
       recommend: [
@@ -692,8 +697,12 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
     var recHtml = c.recommend.map(function(r){
       return '<li><span class="ic">✦</span><span style="white-space:pre-line">' + esc(r) + '</span></li>';
     }).join('');
+    var photos = (c.photos && c.photos.length) ? c.photos : [c.photo];
+    var photosHtml = photos.map(function(src){
+      return '<img src="' + src + '" alt="' + esc(c.name) + '" onerror="this.remove()">';
+    }).join('');
     castBody.innerHTML =
-      '<img class="m3-cast-photo-lg" src="' + c.photo + '" alt="' + esc(c.name) + '" onerror="this.outerHTML=\'<div class=&quot;m3-ph&quot; style=&quot;aspect-ratio:4/3&quot;></div>\'">' +
+      '<div class="m3-cast-photo-scroll">' + photosHtml + '</div>' +
       '<div style="text-align:center;display:flex;flex-direction:column;gap:4px">' +
         '<strong style="font-size:25px;color:#C8436C;font-weight:600">' + esc(c.name) + '</strong>' +
         '<span style="font-size:13px;color:#8A5E4E">' + esc(c.age) + '</span>' +

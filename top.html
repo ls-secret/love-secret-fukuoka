@@ -139,7 +139,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
 .m3-today-btn{display:inline-block;text-decoration:none;font-size:13px;font-weight:700;padding:8px 20px;border-radius:999px;white-space:nowrap}
 .m3-today-btn-primary{background:#D2557C;color:#fff !important;border:none}
 .m3-today-btn-line{border:1px solid #06C755;background:rgba(6,199,85,.1);color:#06a648 !important}
-@media (max-width:960px){ .m3-g3#todayShiftGrid{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:960px){ .m3-g4#todayShiftGrid{grid-template-columns:minmax(0,1fr)} }
 
 /* 10-day shift list in modal */
 .m3-jukkin-list{display:flex;flex-direction:column;border-top:1px solid #F4DDE2}
@@ -149,7 +149,6 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
 .m3-jukkin-date .dow-sat{color:#4a6fb5}
 .m3-jukkin-date .dow-sun{color:#c1476a}
 .m3-jukkin-hours{flex:1;color:#8A5E4E}
-.m3-menu-panel{overflow-y:auto;-webkit-overflow-scrolling:touch}
 </style>
 </head>
 <body>
@@ -189,7 +188,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
     <div class="m3-menu-brand">LOVE <span class="amp">&amp;</span> SECRET<span class="kana">FUKUOKA</span></div>
     <a href="#top" class="m3-menu-link" data-close>トップ</a>
     <a href="#cast" class="m3-menu-link" data-close>セラピスト</a>
-    <a href="#today-shift" class="m3-menu-link" data-close>本日の出勤</a>
+    <a href="#system" class="m3-menu-link" data-close>システム</a>
     <a href="#flow" class="m3-menu-link" data-close>ご利用の流れ</a>
     <a href="#faq" class="m3-menu-link" data-close>よくある質問</a>
     <a href="ryokin.html" class="m3-menu-link">料金について</a>
@@ -237,7 +236,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
   <section id="today-shift" style="background:#FFF3EC;padding:40px 28px">
     <div style="max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:20px">
       <div style="text-align:center"><span style="font-family:'Great Vibes',cursive;font-size:30px;line-height:1;color:#C9A063">Today</span><h2 style="font-size:20px;font-weight:500;color:#6E4636;letter-spacing:.1em">本日の出勤</h2></div>
-      <div class="m3-g3" id="todayShiftGrid">
+      <div class="m3-g4" id="todayShiftGrid">
         <div style="text-align:center;font-size:13px;color:#8A5E4E">読み込み中…</div>
       </div>
       <p style="text-align:center;font-size:12.5px;color:#8A5E4E">※表示時間は目安です。詳しいお時間は公式LINEにてお問い合わせください。</p>
@@ -326,7 +325,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
   <section id="cast" style="background:#FFF9F8;padding:72px 28px">
     <div style="max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:36px">
       <div style="text-align:center"><span style="font-family:'Great Vibes',cursive;font-size:48px;line-height:1;color:#C9A063">Therapist</span><h2 style="font-size:28px;font-weight:500;color:#6E4636;letter-spacing:.12em">セラピスト紹介</h2></div>
-      <div class="m3-g3">
+      <div class="m3-g4">
         <article class="m3-card" style="padding:14px 14px 20px">
           <button type="button" class="m3-cast-open" data-cast="yuri" style="background:none;border:none;padding:0;margin:0;cursor:pointer;display:flex;flex-direction:column;gap:14px;width:100%;font:inherit;text-align:inherit;color:inherit">
             <img class="m3-cast-photo" src="cast-yuri-9.JPG" alt="立凪ゆうり" onerror="this.outerHTML='&lt;div class=&quot;m3-ph&quot; style=&quot;aspect-ratio:3/4&quot;&gt;&lt;/div&gt;'">
@@ -362,6 +361,18 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
             </div>
           </button>
           <a href="#reserve" class="m3-cast-pick" data-cast="hajime" style="margin-top:auto;text-align:center;text-decoration:none;border:1px solid #D2557C;color:#C8436C;border-radius:999px;padding:11px;font-size:14px;min-height:44px">このセラピストで予約</a>
+        </article>
+        <article class="m3-card" style="padding:14px 14px 20px">
+          <button type="button" class="m3-cast-open" data-cast="leo" style="background:none;border:none;padding:0;margin:0;cursor:pointer;display:flex;flex-direction:column;gap:14px;width:100%;font:inherit;text-align:inherit;color:inherit">
+            <img class="m3-cast-photo" src="cast-leo-1.JPG" alt="LEO" onerror="this.outerHTML='&lt;div class=&quot;m3-ph&quot; style=&quot;aspect-ratio:3/4&quot;&gt;&lt;/div&gt;'">
+            <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
+              <strong style="font-size:21px;color:#C8436C;font-weight:600">LEO</strong>
+              <span style="font-size:13px;color:#8A5E4E">34歳</span>
+              <span style="font-size:13px;line-height:1.8">爽やか笑顔の体育会系イケメン。癒しと熱い心で貴方を甘く溶かします</span>
+              <span style="font-size:12px;color:#C9A063;letter-spacing:.06em;margin-top:2px">タップしてプロフィールを見る</span>
+            </div>
+          </button>
+          <a href="#reserve" class="m3-cast-pick" data-cast="leo" style="margin-top:auto;text-align:center;text-decoration:none;border:1px solid #D2557C;color:#C8436C;border-radius:999px;padding:11px;font-size:14px;min-height:44px">このセラピストで予約</a>
         </article>
       </div>
     </div>
@@ -458,6 +469,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
             <option value="yuri">立凪ゆうり</option>
             <option value="natsuki">菜月</option>
             <option value="hajime">はじめ</option>
+            <option value="leo">LEO</option>
           </select>
         </label>
         <label class="m3-field">コース
@@ -530,7 +542,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
     },
     natsuki: {
       name: '菜月', age: '27歳', copy: 'クールな優しさと鍛えあげたスレンダーボディで癒します', photo: 'cast-natsuki-5.JPG',
-      photos: ['cast-natsuki-5.JPG','cast-natsuki-3.JPG','cast-natsuki-7.JPG','cast-natsuki-6.JPG','cast-natsuki-4.JPG','cast-natsuki-1.JPG','cast-natsuki-2.JPG'],
+      photos: ['cast-natsuki-5.JPG','cast-natsuki-3.jpg','cast-natsuki-7.JPG','cast-natsuki-6.JPG','cast-natsuki-4.JPG','cast-natsuki-1.JPG','cast-natsuki-2.JPG'],
       shiftCal: '457a8eb10e2e9a17414ef1c980ea4aa6e2b1a5d73ed7bd72a77b1f4200e9396f@group.calendar.google.com',
       comment: '初めまして、菜月です。\n\nクールに見られがちですが、実は一人の時間も、誰かと過ごす時間も、どちらも大切にしたいタイプです。\n\n運動も、静かな読書も好きで、オンとオフの切り替えを大事にしています。\n\nお会いした時は、肩の力を抜いて、ありのままのあなたでいてください。\n\n「大切なものは、目に見えない」——そんな言葉を胸に、言葉にならない想いにも、そっと寄り添える人でありたいと思っています。\n\nふとした瞬間に見せる素の表情に、きっと惹き込まれてしまうはず。二人きりだからこそ見せる優しさで、ゆっくりと溶かしていきます。\n\nよろしくお願いします。',
       recommend: [
@@ -553,6 +565,19 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
         '力加減も丁寧に確認しながら進める、気持ちよさにこだわった施術。日々の疲れを忘れられる、極上の癒しのひとときを過ごせます。'
       ],
       scheduleUrl: 'https://love-secret-fukuoka.com/cast-hajime.html#shukkin'
+    },
+    leo: {
+      name: 'LEO', age: '34歳', copy: '爽やか笑顔の体育会系イケメン。癒しと熱い心で貴方を甘く溶かします', photo: 'cast-leo-1.JPG',
+      photos: ['cast-leo-1.JPG','cast-leo-2.JPG','cast-leo-3.JPG'],
+      shiftCal: '',
+      comment: 'はじめまして、LEOです！\n\n「今日はちょっと疲れたな」「誰かに甘えたいな」「思いっきり笑いたいな」\n\nそんな日に、僕のところへ来てください。\n\n元氣いっぱい楽しむ時間も、ゆっくり落ち着いて過ごす時間も、あなたに合わせて大切にします。\n\n無理に頑張らなくて大丈夫です。普段は人に見せないような素直な気持ちも、安心して話してください。\n\n一緒にいる時間が、あなたにとって「来てよかった」と思える時間になるように。笑顔になってもらえることが、僕にとって一番嬉しいことです。\n\nあなたに会える日を楽しみにしています。',
+      recommend: [
+        '野球で培った体力と、明るくポジティブな笑顔が魅力。元気いっぱいの体育会系で、よく笑う楽しい時間を過ごせます。',
+        '実は人の話を聞くのが大好き。「少しでも元気になって笑顔になってほしい」という気持ちで、じっくり寄り添ってくれます。',
+        '初めての方も、気を遣いすぎなくて大丈夫。たくさん笑って、たくさん話して、気付いたら時間があっという間に過ぎています。',
+        '元気に楽しむ日も、ゆっくり落ち着いて過ごす日も、あなたの気分に合わせて大切にしてくれます。'
+      ],
+      scheduleUrl: 'https://love-secret-fukuoka.com/cast-leo.html#shukkin'
     }
   };
 
@@ -564,7 +589,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
   var SHUKKIN_DOW = ['日','月','火','水','木','金','土'];
   var shukkinBaseDate = new Date();
   shukkinBaseDate.setHours(0,0,0,0);
-  var shiftBusyByCast = { yuri: [], natsuki: [], hajime: [] };
+  var shiftBusyByCast = { yuri: [], natsuki: [], hajime: [], leo: [] };
   var shiftLoaded = false;
 
   function shukkinPad(n){ return String(n).padStart(2,'0'); }
@@ -609,7 +634,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
     var grid = document.getElementById('todayShiftGrid');
     if(!grid) return;
     var today = shukkinDateFor(0);
-    var order = ['yuri','natsuki','hajime'];
+    var order = ['yuri','natsuki','hajime','leo'];
     grid.innerHTML = order.map(function(id){
       var c = castData[id];
       var label = shiftLoaded ? shukkinDayRangeLabel(shiftBusyByCast[id], today) : null;
@@ -621,8 +646,13 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
         hoursHtml = '<span class="m3-today-hours is-open">本日 ' + label + '</span>';
         actionHtml = '<a href="#reserve" class="m3-today-btn m3-today-btn-primary m3-today-pick" data-cast="' + id + '">予約する</a>';
       } else {
+        if(!c.shiftCal){
+          hoursHtml = '<span class="m3-today-hours">出勤は準備中</span>';
+          actionHtml = '<a href="' + LINE_URL + '" target="_blank" rel="noopener" class="m3-today-btn m3-today-btn-line">LINEで問い合わせ</a>';
+        } else {
         hoursHtml = '<span class="m3-today-hours">満席</span>';
         actionHtml = '<a href="' + LINE_URL + '" target="_blank" rel="noopener" class="m3-today-btn m3-today-btn-line">キャンセル待ち</a>';
+        }
       }
       return '<div class="m3-today-card">' +
         '<button type="button" class="m3-today-open" data-cast="' + id + '">' +
@@ -655,7 +685,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
       var dowClass = dow === '土' ? 'dow-sat' : (dow === '日' ? 'dow-sun' : '');
       var dateLabel = i === 0 ? '本日' : (shukkinPad(dt.getMonth()+1) + '/' + shukkinPad(dt.getDate()) + '(<span class="' + dowClass + '">' + dow + '</span>)');
       var range = shukkinDayRangeLabel(shiftBusyByCast[id], dt);
-      var hoursLabel = range || '満席';
+      var hoursLabel = range || (c.shiftCal ? '満席' : '準備中');
       rows += '<div class="m3-jukkin-row' + (i===0?' is-today':'') + '">' +
         '<div class="m3-jukkin-date">' + dateLabel + '</div>' +
         '<div class="m3-jukkin-hours">' + hoursLabel + '</div>' +
@@ -755,7 +785,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
   var reserveResultText = document.getElementById('reserveResultText');
   var reserveCopyBtn = document.getElementById('reserveCopyBtn');
   var reserveCopyMsg = document.getElementById('reserveCopyMsg');
-  var castNameMap = { yuri: '立凪ゆうり', natsuki: '菜月', hajime: 'はじめ' };
+  var castNameMap = { yuri: '立凪ゆうり', natsuki: '菜月', hajime: 'はじめ', leo: 'LEO' };
 
   reserveForm.addEventListener('submit', function(e){
     e.preventDefault();
@@ -822,13 +852,14 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
   // load live shift data (today's shift strip + 10-day list in cast modal)
   renderTodayShift();
   (async function loadShukkin(){
-    var ids = ['yuri','natsuki','hajime'].map(function(id){ return castData[id].shiftCal; });
+    var ids = ['yuri','natsuki','hajime','leo'].map(function(id){ return castData[id].shiftCal; }).filter(Boolean);
     var timeMin = shukkinBaseDate.toISOString();
     var lastDay = shukkinDateFor(SHUKKIN_DAYS - 1);
     var timeMax = new Date(lastDay.getFullYear(), lastDay.getMonth(), lastDay.getDate(), 26, 0, 0).toISOString();
     try{
       var calendars = await shukkinFetchBusy(ids, timeMin, timeMax);
-      ['yuri','natsuki','hajime'].forEach(function(id){
+      ['yuri','natsuki','hajime','leo'].forEach(function(id){
+        if(!castData[id].shiftCal) return;
         var cal = calendars[castData[id].shiftCal];
         shiftBusyByCast[id] = (cal && cal.busy) || [];
       });

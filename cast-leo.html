@@ -358,7 +358,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
 
 <script>
   const GCAL_API_KEY = 'AIzaSyBlPFzRTMWwI7y5__jWUrmzJ47_cKgK-i4';
-  const SHIFT_CAL = '';
+  const SHIFT_CAL = '0bc234a01cf4fd50d6ed9d72a33ebcd1cce685d3c05a0220aa07d63052e099d2@group.calendar.google.com';
   const BOOKING_CAL = '';
   const SHUKKIN_SLOTS = [[11,14],[14,17],[17,20],[20,23],[23,26]];
   const SHUKKIN_DAYS = 10;
@@ -475,7 +475,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
     const timeMax = new Date(lastDay.getFullYear(), lastDay.getMonth(), lastDay.getDate(), 26, 0, 0).toISOString();
     try{
       if(!SHIFT_CAL) throw new Error('no calendar yet');
-      const calendars = await shukkinFetchBusy([SHIFT_CAL, BOOKING_CAL], timeMin, timeMax);
+      const calendars = await shukkinFetchBusy([SHIFT_CAL, BOOKING_CAL].filter(Boolean), timeMin, timeMax);
       shukkinShiftBusy = (calendars[SHIFT_CAL] || {}).busy || [];
       shukkinBookingBusy = (calendars[BOOKING_CAL] || {}).busy || [];
     }catch(err){

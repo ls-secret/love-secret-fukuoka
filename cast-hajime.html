@@ -73,7 +73,8 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
 .cp-profile-meta b{color:#5E3A2C}
 
 .cp-photo-scroll{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:6px;padding-bottom:4px}
-.cp-photo-scroll img{flex:0 0 auto;width:150px;height:190px;object-fit:cover;border:1px solid #F0DCC2}
+.cp-photo-scroll img{flex:0 0 auto;height:300px;width:auto;max-width:none;display:block;border:1px solid #F0DCC2}
+.cp-ph{display:inline-block}
 
 /* ---------- tab button row ---------- */
 .cp-tab-btn-row{display:flex;gap:8px;margin:18px 0}
@@ -143,7 +144,6 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
 .cp-review-text{font-size:15.5px;line-height:2;color:#5E3A2C;white-space:pre-line;text-align:left}
 .cp-review-meta{margin-top:10px;font-size:13px;color:#8A5E4E;text-align:right}
 .cp-review-post-btn{display:block;max-width:260px;margin:4px auto 4px;padding:12px 16px;text-align:center;text-decoration:none;font-weight:700;font-size:14.5px;color:#C8436C;background:#FDEAEF;border:1px solid #E28AA4}
-.m3-menu-panel{overflow-y:auto;-webkit-overflow-scrolling:touch}
 </style>
 </head>
 <body>
@@ -332,10 +332,11 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
     <section class="cp-section" id="pricing">
       <div class="cp-section-title">料金表</div>
       <div class="cp-frame">
-        <div class="cp-detail-row"><span class="label">デートコース 90分</span><span class="now-price">8,000円</span></div>
-        <div class="cp-detail-row"><span class="label">デートコース 120分</span><span class="now-price">10,000円</span></div>
-        <div class="cp-detail-row"><span class="label">ファンタジー 90分</span><span class="now-price">15,000円</span></div>
-        <div class="cp-detail-row"><span class="label">ファンタジー 120分</span><span class="now-price">22,000円</span></div>
+        <div class="cp-opening-badge">今だけオープニング価格</div>
+        <div class="cp-detail-row"><span class="label">デートコース 90分</span><span><span class="strike">8,000円</span><span class="now-price">4,000円</span></span></div>
+        <div class="cp-detail-row"><span class="label">デートコース 120分</span><span><span class="strike">10,000円</span><span class="now-price">5,000円</span></span></div>
+        <div class="cp-detail-row"><span class="label">ファンタジー 90分</span><span><span class="strike">15,000円</span><span class="now-price">7,500円</span></span></div>
+        <div class="cp-detail-row"><span class="label">ファンタジー 120分</span><span><span class="strike">22,000円</span><span class="now-price">10,000円</span></span></div>
         <div class="cp-other-course-note">※その他コースもございます。<br>詳しくは<a href="ryokin.html">料金ページ</a>をご覧ください。</div>
       </div>
     </section>
@@ -451,7 +452,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
       if(open) anyOpen = true;
       return `<span class="cp-slot-pill ${open ? 'slot-open' : 'slot-closed'}">${shukkinSlotLabel(sh)}-${shukkinSlotLabel(eh)} ${open ? '○' : '×'}</span>`;
     }).join('');
-    return anyOpen ? pills : '<span class="cp-slot-full">この日は満予約</span>';
+    return anyOpen ? pills : (SHIFT_CAL ? '<span class="cp-slot-full">この日は満予約</span>' : '<span class="cp-slot-full">出勤スケジュールは準備中です。LINEでお問い合わせください。</span>');
   }
 
   function shukkinSelectDay(dayOffset, scroll){
@@ -479,10 +480,10 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
       const dowClass = dow === '土' ? 'dow-sat' : (dow === '日' ? 'dow-sun' : '');
       const dateLabel = i === 0 ? '本日' : `${shukkinPad(dt.getMonth()+1)}/${shukkinPad(dt.getDate())}(<span class="${dowClass}">${dow}</span>)`;
       const range = shukkinDayShiftRangeLabel(dt);
-      const hoursLabel = range || '満席';
+      const hoursLabel = range || (SHIFT_CAL ? '満席' : '準備中');
       const actionHtml = range
         ? `<button type="button" class="cp-jukkin-btn" data-day="${i}">空き状況</button>`
-        : `<a href="https://line.me/ti/p/KB7wdAMGRY" target="_blank" rel="noopener" class="cp-jukkin-btn cp-jukkin-btn-line">キャンセル待ち</a>`;
+        : `<a href="https://line.me/ti/p/KB7wdAMGRY" target="_blank" rel="noopener" class="cp-jukkin-btn cp-jukkin-btn-line">${SHIFT_CAL ? 'キャンセル待ち' : 'LINEで確認'}</a>`;
       html += `<div class="cp-jukkin-row${i===0?' is-today':''}">
         <div class="cp-jukkin-date">${dateLabel}</div>
         <div class="cp-jukkin-hours">${hoursLabel}</div>
@@ -502,6 +503,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
     const lastDay = shukkinDateFor(SHUKKIN_DAYS - 1);
     const timeMax = new Date(lastDay.getFullYear(), lastDay.getMonth(), lastDay.getDate(), 26, 0, 0).toISOString();
     try{
+      if(!SHIFT_CAL) throw new Error('no calendar yet');
       const calendars = await shukkinFetchBusy([SHIFT_CAL, BOOKING_CAL], timeMin, timeMax);
       shukkinShiftBusy = (calendars[SHIFT_CAL] || {}).busy || [];
       shukkinBookingBusy = (calendars[BOOKING_CAL] || {}).busy || [];

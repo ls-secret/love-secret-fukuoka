@@ -14,132 +14,118 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Shippori+Mincho:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Great+Vibes&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --lavender-base: #ccb2d8;
-    --lavender-pale: #f3ebf7;
-    --lavender-mid: #b596c9;
-    --lavender-deep: #8a6aa8;
-    --plum: #4a2f63;
-    --plum-dim: rgba(74,47,99,0.7);
-    --gold: #b8923f;
-    --gold-light: #d4af6a;
-    --gold-dim: #8f701f;
-    --white: #ffffff;
-  }
   *{ box-sizing:border-box; margin:0; padding:0; }
   html, body{ height:100%; }
   body{
-    background:var(--lavender-pale);
-    color:var(--plum);
-    font-family:'Noto Sans JP', sans-serif;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    min-height:100vh;
-    padding:24px;
-    position:relative;
-    overflow:hidden;
+    background:#FFF7F7;
+    color:#5E3A2C;
+    font-family:'M PLUS Rounded 1c', sans-serif;
+    display:flex; align-items:center; justify-content:center;
+    min-height:100vh; padding:24px;
+    position:relative; overflow-x:hidden;
   }
-  .ambient{
+  /* soft photo + rose wash behind the card */
+  .bg{
     position:fixed; inset:0; z-index:0; pointer-events:none;
     background:
-      radial-gradient(ellipse 70% 50% at 20% 8%, rgba(255,255,255,0.65), transparent 60%),
-      radial-gradient(ellipse 60% 45% at 88% 18%, rgba(255,255,255,0.45), transparent 62%),
-      radial-gradient(ellipse 85% 60% at 50% 55%, rgba(204,178,216,0.55), transparent 70%),
-      radial-gradient(ellipse 90% 60% at 50% 100%, rgba(181,150,201,0.55), transparent 72%),
-      linear-gradient(180deg, #f8f3fa 0%, #ecdff2 30%, #ccb2d8 65%, #b596c9 100%);
+      linear-gradient(180deg, rgba(255,247,247,.86) 0%, rgba(253,234,239,.80) 55%, rgba(255,243,236,.90) 100%),
+      url('hero-woman-roses.jpg') center 35% / cover no-repeat;
   }
 
   .card{
     position:relative; z-index:1;
-    max-width:420px; width:100%;
-    border:1px solid rgba(138,106,168,0.35);
-    background:linear-gradient(180deg, rgba(255,255,255,0.75), rgba(243,235,247,0.75));
-    padding:40px 28px 32px;
+    max-width:440px; width:100%;
+    background:rgba(255,255,255,.92);
+    border:1px solid #E5C9A2;
+    box-shadow:inset 0 0 0 4px #fff, inset 0 0 0 5px #F2E1C8, 0 18px 50px rgba(140,80,80,.14);
+    padding:34px 24px 28px;
     text-align:center;
-    box-shadow:0 12px 40px rgba(138,106,168,0.2);
   }
-  .card::before{
-    content:""; position:absolute; inset:6px;
-    border:1px solid rgba(184,146,63,0.35); pointer-events:none;
-  }
-
-  .crest{ width:96px; height:96px; margin:0 auto 18px; }
-  .crest img{ width:100%; height:100%; border-radius:50%; display:block; filter:drop-shadow(0 0 14px rgba(138,106,168,0.35)); }
 
   .seo-keyword{
-    font-family:'Shippori Mincho', serif;
-    font-size:12px; letter-spacing:0.05em;
-    color:var(--gold-dim); margin-bottom:14px;
-    line-height:1.6;
+    font-size:13px; letter-spacing:.08em;
+    color:#9A6436; margin-bottom:18px; line-height:1.7;
   }
-
+  .crest{ width:104px; height:104px; margin:0 auto 14px; }
+  .crest img{
+    width:100%; height:100%; border-radius:50%; display:block;
+    border:2px solid #D8B47A;
+    box-shadow:0 0 0 5px #fff, 0 0 0 6px #EBD3AE, 0 8px 24px rgba(160,100,80,.18);
+  }
   .brand{
-    font-family:'Cinzel', serif; font-size:13px; letter-spacing:0.18em;
-    color:var(--plum); margin-bottom:6px;
+    font-family:'Cormorant Garamond', serif; font-weight:600;
+    font-size:28px; letter-spacing:.08em; color:#8A5530; line-height:1.2;
   }
+  .brand .amp{ color:#B8894A; }
   .brand-sub{
-    font-family:'Cinzel', serif; font-size:10px; letter-spacing:0.3em;
-    color:var(--plum-dim); margin-bottom:28px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:12px; letter-spacing:.5em; color:#9A6436; margin-top:4px;
   }
-
+  .script{
+    font-family:'Great Vibes', cursive; font-size:40px; line-height:1;
+    color:#C9A063; margin:22px 0 4px;
+  }
+  .orn{
+    display:block; margin:0 auto 14px; width:70px; height:1px;
+    background:linear-gradient(90deg, transparent, #D8B47A, transparent);
+  }
   h1{
-    font-family:'Shippori Mincho', serif; font-weight:700;
-    font-size:22px; color:var(--plum); letter-spacing:0.06em;
-    margin-bottom:18px;
+    font-weight:500; font-size:26px; letter-spacing:.2em; color:#6E4636;
+    margin-bottom:16px;
   }
-
   .notice{
-    font-family:'Shippori Mincho', serif;
-    font-size:14px; line-height:2; color:var(--plum-dim);
-    margin-bottom:30px;
+    font-size:16px; line-height:2.1; color:#5E3A2C; margin-bottom:28px;
   }
-  .notice b{ color:var(--plum); }
+  .notice span{ display:block; }
+  .notice i{ font-style:normal; display:inline-block; }
+  .notice b{ color:#C8436C; font-weight:700; }
 
   .buttons{ display:flex; flex-direction:column; gap:14px; }
   .btn{
-    display:block; width:100%; padding:15px 20px;
-    font-family:'Shippori Mincho', serif; font-weight:700; font-size:15px;
-    letter-spacing:0.04em; text-decoration:none; border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    width:100%; min-height:54px; padding:12px 20px;
+    font-family:inherit; font-weight:700; font-size:17px; letter-spacing:.08em;
+    text-decoration:none; cursor:pointer; border-radius:999px;
     -webkit-tap-highlight-color:transparent;
   }
   .btn-yes{
-    background:linear-gradient(180deg, var(--lavender-mid), var(--lavender-deep));
-    color:var(--white);
+    background:#D2557C; color:#fff; border:none;
+    box-shadow:0 8px 24px rgba(210,85,124,.28);
   }
+  .btn-yes:hover{ background:#BC4268; }
   .btn-no{
-    background:transparent;
-    border:1px solid var(--gold-dim);
-    color:var(--plum-dim);
+    background:transparent; color:#8A5E4E; border:1px solid #D8B47A; font-weight:500; font-size:15px;
   }
+  .btn-no:hover{ background:#FFF3EC; }
 
   .footnote{
-    margin-top:24px; font-size:11px; color:var(--plum-dim);
-    line-height:1.8; letter-spacing:0.02em;
+    margin-top:24px; font-size:12.5px; color:#8A5E4E;
+    line-height:1.9; letter-spacing:.02em;
   }
-
 </style>
 </head>
 <body>
 
-<div class="ambient"></div>
+<div class="bg"></div>
 
 <div class="card">
   <div class="seo-keyword">福岡 女性用風俗（女風）・性感マッサージ</div>
   <div class="crest">
     <img src="crest.jpg" alt="LOVE&SECRET FUKUOKA ロゴ">
   </div>
-  <div class="brand">LOVE &amp; SECRET FUKUOKA</div>
-  <div class="brand-sub">AGE VERIFICATION</div>
+  <div class="brand">LOVE <span class="amp">&amp;</span> SECRET</div>
+  <div class="brand-sub">FUKUOKA</div>
 
+  <div class="script">Welcome</div>
+  <span class="orn"></span>
   <h1>年齢確認</h1>
 
   <p class="notice">
-    このサイトには<b>成人向けの内容</b>が含まれています。<br>
-    ご覧いただくには<b>18歳以上</b>であることの<br>確認が必要です。<br>
-    18歳未満の方のアクセスはお断りしております。
+    <span><i>このサイトには</i><i><b>成人向けの内容</b>が</i><i>含まれています。</i></span>
+    <span><i>ご覧いただくには</i><i><b>18歳以上</b>であることの</i><i>確認が必要です。</i></span>
+    <span><i>18歳未満の方の</i><i>アクセスはお断りしております。</i></span>
   </p>
 
   <div class="buttons">

@@ -49,6 +49,21 @@ details{background:#fff;border:1px solid #EFD9BD;padding:0 22px}
 summary{cursor:pointer;padding:18px 0;font-weight:600;color:#6E4636;list-style:none;display:flex;gap:12px;min-height:44px}
 summary::-webkit-details-marker{display:none}
 .m3-bk{display:inline-block}
+.m3-newsbar{background:#FFF9F8;padding:34px 28px}
+.m3-newsbar-in{max-width:860px;margin:0 auto}
+.m3-newsbar-head{text-align:center;margin-bottom:12px}
+.m3-newsbar-head span{font-family:'Great Vibes',cursive;font-size:30px;line-height:1;color:#C9A063;display:block}
+.m3-newsbar-head h2{font-size:18px;font-weight:500;color:#6E4636;letter-spacing:.1em}
+.m3-newsbar ul{list-style:none;margin:0;padding:0;background:#fff;border:1px solid #EFD9BD}
+.m3-newsbar li{border-bottom:1px solid #F4DDE2}
+.m3-newsbar li:last-child{border-bottom:none}
+.m3-newsbar li a{display:flex;gap:14px;align-items:baseline;padding:14px 18px;text-decoration:none;color:#5E3A2C;font-size:14.5px;line-height:1.7}
+.m3-newsbar li a:hover{background:#FFF3EC}
+.m3-newsbar time{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:15px;letter-spacing:.08em;color:#C9A063;flex-shrink:0}
+.m3-newsbar-more{text-align:center;margin-top:12px}
+.m3-newsbar-more a{font-size:13.5px;color:#C8436C;text-decoration:none;border-bottom:1px solid #E28AA4}
+@media (max-width:600px){.m3-newsbar li a{flex-direction:column;gap:2px}}
+
 
 /* header */
 header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-bottom:1px solid #F4DDE2}
@@ -270,6 +285,38 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
   <a href="#cast" class="m3-banner-wrap">
     <img src="choose-therapist.jpg" alt="セラピストを選ぶ" onerror="this.closest('a').remove()">
   </a>
+
+  <!-- News -->
+  <section id="news" class="m3-newsbar">
+    <div class="m3-newsbar-in">
+      <div class="m3-newsbar-head"><span>News</span><h2>新着情報</h2></div>
+      <ul id="newsList">
+        <li><a href="news.html"><time>2026.10.23</time><span>「よくある質問」「出張エリア」のページを追加しました</span></a></li>
+        <li><a href="news.html"><time>2026.10</time><span>新しいセラピスト「LEO」が加わりました</span></a></li>
+      </ul>
+      <div class="m3-newsbar-more"><a href="news.html">新着情報の一覧を見る →</a></div>
+    </div>
+  </section>
+  <script>
+  (function(){
+    try{
+      fetch('news.html',{cache:'no-cache'}).then(function(r){return r.ok?r.text():Promise.reject()}).then(function(h){
+        var d=new DOMParser().parseFromString(h,'text/html');
+        var arts=d.querySelectorAll('.m3-news article');
+        if(!arts.length)return;
+        var ul=document.getElementById('newsList');ul.innerHTML='';
+        Array.prototype.slice.call(arts,0,3).forEach(function(a){
+          var tm=a.querySelector('time'),h2=a.querySelector('h2');
+          if(!tm||!h2)return;
+          var li=document.createElement('li'),an=document.createElement('a');an.href='news.html';
+          var t=document.createElement('time');t.textContent=tm.textContent;
+          var s=document.createElement('span');s.textContent=h2.textContent;
+          an.appendChild(t);an.appendChild(s);li.appendChild(an);ul.appendChild(li);
+        });
+      }).catch(function(){});
+    }catch(e){}
+  })();
+  </script>
 
   <!-- Intro -->
   <section style="background:#FFF9F8;border-top:6px solid #fff">

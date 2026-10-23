@@ -22,352 +22,236 @@
 <meta name="twitter:image" content="https://love-secret-fukuoka.com/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Shippori+Mincho:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Great+Vibes&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --lavender-base: #ccb2d8;
-    --lavender-pale: #f3ebf7;
-    --lavender-mid: #b596c9;
-    --lavender-deep: #8a6aa8;
-    --plum: #4a2f63;
-    --plum-dim: rgba(74,47,99,0.7);
-    --gold: #b8923f;
-    --gold-light: #d4af6a;
-    --gold-dim: #8f701f;
-    --white: #ffffff;
-  }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  html{ scroll-behavior:smooth; }
-  body{
-    background:var(--lavender-pale);
-    color:var(--plum);
-    font-family:'Noto Sans JP', sans-serif;
-    position:relative;
-    overflow-x:hidden;
-  }
-  .ambient{
-    position:fixed; inset:0; z-index:0; pointer-events:none;
-    background:
-      radial-gradient(ellipse 70% 50% at 20% 8%, rgba(255,255,255,0.65), transparent 60%),
-      radial-gradient(ellipse 60% 45% at 88% 18%, rgba(255,255,255,0.45), transparent 62%),
-      radial-gradient(ellipse 85% 60% at 50% 55%, rgba(204,178,216,0.55), transparent 70%),
-      radial-gradient(ellipse 90% 60% at 50% 100%, rgba(181,150,201,0.55), transparent 72%),
-      linear-gradient(180deg, #f8f3fa 0%, #ecdff2 30%, #ccb2d8 65%, #b596c9 100%);
-  }
+*{box-sizing:border-box}
+body{margin:0;background:#FFF7F7;font-family:'M PLUS Rounded 1c',sans-serif;color:#5E3A2C}
+h1,h2,h3,p{margin:0}
+a{color:#C8436C}
+.m3-nav a{color:#5E3A2C;text-decoration:none;padding:8px 2px;border-bottom:2px solid transparent;font-size:14px;letter-spacing:.08em}
+.m3-nav a:hover{color:#C8436C}
+.m3-nav a.on{border-bottom-color:#E28AA4}
+.m3-pill{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#D2557C;color:#fff !important;text-decoration:none;border-radius:999px;letter-spacing:.12em;min-height:48px;box-shadow:0 8px 24px rgba(210,85,124,.25)}
+.m3-pill:hover{background:#BC4268}
+.m3-card{background:rgba(255,255,255,.9);border:1px solid #E5C9A2;box-shadow:inset 0 0 0 4px #fff,inset 0 0 0 5px #F2E1C8,0 10px 30px rgba(140,80,80,.07);padding:22px 18px 24px;display:flex;flex-direction:column;gap:14px}
 
-  .topbar{
-    position:sticky; top:0; z-index:10;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:10px 14px;
-    background:rgba(255,255,255,0.78);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid rgba(138,106,168,0.3);
-    gap:8px;
-  }
-  .topbar .brand{
-    font-family:'Cinzel', serif;
-    font-size:11.5px; letter-spacing:0.06em;
-    color:var(--plum);
-    text-decoration:none;
-    white-space:nowrap;
-    flex-shrink:0;
-  }
-  .topbar .hours{
-    font-family:'Shippori Mincho', serif;
-    font-size:11px;
-    color:var(--plum-dim);
-    text-align:right;
-    line-height:1.4;
-    flex-shrink:0;
-  }
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-bottom:1px solid #F4DDE2}
+.m3-header-inner{max-width:1280px;margin:0 auto;padding:10px 28px;display:flex;align-items:center;gap:32px}
+.m3-brand{text-decoration:none;display:flex;flex-direction:column;align-items:center;line-height:1}
+.m3-brand .word{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;letter-spacing:.08em;color:#8A5530;white-space:nowrap}
+.m3-brand .word .amp{color:#B8894A;padding:0 .06em}
+.m3-brand .kana{font-size:10px;letter-spacing:.5em;color:#9A6436;margin-top:4px}
+.m3-reserve-wrap{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0;margin-left:auto}
+.m3-reserve-label{display:none;font-size:9px;color:#8A5E4E;letter-spacing:.02em;white-space:nowrap}
+.m3-hdr-btn{padding:0 26px;font-size:14px}
+.m3-hdr-btn-short{display:none}
+.m3-hamburger{display:none;flex-direction:column;justify-content:center;gap:4px;width:36px;height:36px;padding:0;background:none;border:none;cursor:pointer;flex-shrink:0}
+.m3-hamburger span{display:block;width:22px;height:2px;background:#8A5530;border-radius:2px}
 
-  .menu-btn{
-    display:flex; flex-direction:column; justify-content:center;
-    width:32px; height:32px; padding:0;
-    background:none; border:none; cursor:pointer;
-    flex-shrink:0;
-    -webkit-tap-highlight-color:transparent;
-  }
-  .menu-btn span{
-    display:block; width:20px; height:2px;
-    background:var(--plum); border-radius:2px;
-    margin:2px 0;
-  }
-  .menu-overlay{
-    position:fixed; inset:0; z-index:98;
-    background:rgba(74,47,99,0.35);
-    opacity:0; pointer-events:none;
-    transition:opacity 0.3s ease;
-  }
-  .menu-overlay.open{ opacity:1; pointer-events:auto; }
-  .menu-panel{
-    position:fixed; top:0; left:0; bottom:0; z-index:99;
-    width:78%; max-width:300px;
-    background:linear-gradient(180deg, #f8f3fa, #ecdff2);
-    box-shadow:4px 0 30px rgba(74,47,99,0.25);
-    transform:translateX(-100%);
-    transition:transform 0.32s cubic-bezier(.4,0,.2,1);
-    padding:26px 22px;
-    display:flex; flex-direction:column;
-  }
-  .menu-panel.open{ transform:translateX(0); }
-  .menu-close{
-    align-self:flex-end;
-    width:32px; height:32px;
-    background:none; border:none; cursor:pointer;
-    font-family:'Cinzel', serif; font-size:20px; color:var(--plum-dim);
-    -webkit-tap-highlight-color:transparent;
-  }
-  .menu-panel-brand{ text-align:center; margin:6px 0 30px; }
-  .menu-panel-brand .crest-mini{ width:56px; height:56px; margin:0 auto 10px; }
-  .menu-panel-brand .crest-mini img{ width:100%; height:100%; border-radius:50%; display:block; }
-  .menu-panel-brand .name{ font-family:'Cinzel', serif; font-size:12px; letter-spacing:0.1em; color:var(--plum); }
-  .menu-link{
-    display:block; padding:16px 4px;
-    font-family:'Shippori Mincho', serif; font-size:15px;
-    color:var(--plum); text-decoration:none;
-    border-bottom:1px solid rgba(138,106,168,0.25);
-    letter-spacing:0.03em;
-  }
-  .menu-link.line-link{
-    margin-top:20px; text-align:center;
-    background:linear-gradient(180deg, var(--lavender-mid), var(--lavender-deep));
-    color:var(--white); border-bottom:none; padding:14px; font-weight:700;
-  }
+@media (max-width:960px){
+  .m3-nav{display:none !important}
+  .m3-hamburger{display:flex !important}
+  .m3-header-inner{padding:8px 14px;gap:10px}
+  .m3-brand{flex:1}
+  .m3-brand .word{font-size:17px}
+  .m3-brand .kana{font-size:8px;letter-spacing:.35em}
+  .m3-reserve-wrap{margin-left:0}
+  .m3-reserve-label{display:block}
+  .m3-hdr-btn{padding:0 14px}
+  .m3-hdr-btn-full{display:none}
+  .m3-hdr-btn-short{display:inline}
+  .m3-hdr-btn svg:last-child{display:none}
+}
 
-  .wrap{ position:relative; z-index:1; max-width:420px; margin:0 auto; padding:36px 20px 60px; }
+/* mobile menu */
+.m3-menu-overlay{position:fixed;inset:0;z-index:98;background:rgba(94,58,44,.35);opacity:0;pointer-events:none;transition:opacity .3s ease}
+.m3-menu-overlay.open{opacity:1;pointer-events:auto}
+.m3-menu-panel{position:fixed;top:0;left:0;bottom:0;z-index:99;width:78%;max-width:300px;background:linear-gradient(180deg,#FFF9F8,#FDEAEF);box-shadow:4px 0 30px rgba(94,58,44,.25);transform:translateX(-100%);transition:transform .32s cubic-bezier(.4,0,.2,1);padding:24px 22px;display:flex;flex-direction:column}
+.m3-menu-panel.open{transform:translateX(0)}
+.m3-menu-close{align-self:flex-end;width:32px;height:32px;background:none;border:none;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:26px;color:#8A5E4E}
+.m3-menu-brand{text-align:center;margin:4px 0 24px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;letter-spacing:.08em;color:#8A5530}
+.m3-menu-brand .amp{color:#B8894A}
+.m3-menu-brand .kana{font-size:10px;letter-spacing:.4em;color:#9A6436;display:block;margin-top:2px}
+.m3-menu-link{display:block;padding:13px 4px;font-size:15px;color:#5E3A2C;text-decoration:none;border-bottom:1px solid #F4DDE2;letter-spacing:.04em}
+.m3-menu-link.m3-menu-cta{margin-top:18px;text-align:center;background:#D2557C;color:#fff !important;border-bottom:none;padding:14px;font-weight:600;border-radius:999px}
 
-  .crest{ width:90px; height:90px; margin:0 auto 14px; }
-  .crest img{ width:100%; height:100%; border-radius:50%; display:block; filter:drop-shadow(0 0 14px rgba(138,106,168,0.35)); }
-
-  .page-title{
-    text-align:center;
-    font-family:'Shippori Mincho', serif; font-weight:700;
-    font-size:24px; color:var(--plum);
-    letter-spacing:0.05em;
-    margin-bottom:6px;
-  }
-  .page-sub{
-    text-align:center;
-    font-family:'Cinzel', serif; font-size:11px;
-    letter-spacing:0.25em; color:var(--gold-dim);
-    margin-bottom:36px;
-  }
-
-  .about-section{
-    border:1px solid rgba(154,200,220,0.6);
-    background:linear-gradient(180deg, #eaf6fb, #f3edfa);
-    padding:28px 24px;
-    text-align:left;
-    font-family:'M PLUS Rounded 1c', sans-serif;
-  }
-  .about-section h2{
-    font-family:'M PLUS Rounded 1c', sans-serif; font-weight:700;
-    font-size:17px; color:#4a95a8;
-    margin:22px 0 10px;
-    letter-spacing:0.02em;
-  }
-  .about-section h2:first-child{ margin-top:0; }
-  .about-section p{
-    font-family:'M PLUS Rounded 1c', sans-serif; font-weight:500; font-size:13.5px;
-    line-height:1.95; color:#c06a92;
-    margin-bottom:10px;
-  }
-  .about-section ul{
-    margin:0 0 12px 0; padding-left:1.2em;
-  }
-  .about-section li{
-    font-family:'M PLUS Rounded 1c', sans-serif; font-weight:500; font-size:13.5px;
-    line-height:1.9; color:#c06a92;
-  }
-  .about-section .gold-line{
-    width:36px; height:2px; border-radius:2px; background:#9dd0e0; margin:20px 0;
-  }
-
-  .cta-button{
-    display:block;
-    margin:30px auto 0;
-    width:100%;
-    max-width:340px;
-    padding:15px 20px;
-    text-align:center;
-    background:linear-gradient(180deg, var(--lavender-mid), var(--lavender-deep));
-    color:var(--white);
-    font-family:'Shippori Mincho', serif; font-weight:700; font-size:15px;
-    letter-spacing:0.06em; text-decoration:none;
-    box-shadow:0 6px 20px rgba(138,106,168,0.35);
-  }
-
-  .footer-back{
-    text-align:center; margin-top:28px;
-  }
-  .footer-back a{
-    font-family:'Noto Sans JP', sans-serif; font-size:12px;
-    color:var(--plum-dim); text-decoration:none;
-    border-bottom:1px solid rgba(74,47,99,0.3);
-  }
-.menu-panel{overflow-y:auto;-webkit-overflow-scrolling:touch}
-</style>
-<style>
-  .policy-section{
-    border:1px solid rgba(154,200,220,0.6);
-    background:linear-gradient(180deg, #eaf6fb, #f3edfa);
-    padding:28px 24px;
-    text-align:left;
-    font-family:'M PLUS Rounded 1c', sans-serif;
-  }
-  .policy-section h2{
-    font-family:'M PLUS Rounded 1c', sans-serif; font-weight:700;
-    font-size:16px; color:#4a95a8;
-    margin:26px 0 10px;
-    letter-spacing:0.02em;
-  }
-  .policy-section h2:first-child{ margin-top:0; }
-  .policy-section p{
-    font-family:'M PLUS Rounded 1c', sans-serif; font-weight:500; font-size:13.5px;
-    line-height:1.95; color:#c06a92;
-    margin-bottom:10px;
-  }
-  .policy-section ul{
-    margin:0 0 12px 0; padding-left:1.2em;
-  }
-  .policy-section li{
-    font-family:'M PLUS Rounded 1c', sans-serif; font-weight:500; font-size:13.5px;
-    line-height:1.9; color:#c06a92;
-    margin-bottom:4px;
-  }
-  .policy-table{
-    width:100%; border-collapse:collapse; margin-bottom:14px;
-  }
-  .policy-table th, .policy-table td{
-    text-align:left; vertical-align:top;
-    font-family:'M PLUS Rounded 1c', sans-serif; font-size:13px;
-    color:#c06a92; line-height:1.8;
-    padding:8px 0;
-    border-bottom:1px dashed rgba(192,106,146,0.3);
-  }
-  .policy-table th{
-    width:34%; font-weight:700; color:#4a95a8; padding-right:10px;
-  }
+/* page content */
+.m3-wrap{max-width:720px;margin:0 auto;padding:0 20px 64px}
+.m3-page-hero{padding:40px 0 10px;text-align:center}
+.m3-page-title{font-size:26px;font-weight:500;color:#6E4636;letter-spacing:.1em}
+.m3-page-eyebrow{font-family:'Great Vibes',cursive;font-size:40px;line-height:1;color:#C9A063}
+.m3-section{margin-top:34px}
+.m3-section-title{font-size:19px;font-weight:600;color:#C8436C;text-align:center;letter-spacing:.06em;margin-bottom:16px}
+table.m3-info-table{width:100%;border-collapse:collapse}
+table.m3-info-table tr{border-bottom:1px solid #F0DCC2}
+table.m3-info-table tr:last-child{border-bottom:none}
+table.m3-info-table th{text-align:left;font-weight:700;font-size:14.5px;color:#C8436C;padding:12px 8px 12px 2px;white-space:nowrap;vertical-align:top;width:110px}
+table.m3-info-table td{padding:12px 2px 12px 8px;font-size:14.5px;color:#5E3A2C;line-height:1.8}
+.m3-policy-body p{font-size:14.5px;color:#5E3A2C;line-height:1.95;margin-bottom:6px}
+.m3-policy-body h3{font-size:16px;font-weight:700;color:#C8436C;margin:22px 0 8px;letter-spacing:.02em}
+.m3-policy-body h3:first-child{margin-top:0}
+.m3-caution-list{list-style:none;margin:0;padding:0}
+.m3-caution-list li{position:relative;padding:9px 0 9px 18px;font-size:14px;color:#5E3A2C;line-height:1.8;border-bottom:1px solid #F4DDE2}
+.m3-caution-list li:last-child{border-bottom:none}
+.m3-caution-list li::before{content:"・";position:absolute;left:0;color:#C9A063}
+.m3-footer-back{text-align:center;margin-top:30px}
+.m3-footer-back a{font-size:14px;color:#8A5E4E;text-decoration:none;border-bottom:1px solid #D8B47A}
 </style>
 </head>
 <body>
+<div style="font-family:'M PLUS Rounded 1c',sans-serif;color:#5E3A2C;background:#FFF7F7">
 
-<div class="ambient"></div>
+  <!-- Header -->
+  <header>
+    <div class="m3-header-inner">
+      <button type="button" class="m3-hamburger" id="menuBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
+      <a href="top.html" class="m3-brand">
+        <span class="word">LOVE <span class="amp">&amp;</span> SECRET</span>
+        <span class="kana">FUKUOKA</span>
+      </a>
+      <nav class="m3-nav" style="display:flex;gap:30px;flex-grow:1">
+        <a href="top.html">トップ</a>
+        <a href="top.html#cast">セラピスト</a>
+        <a href="ryokin.html">料金</a>
+        <a href="hajimete.html">初めての方へ</a>
+        <a href="top.html#faq">よくある質問</a>
+      </nav>
+      <div class="m3-reserve-wrap">
+        <span class="m3-reserve-label">本日の出勤</span>
+        <a href="top.html#today-shift" class="m3-pill m3-hdr-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+          <span class="m3-hdr-btn-full">ご予約はこちら</span>
+          <span class="m3-hdr-btn-short">予約</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+    </div>
+  </header>
 
-<div class="topbar">
-  <button class="menu-btn" id="menuBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
-  <div class="brand">LOVE &amp; SECRET FUKUOKA</div>
-  <div class="hours">受付時間<br>11:00〜翌2:00</div>
-</div>
+  <!-- Mobile menu -->
+  <div class="m3-menu-overlay" id="menuOverlay"></div>
+  <nav class="m3-menu-panel" id="menuPanel">
+    <button type="button" class="m3-menu-close" id="menuClose" aria-label="閉じる">×</button>
+    <div class="m3-menu-brand">LOVE <span class="amp">&amp;</span> SECRET<span class="kana">FUKUOKA</span></div>
+    <a href="top.html" class="m3-menu-link">トップ</a>
+    <a href="top.html#cast" class="m3-menu-link">セラピスト</a>
+    <a href="top.html#today-shift" class="m3-menu-link">本日の出勤</a>
+    <a href="top.html#flow" class="m3-menu-link">ご利用の流れ</a>
+    <a href="faq.html" class="m3-menu-link">よくある質問</a>
+    <a href="ryokin.html" class="m3-menu-link">料金について</a>
+    <a href="area.html" class="m3-menu-link">出張エリア</a>
+    <a href="news.html" class="m3-menu-link">新着情報</a>
+    <a href="hajimete.html" class="m3-menu-link">初めての方へ</a>
+    <a href="kuchikomi.html" class="m3-menu-link">口コミを投稿する</a>
+    <a href="love-secret-cast-lp.html" class="m3-menu-link">セラピスト募集</a>
+    <a href="privacy.html" class="m3-menu-link on">プライバシーポリシー</a>
+    <a href="https://line.me/ti/p/KB7wdAMGRY" class="m3-menu-link m3-menu-cta" target="_blank" rel="noopener">LINEで予約する</a>
+  </nav>
 
-<div class="menu-overlay" id="menuOverlay"></div>
-<nav class="menu-panel" id="menuPanel">
-  <button class="menu-close" id="menuClose">×</button>
-  <div class="menu-panel-brand">
-    <div class="crest-mini"><img src="crest.jpg" alt="LOVE&SECRET FUKUOKA"></div>
-    <div class="name">LOVE &amp; SECRET FUKUOKA</div>
+  <div class="m3-wrap">
+
+    <div class="m3-page-hero">
+      <span class="m3-page-eyebrow">Privacy</span>
+      <h1 class="m3-page-title">プライバシーポリシー<br>・運営者情報</h1>
+    </div>
+
+    <!-- 運営者情報 -->
+    <div class="m3-section">
+      <div class="m3-section-title">運営者情報</div>
+      <div class="m3-card">
+        <table class="m3-info-table">
+          <tr><th>屋号</th><td>LOVE&amp;SECRET FUKUOKA（ラブ&amp;シークレット福岡）</td></tr>
+          <tr><th>運営者名</th><td>YOKO</td></tr>
+          <tr><th>所在地</th><td>福岡県内（詳細は非公開とさせていただいております）</td></tr>
+          <tr><th>連絡先</th><td>love.secret.fukuoka@gmail.com</td></tr>
+          <tr><th>事業内容</th><td>女性向けリラクゼーション・性感マッサージサービスの提供</td></tr>
+          <tr><th>届出番号</th><td>無店舗型性風俗特殊営業届出確認書　第202610037号<br>（風俗営業等の規制及び業務の適正化等に関する法律第31条の2第1項の規定による届出）</td></tr>
+        </table>
+        <p style="font-size:14px;color:#5E3A2C;line-height:1.9;margin-top:6px">
+          当店は上記の通り、関係法令に基づく届出を行った上で営業しております。安心してご利用ください。
+        </p>
+      </div>
+    </div>
+
+    <!-- プライバシーポリシー -->
+    <div class="m3-section">
+      <div class="m3-section-title">プライバシーポリシー</div>
+      <div class="m3-card m3-policy-body">
+        <p>
+          LOVE&amp;SECRET FUKUOKA（以下「当店」）は、お客様の個人情報を大切に取り扱います。以下の方針に基づき、適切に管理・運用いたします。
+        </p>
+
+        <h3>取得する情報</h3>
+        <p>ご予約・お問い合わせの際に、以下の情報を取得する場合があります。</p>
+        <ul class="m3-caution-list">
+          <li>お名前（ニックネーム可）</li>
+          <li>ご連絡先（電話番号・LINE・メールアドレスなど）</li>
+          <li>ご希望の日時・場所などご予約に必要な情報</li>
+        </ul>
+
+        <h3>利用目的</h3>
+        <p>取得した情報は、以下の目的にのみ利用いたします。</p>
+        <ul class="m3-caution-list">
+          <li>ご予約の確認・調整・ご連絡</li>
+          <li>サービス提供に必要な準備</li>
+          <li>お問い合わせへの対応</li>
+        </ul>
+
+        <h3>第三者提供について</h3>
+        <p>
+          お客様よりお預かりした個人情報は、法令に基づく場合を除き、ご本人の同意なく第三者へ提供・開示することはございません。
+        </p>
+
+        <h3>情報の管理</h3>
+        <p>
+          お預かりした個人情報は、厳重に管理し、紛失・漏えい・不正アクセスなどの防止に努めます。ご予約完了後、一定期間を経過した情報については、適切に破棄いたします。
+        </p>
+
+        <h3>ご利用にあたって</h3>
+        <ul class="m3-caution-list">
+          <li>ご利用は18歳以上の女性の方に限らせていただきます。</li>
+          <li>強要・迷惑行為・法令に反する行為が確認された場合、ご利用をお断りする場合がございます。</li>
+          <li>当サイトに掲載の情報は、予告なく変更される場合がございます。</li>
+        </ul>
+
+        <h3>お問い合わせ</h3>
+        <p>
+          本ポリシーに関するお問い合わせは、公式LINEまたは下記メールアドレスまでご連絡ください。<br>
+          love.secret.fukuoka@gmail.com
+        </p>
+      </div>
+    </div>
+
+    <a href="top.html#cast" class="m3-pill" style="width:100%;margin-top:30px;font-size:15px">セラピスト一覧を見る</a>
+
+    <div class="m3-footer-back">
+      <a href="top.html">← トップページへ戻る</a>
+    </div>
+
   </div>
-  <a href="top.html" class="menu-link">トップ</a>
-  <a href="top.html#cast" class="menu-link">セラピスト</a>
-  <a href="top.html#today-shift" class="menu-link">本日の出勤</a>
-  <a href="top.html#flow" class="menu-link">ご利用の流れ</a>
-  <a href="top.html#faq" class="menu-link">よくある質問</a>
-  <a href="ryokin.html" class="menu-link">料金について</a>
-  <a href="hajimete.html" class="menu-link">初めての方へ</a>
-  <a href="kuchikomi.html" class="menu-link">口コミを投稿する</a>
-  <a href="love-secret-cast-lp.html" class="menu-link">セラピスト募集</a>
-  <a href="privacy.html" class="menu-link">プライバシーポリシー</a>
-  <a href="https://line.me/ti/p/KB7wdAMGRY" class="menu-link line-link" target="_blank" rel="noopener">LINEで予約する</a>
-</nav>
 
-<div class="wrap">
-
-  <div class="crest">
-    <img src="crest.jpg" alt="LOVE&SECRET FUKUOKA ロゴ">
-  </div>
-  <div class="page-title">プライバシーポリシー<br>・運営者情報</div>
-  <div class="page-sub">PRIVACY POLICY</div>
-
-  <div class="policy-section">
-    <h2>運営者情報</h2>
-    <table class="policy-table">
-      <tr><th>屋号</th><td>LOVE&amp;SECRET FUKUOKA（ラブ&amp;シークレット福岡）</td></tr>
-      <tr><th>運営者名</th><td>YOKO</td></tr>
-      <tr><th>所在地</th><td>福岡県内（詳細は非公開とさせていただいております）</td></tr>
-      <tr><th>連絡先</th><td>love.secret.fukuoka@gmail.com</td></tr>
-      <tr><th>事業内容</th><td>女性向けリラクゼーション・性感マッサージサービスの提供</td></tr>
-      <tr><th>届出番号</th><td>無店舗型性風俗特殊営業届出確認書　第202610037号<br>（風俗営業等の規制及び業務の適正化等に関する法律第31条の2第1項の規定による届出）</td></tr>
-    </table>
-    <p>
-      当店は上記の通り、関係法令に基づく届出を行った上で営業しております。安心してご利用ください。
-    </p>
-  </div>
-
-  <div class="policy-section">
-    <h2>プライバシーポリシー</h2>
-    <p>
-      LOVE&amp;SECRET FUKUOKA（以下「当店」）は、お客様の個人情報を大切に取り扱います。以下の方針に基づき、適切に管理・運用いたします。
-    </p>
-
-    <h2>取得する情報</h2>
-    <p>ご予約・お問い合わせの際に、以下の情報を取得する場合があります。</p>
-    <ul>
-      <li>お名前（ニックネーム可）</li>
-      <li>ご連絡先（電話番号・LINE・メールアドレスなど）</li>
-      <li>ご希望の日時・場所などご予約に必要な情報</li>
-    </ul>
-
-    <h2>利用目的</h2>
-    <p>取得した情報は、以下の目的にのみ利用いたします。</p>
-    <ul>
-      <li>ご予約の確認・調整・ご連絡</li>
-      <li>サービス提供に必要な準備</li>
-      <li>お問い合わせへの対応</li>
-    </ul>
-
-    <h2>第三者提供について</h2>
-    <p>
-      お客様よりお預かりした個人情報は、法令に基づく場合を除き、ご本人の同意なく第三者へ提供・開示することはございません。
-    </p>
-
-    <h2>情報の管理</h2>
-    <p>
-      お預かりした個人情報は、厳重に管理し、紛失・漏えい・不正アクセスなどの防止に努めます。ご予約完了後、一定期間を経過した情報については、適切に破棄いたします。
-    </p>
-
-    <h2>ご利用にあたって</h2>
-    <ul>
-      <li>ご利用は18歳以上の女性の方に限らせていただきます。</li>
-      <li>強要・迷惑行為・法令に反する行為が確認された場合、ご利用をお断りする場合がございます。</li>
-      <li>当サイトに掲載の情報は、予告なく変更される場合がございます。</li>
-    </ul>
-
-    <h2>お問い合わせ</h2>
-    <p>
-      本ポリシーに関するお問い合わせは、公式LINEまたは下記メールアドレスまでご連絡ください。<br>
-      love.secret.fukuoka@gmail.com
-    </p>
-  </div>
-
-  <a href="top.html#cast" class="cta-button">セラピスト一覧を見る</a>
-
-  <div class="footer-back">
-    <a href="top.html">← トップページへ戻る</a>
-  </div>
-
+  <!-- Footer -->
+  <footer style="background:#FFF9F8;border-top:1px solid #F4DDE2;padding:44px 28px;text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center;font-size:12.5px;color:#8A5E4E">
+    <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;line-height:1.2;letter-spacing:.08em;color:#8A5530">LOVE <span style="color:#B8894A">&amp;</span> SECRET</span>
+    <span>福岡 女風 ／ 女性のための出張型リラクゼーション</span>
+    <span>18歳未満の方はご利用いただけません</span>
+    <span>© LOVE＆SECRET FUKUOKA</span>
+  </footer>
 </div>
 
 <script>
-  const menuBtn = document.getElementById('menuBtn');
-  const menuClose = document.getElementById('menuClose');
-  const menuOverlay = document.getElementById('menuOverlay');
-  const menuPanel = document.getElementById('menuPanel');
+(function(){
+  var menuBtn = document.getElementById('menuBtn');
+  var menuOverlay = document.getElementById('menuOverlay');
+  var menuPanel = document.getElementById('menuPanel');
+  var menuClose = document.getElementById('menuClose');
   function openMenu(){ menuOverlay.classList.add('open'); menuPanel.classList.add('open'); }
   function closeMenu(){ menuOverlay.classList.remove('open'); menuPanel.classList.remove('open'); }
-  if(menuBtn){ menuBtn.addEventListener('click', openMenu); }
-  if(menuClose){ menuClose.addEventListener('click', closeMenu); }
-  if(menuOverlay){ menuOverlay.addEventListener('click', closeMenu); }
+  menuBtn.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
+  menuOverlay.addEventListener('click', closeMenu);
+})();
 </script>
 </body>
 </html>

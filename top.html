@@ -410,7 +410,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
               <strong style="font-size:21px;color:#C8436C;font-weight:600">立凪ゆうり</strong>
               <span style="font-size:13px;color:#8A5E4E">27歳</span>
               <span style="font-size:13px;line-height:1.8">太陽の笑顔で貴女を優しく包み込む王子様</span>
-              <span style="font-size:12px;color:#C9A063;letter-spacing:.06em;margin-top:2px">タップしてプロフィールを見る</span>
+              <span style="font-size:12px;color:#C9A063;letter-spacing:.06em;margin-top:2px">タップして詳しく見る</span>
             </div>
           </button>
           <a href="#reserve" class="m3-cast-pick" data-cast="yuri" style="margin-top:auto;text-align:center;text-decoration:none;border:1px solid #D2557C;color:#C8436C;border-radius:999px;padding:11px;font-size:14px;min-height:44px">このセラピストで予約</a>
@@ -422,7 +422,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
               <strong style="font-size:21px;color:#C8436C;font-weight:600">菜月</strong>
               <span style="font-size:13px;color:#8A5E4E">27歳</span>
               <span style="font-size:13px;line-height:1.8">クールな優しさと鍛えあげたスレンダーボディで癒します</span>
-              <span style="font-size:12px;color:#C9A063;letter-spacing:.06em;margin-top:2px">タップしてプロフィールを見る</span>
+              <span style="font-size:12px;color:#C9A063;letter-spacing:.06em;margin-top:2px">タップして詳しく見る</span>
             </div>
           </button>
           <a href="#reserve" class="m3-cast-pick" data-cast="natsuki" style="margin-top:auto;text-align:center;text-decoration:none;border:1px solid #D2557C;color:#C8436C;border-radius:999px;padding:11px;font-size:14px;min-height:44px">このセラピストで予約</a>
@@ -434,7 +434,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
               <strong style="font-size:21px;color:#C8436C;font-weight:600">はじめ</strong>
               <span style="font-size:13px;color:#8A5E4E">32歳</span>
               <span style="font-size:13px;line-height:1.8">甘くて可愛いフェイスと大人なトークのギャップにキュン♡</span>
-              <span style="font-size:12px;color:#C9A063;letter-spacing:.06em;margin-top:2px">タップしてプロフィールを見る</span>
+              <span style="font-size:12px;color:#C9A063;letter-spacing:.06em;margin-top:2px">タップして詳しく見る</span>
             </div>
           </button>
           <a href="#reserve" class="m3-cast-pick" data-cast="hajime" style="margin-top:auto;text-align:center;text-decoration:none;border:1px solid #D2557C;color:#C8436C;border-radius:999px;padding:11px;font-size:14px;min-height:44px">このセラピストで予約</a>
@@ -446,7 +446,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
               <strong style="font-size:21px;color:#C8436C;font-weight:600">LEO</strong>
               <span style="font-size:13px;color:#8A5E4E">34歳</span>
               <span style="font-size:13px;line-height:1.8"><span class="m3-ph-seg">爽やか笑顔の体育会系イケメン。</span><span class="m3-ph-seg">癒しと熱い心で</span><span class="m3-ph-seg">貴方を甘く溶かします</span></span>
-              <span style="font-size:12px;color:#C9A063;letter-spacing:.06em;margin-top:2px">タップしてプロフィールを見る</span>
+              <span style="font-size:12px;color:#C9A063;letter-spacing:.06em;margin-top:2px">タップして詳しく見る</span>
             </div>
           </button>
           <a href="#reserve" class="m3-cast-pick" data-cast="leo" style="margin-top:auto;text-align:center;text-decoration:none;border:1px solid #D2557C;color:#C8436C;border-radius:999px;padding:11px;font-size:14px;min-height:44px">このセラピストで予約</a>
@@ -763,11 +763,11 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
       '</div>';
     }).join('');
     // (re)bind handlers for newly created elements
-    // tap anywhere on the card (photo, name, hours area) to open the profile; links (予約する / LINE) keep their own action
+    // tap anywhere on the card (photo, name, hours area) to go to the therapist's detail page; links (予約する / LINE) keep their own action
     grid.querySelectorAll('.m3-today-card').forEach(function(card){
       card.addEventListener('click', function(e){
         if(e.target.closest('a')) return;
-        openCast(card.getAttribute('data-cast'));
+        window.location.href = 'cast-' + card.getAttribute('data-cast') + '.html';
       });
     });
     grid.querySelectorAll('.m3-today-pick').forEach(function(a){
@@ -870,7 +870,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
   }
 
   document.querySelectorAll('.m3-cast-open').forEach(function(btn){
-    btn.addEventListener('click', function(){ openCast(btn.getAttribute('data-cast')); });
+    btn.addEventListener('click', function(){ window.location.href = 'cast-' + btn.getAttribute('data-cast') + '.html'; });
   });
   castClose.addEventListener('click', closeCast);
   castOverlay.addEventListener('click', function(e){ if(e.target === castOverlay) closeCast(); });

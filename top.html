@@ -163,6 +163,8 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
 
 /* today's shift */
 .m3-today-card{display:flex;flex-direction:row;align-items:center;gap:16px;background:rgba(255,255,255,.75);border:1px solid #EFD9BD;border-radius:12px;padding:16px 18px;text-align:left}
+.m3-today-card[data-cast]{cursor:pointer;-webkit-tap-highlight-color:rgba(210,85,124,.12)}
+.m3-today-card[data-cast]:hover{background:rgba(255,255,255,.95)}
 .m3-today-open{background:none;border:none;padding:0;margin:0;cursor:pointer;flex-shrink:0;font:inherit;color:inherit}
 .m3-today-card img,.m3-today-card .m3-ph{width:68px;height:68px;border-radius:50%;object-fit:cover;display:block}
 .m3-today-info{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0;flex:1}
@@ -750,7 +752,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
         actionHtml = '<a href="' + LINE_URL + '" target="_blank" rel="noopener" class="m3-today-btn m3-today-btn-line">キャンセル待ち</a>';
         }
       }
-      return '<div class="m3-today-card">' +
+      return '<div class="m3-today-card" data-cast="' + id + '">' +
         '<button type="button" class="m3-today-open" data-cast="' + id + '">' +
           '<img src="' + c.photo + '" alt="' + esc(c.name) + '" onerror="this.outerHTML=\'<div class=&quot;m3-ph&quot;></div>\'">' +
         '</button>' +
@@ -761,8 +763,12 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
       '</div>';
     }).join('');
     // (re)bind handlers for newly created elements
-    grid.querySelectorAll('.m3-today-open').forEach(function(btn){
-      btn.addEventListener('click', function(){ openCast(btn.getAttribute('data-cast')); });
+    // tap anywhere on the card (photo, name, hours area) to open the profile; links (予約する / LINE) keep their own action
+    grid.querySelectorAll('.m3-today-card').forEach(function(card){
+      card.addEventListener('click', function(e){
+        if(e.target.closest('a')) return;
+        openCast(card.getAttribute('data-cast'));
+      });
     });
     grid.querySelectorAll('.m3-today-pick').forEach(function(a){
       a.addEventListener('click', function(){

@@ -214,10 +214,10 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
         <a href="#faq">よくある質問</a>
       </nav>
       <div class="m3-reserve-wrap">
-        <span class="m3-reserve-label">本日の出勤</span>
-        <a href="#today-shift" class="m3-pill m3-hdr-btn">
+        <span class="m3-reserve-label">LINE・お電話もOK</span>
+        <a href="#reserve" class="m3-pill m3-hdr-btn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
-          <span class="m3-hdr-btn-full">ご予約はこちら</span>
+          <span class="m3-hdr-btn-full">ご予約フォームへ</span>
           <span class="m3-hdr-btn-short">予約</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
         </a>
@@ -489,7 +489,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
           <div style="background:#FFF4F2;padding:14px;text-align:center;font-size:13px">交通費<br><strong style="color:#C8436C;font-size:16px">博多区・中央区 1,100円〜<br>福岡市内他区 2,200円〜<br>福岡県内 3,300円〜</strong></div>
           <div style="background:#FFF4F2;padding:14px;text-align:center;font-size:13px">深夜料金<br><strong style="color:#C8436C;font-size:16px">24:00〜6:00<br>＋3,300円〜</strong></div>
         </div>
-        <p style="font-size:12.5px;color:#8A5E4E;line-height:1.9;margin-top:14px">※表示料金は税込です。指名料は別途必要です。 ※ホテル代はお客様のご負担となります。 ※交通費は目安です。詳しい金額はご確認ください。福岡県外は5,500円〜、ご自宅出張費は5,500円〜です。 ※お支払いは現金、またはクレジットカード（VISA・Mastercard・American Express）です。カード払いは事前決済で、ご利用金額の10%のカード手数料がかかります。銀行振込も可（事前振込・振込手数料はお客様負担）。電話コースのみPayPayも可。</p>
+        <p style="font-size:12.5px;color:#8A5E4E;line-height:1.9;margin-top:14px">※表示料金は税込です。指名料は別途必要です。 ※ホテル代はお客様のご負担となります。 ※「〜」の付いた金額（交通費・自宅出張費・深夜料金）は目安です。お伺いする場所と時間が決まりましたら、確定した総額をご予約時にお伝えします。福岡県外は5,500円〜、ご自宅出張費は5,500円〜です。 ※お支払いは現金、またはクレジットカード（VISA・Mastercard・American Express）です。カード払いは事前決済で、ご利用金額の10%のカード手数料がかかります。銀行振込も可（事前振込・振込手数料はお客様負担）。電話コースのみPayPayも可。</p>
       </div>
     </div>
   </section>
@@ -912,6 +912,12 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
   var reserveCopyBtn = document.getElementById('reserveCopyBtn');
   var reserveCopyMsg = document.getElementById('reserveCopyMsg');
   var castNameMap = { yuri: '立凪ゆうり', natsuki: '菜月', hajime: 'はじめ', leo: 'LEO' };
+  // arriving from a therapist page (top.html?cast=yuri#reserve): preselect that therapist
+  try{
+    var qCast = new URLSearchParams(window.location.search).get('cast');
+    var qSel = document.getElementById('reserveCastSelect');
+    if(qCast && castNameMap[qCast] && qSel){ qSel.value = qCast; }
+  }catch(e){}
 
   reserveForm.addEventListener('submit', function(e){
     e.preventDefault();

@@ -449,18 +449,6 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
           <a href="#reserve" class="m3-cast-pick" data-cast="hajime" style="margin-top:auto;text-align:center;text-decoration:none;border:1px solid #D2557C;color:#C8436C;border-radius:999px;padding:11px;font-size:14px;min-height:44px">このセラピストで予約</a>
         </article>
         <article class="m3-card" style="padding:14px 14px 20px">
-          <button type="button" class="m3-cast-open" data-cast="leo" style="background:none;border:none;padding:0;margin:0;cursor:pointer;display:flex;flex-direction:column;gap:14px;width:100%;font:inherit;text-align:inherit;color:inherit">
-            <img class="m3-cast-photo" src="cast-leo-1.JPG" alt="LEO" onerror="this.outerHTML='&lt;div class=&quot;m3-ph&quot; style=&quot;aspect-ratio:3/4&quot;&gt;&lt;/div&gt;'">
-            <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
-              <strong style="font-size:21px;color:#C8436C;font-weight:600">LEO</strong>
-              <span style="font-size:13px;color:#8A5E4E">34歳</span>
-              <span style="font-size:13px;line-height:1.8"><span class="m3-ph-seg">爽やか笑顔の体育会系イケメン。</span><span class="m3-ph-seg">癒しと熱い心で</span><span class="m3-ph-seg">貴方を甘く溶かします</span></span>
-              <span style="font-size:12px;color:#C9A063;letter-spacing:.06em;margin-top:2px">タップして詳しく見る</span>
-            </div>
-          </button>
-          <a href="#reserve" class="m3-cast-pick" data-cast="leo" style="margin-top:auto;text-align:center;text-decoration:none;border:1px solid #D2557C;color:#C8436C;border-radius:999px;padding:11px;font-size:14px;min-height:44px">このセラピストで予約</a>
-        </article>
-        <article class="m3-card" style="padding:14px 14px 20px">
           <button type="button" class="m3-cast-open" data-cast="ibuki" style="background:none;border:none;padding:0;margin:0;cursor:pointer;display:flex;flex-direction:column;gap:14px;width:100%;font:inherit;text-align:inherit;color:inherit">
             <img class="m3-cast-photo" src="cast-ibuki-1.jpg" alt="IBUKI" onerror="this.outerHTML='&lt;div class=&quot;m3-ph&quot; style=&quot;aspect-ratio:3/4&quot;&gt;&lt;/div&gt;'">
             <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
@@ -471,6 +459,18 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
             </div>
           </button>
           <a href="#reserve" class="m3-cast-pick" data-cast="ibuki" style="margin-top:auto;text-align:center;text-decoration:none;border:1px solid #D2557C;color:#C8436C;border-radius:999px;padding:11px;font-size:14px;min-height:44px">このセラピストで予約</a>
+        </article>
+        <article class="m3-card" style="padding:14px 14px 20px">
+          <button type="button" class="m3-cast-open" data-cast="leo" style="background:none;border:none;padding:0;margin:0;cursor:pointer;display:flex;flex-direction:column;gap:14px;width:100%;font:inherit;text-align:inherit;color:inherit">
+            <img class="m3-cast-photo" src="cast-leo-1.JPG" alt="LEO" onerror="this.outerHTML='&lt;div class=&quot;m3-ph&quot; style=&quot;aspect-ratio:3/4&quot;&gt;&lt;/div&gt;'">
+            <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
+              <strong style="font-size:21px;color:#C8436C;font-weight:600">LEO</strong>
+              <span style="font-size:13px;color:#8A5E4E">34歳</span>
+              <span style="font-size:13px;line-height:1.8"><span class="m3-ph-seg">爽やか笑顔の体育会系イケメン。</span><span class="m3-ph-seg">癒しと熱い心で</span><span class="m3-ph-seg">貴方を甘く溶かします</span></span>
+              <span style="font-size:12px;color:#C9A063;letter-spacing:.06em;margin-top:2px">タップして詳しく見る</span>
+            </div>
+          </button>
+          <a href="#reserve" class="m3-cast-pick" data-cast="leo" style="margin-top:auto;text-align:center;text-decoration:none;border:1px solid #D2557C;color:#C8436C;border-radius:999px;padding:11px;font-size:14px;min-height:44px">このセラピストで予約</a>
         </article>
       </div>
     </div>
@@ -579,8 +579,8 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
             <option value="yuri">立凪ゆうり</option>
             <option value="natsuki">菜月</option>
             <option value="hajime">はじめ</option>
-            <option value="leo">LEO</option>
             <option value="ibuki">IBUKI</option>
+            <option value="leo">LEO</option>
           </select>
         </label>
         <label class="m3-field">コース
@@ -776,7 +776,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
     var grid = document.getElementById('todayShiftGrid');
     if(!grid) return;
     var today = shukkinDateFor(0);
-    var order = ['yuri','natsuki','hajime','leo','ibuki'];
+    var order = ['yuri','natsuki','hajime','ibuki','leo'];
     grid.innerHTML = order.map(function(id){
       var c = castData[id];
       var label = shiftLoaded ? shukkinDayRangeLabel(shiftBusyByCast[id], today) : null;
@@ -1009,13 +1009,13 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
   // load live shift data (today's shift strip + 10-day list in cast modal)
   renderTodayShift();
   (async function loadShukkin(){
-    var ids = ['yuri','natsuki','hajime','leo','ibuki'].map(function(id){ return castData[id].shiftCal; }).filter(Boolean);
+    var ids = ['yuri','natsuki','hajime','ibuki','leo'].map(function(id){ return castData[id].shiftCal; }).filter(Boolean);
     var timeMin = shukkinBaseDate.toISOString();
     var lastDay = shukkinDateFor(SHUKKIN_DAYS - 1);
     var timeMax = new Date(lastDay.getFullYear(), lastDay.getMonth(), lastDay.getDate(), 26, 0, 0).toISOString();
     try{
       var calendars = await shukkinFetchBusy(ids, timeMin, timeMax);
-      ['yuri','natsuki','hajime','leo','ibuki'].forEach(function(id){
+      ['yuri','natsuki','hajime','ibuki','leo'].forEach(function(id){
         if(!castData[id].shiftCal) return;
         var cal = calendars[castData[id].shiftCal];
         shiftBusyByCast[id] = (cal && cal.busy) || [];

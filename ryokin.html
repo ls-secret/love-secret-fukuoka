@@ -117,7 +117,12 @@ table.m3-info-table td{padding:12px 2px 12px 8px;font-size:14.5px;color:#5E3A2C;
 .m3-note-box{margin-top:14px;padding:12px 14px;background:#FFF4F2;border:1px solid #F0C9C9;font-size:12.5px;color:#8A5E4E;line-height:1.9}
 .m3-footer-back{text-align:center;margin-top:30px}
 .m3-footer-back a{font-size:14px;color:#8A5E4E;text-decoration:none;border-bottom:1px solid #D8B47A}
+
+.camp-ended .camp-on{display:none !important}
 </style>
+<script>
+  try{ if(Date.now() > Date.parse('2026-12-10T23:59:59+09:00')){ document.documentElement.classList.add('camp-ended'); } }catch(e){}
+</script>
 </head>
 <body>
 <div style="font-family:'M PLUS Rounded 1c',sans-serif;color:#5E3A2C;background:#FFF7F7">
@@ -208,6 +213,23 @@ table.m3-info-table td{padding:12px 2px 12px 8px;font-size:14.5px;color:#5E3A2C;
           <tr><td>150分</td><td><span class="now">27,000円</span></td></tr>
           <tr><td>180分</td><td><span class="now">32,000円</span></td></tr>
         </table>
+      </div>
+    </div>
+
+    <!-- 新人割引（12/10まで・自動で非表示） -->
+    <div class="m3-section camp-on">
+      <div class="m3-card" style="border:1px solid #F0CFD8;background:linear-gradient(180deg,#FFF3F6,#FFF8F1)">
+        <div class="m3-course-name">♡ 新人割引｜IBUKI（イブキ）<span style="font-size:12px;font-weight:400;margin-left:8px;color:#C8436C">11/18〜12/10</span></div>
+        <div class="m3-course-desc">新人セラピスト「IBUKI」をご指名の場合、コース料金（施術代）が<b>半額</b>になります。指名料・交通費などは通常どおりです。</div>
+        <table class="m3-price-table">
+          <tr><td style="white-space:nowrap">デート 90分</td><td><s style="color:#8A5E4E;font-size:13px;margin-right:6px">8,000円</s><span class="now">4,000円</span></td></tr>
+          <tr><td style="white-space:nowrap">デート 120分</td><td><s style="color:#8A5E4E;font-size:13px;margin-right:6px">10,000円</s><span class="now">5,000円</span></td></tr>
+          <tr><td style="white-space:nowrap">ファンタジー 90分</td><td><s style="color:#8A5E4E;font-size:13px;margin-right:6px">15,000円</s><span class="now">7,500円</span></td></tr>
+          <tr><td style="white-space:nowrap">ファンタジー 120分</td><td><s style="color:#8A5E4E;font-size:13px;margin-right:6px">22,000円</s><span class="now">11,000円</span></td></tr>
+          <tr><td style="white-space:nowrap">ファンタジー 150分</td><td><s style="color:#8A5E4E;font-size:13px;margin-right:6px">27,000円</s><span class="now">13,500円</span></td></tr>
+          <tr><td style="white-space:nowrap">ファンタジー 180分</td><td><s style="color:#8A5E4E;font-size:13px;margin-right:6px">32,000円</s><span class="now">16,000円</span></td></tr>
+        </table>
+        <div class="m3-course-desc" style="margin-top:10px;font-size:13px">・2026年12月10日までのご利用が対象です。<br>・電話コースは対象外です。<br><a href="cast-ibuki.html" class="m3-more">IBUKIのプロフィールを見る →</a></div>
       </div>
     </div>
 

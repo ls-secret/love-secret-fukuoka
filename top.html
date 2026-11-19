@@ -189,10 +189,16 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
 .m3-jukkin-date .dow-sat{color:#4a6fb5}
 .m3-jukkin-date .dow-sun{color:#c1476a}
 .m3-jukkin-hours{flex:1;color:#8A5E4E}
+
+/* 新人割引（12/10まで）の自動切り替え */
+.camp-ended .camp-on{display:none !important}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"LOVE&SECRET FUKUOKA","alternateName":["ラブ&シークレット福岡","ラブアンドシークレット福岡"],"url":"https://love-secret-fukuoka.com/top.html","inLanguage":"ja"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"LOVE&SECRET FUKUOKA","alternateName":"ラブ&シークレット福岡","url":"https://love-secret-fukuoka.com/top.html","logo":"https://love-secret-fukuoka.com/icon.png","areaServed":{"@type":"AdministrativeArea","name":"福岡県"},"description":"福岡の女性用風俗（女風）・出張セラピスト。女性のための出張型リラクゼーションサービス。"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"初めてでも利用できますか？","acceptedAnswer":{"@type":"Answer","text":"はい、ご安心ください。ご利用前にカウンセリングのお時間を設けておりますので、ご希望やご不安な点をゆっくりお伝えいただけます。初めての方も多くご利用いただいております。"}},{"@type":"Question","name":"どのエリアまで来てもらえますか？","acceptedAnswer":{"@type":"Answer","text":"福岡市内はもちろん、北九州市・飯塚市、その他福岡県内、佐賀県など福岡県外のエリアにも出張可能です。交通費はエリアにより異なりますので、詳しくはLINEにてお気軽にお問い合わせください。"}},{"@type":"Question","name":"支払い方法は何がありますか？","acceptedAnswer":{"@type":"Answer","text":"お支払いは現金、またはクレジットカード（VISA・Mastercard・American Express。JCBは不可）がご利用いただけます。カードでのお支払いは事前決済となり、ご利用金額の10%のカード手数料がかかります。銀行振込もご利用いただけます（事前振込・振込手数料はお客様のご負担となります）。電話コースのみ、PayPayもご利用いただけます（事前お支払い）。ご予約の際に総額を明示する明朗会計ですので、安心してご利用いただけます。"}},{"@type":"Question","name":"キャンセルはできますか？","acceptedAnswer":{"@type":"Answer","text":"当日キャンセルはご予約金額の100%、前日キャンセルは50%、2日前より前は無料でキャンセルいただけます。やむを得ない場合は、できるだけお早めにLINEにてご連絡ください。"}},{"@type":"Question","name":"個人情報は守られますか？","acceptedAnswer":{"@type":"Answer","text":"お客様の個人情報は厳重に管理し、第三者に開示することはございません。プライバシーに配慮した完全予約制で、安心してご利用いただけます。"}}]}</script>
+<script>
+  try{ if(Date.now() > Date.parse('2026-12-10T23:59:59+09:00')){ document.documentElement.classList.add('camp-ended'); } }catch(e){}
+</script>
 </head>
 <body>
 <div style="font-family:'M PLUS Rounded 1c',sans-serif;color:#5E3A2C;background:#FFF7F7">
@@ -454,6 +460,18 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
           </button>
           <a href="#reserve" class="m3-cast-pick" data-cast="leo" style="margin-top:auto;text-align:center;text-decoration:none;border:1px solid #D2557C;color:#C8436C;border-radius:999px;padding:11px;font-size:14px;min-height:44px">このセラピストで予約</a>
         </article>
+        <article class="m3-card" style="padding:14px 14px 20px">
+          <button type="button" class="m3-cast-open" data-cast="ibuki" style="background:none;border:none;padding:0;margin:0;cursor:pointer;display:flex;flex-direction:column;gap:14px;width:100%;font:inherit;text-align:inherit;color:inherit">
+            <img class="m3-cast-photo" src="cast-ibuki-1.jpg" alt="IBUKI" onerror="this.outerHTML='&lt;div class=&quot;m3-ph&quot; style=&quot;aspect-ratio:3/4&quot;&gt;&lt;/div&gt;'">
+            <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
+              <strong style="font-size:21px;color:#C8436C;font-weight:600">IBUKI</strong>
+              <span style="font-size:13px;color:#8A5E4E">26歳</span>
+              <span style="font-size:13px;line-height:1.8"><span class="m3-ph-seg">大人っぽさと人懐っこさのギャップ。</span><span class="m3-ph-seg">日常を忘れて、</span><span class="m3-ph-seg">もう一度ときめく時間を</span></span><span class="camp-on" style="font-size:12px;font-weight:700;color:#C8436C;background:#FFF1F4;border:1px solid #F0CFD8;border-radius:999px;padding:2px 10px;align-self:center">NEW｜新人割引 施術代半額</span>
+              <span style="font-size:12px;color:#C9A063;letter-spacing:.06em;margin-top:2px">タップして詳しく見る</span>
+            </div>
+          </button>
+          <a href="#reserve" class="m3-cast-pick" data-cast="ibuki" style="margin-top:auto;text-align:center;text-decoration:none;border:1px solid #D2557C;color:#C8436C;border-radius:999px;padding:11px;font-size:14px;min-height:44px">このセラピストで予約</a>
+        </article>
       </div>
     </div>
   </section>
@@ -562,6 +580,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
             <option value="natsuki">菜月</option>
             <option value="hajime">はじめ</option>
             <option value="leo">LEO</option>
+            <option value="ibuki">IBUKI</option>
           </select>
         </label>
         <label class="m3-field">コース
@@ -675,6 +694,14 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
         '元気に楽しむ日も、ゆっくり落ち着いて過ごす日も、あなたの気分に合わせて大切にしてくれます。'
       ],
       scheduleUrl: 'https://love-secret-fukuoka.com/cast-leo.html#shukkin'
+    },
+    ibuki: {
+      name: 'IBUKI', age: '26歳', copy: '大人っぽさと人懐っこさのギャップ。|日常を忘れて、|もう一度ときめく時間を', photo: 'cast-ibuki-1.jpg',
+      photos: ['cast-ibuki-1.jpg','cast-ibuki-2.jpg','cast-ibuki-3.jpg','cast-ibuki-4.jpg','cast-ibuki-5.jpg'],
+      shiftCal: 'c021202cc3e6557cea447b5b99957a3bb569acb0a379849a76de83feea1191d2@group.calendar.google.com',
+      comment: "はじめまして、イブキです！\nプロフィールを見てくれてありがとうございます。\n\n「日常を忘れて、もう一度ときめく時間を。」\n\n初めて会ったのに、ずっと前から知っていたような。\nそんな自然と緊張がほどける、\n心地よい距離感を大切にしています。\n\n普段は仕事や日々の生活で頑張りすぎてしまう方も、\n僕といるときくらいは肩の力を抜いて、\n自然体で甘えてほしいなと思っています。\n\nゆっくりお話を聞いたり、一緒に笑い合ったり、\nときには少しロマンチックな雰囲気を楽しんだり。\n\nその日の気分やあなたのペースに合わせて、\n心からくつろげる時間を一緒に作れたら嬉しいです。\n\n初めてで緊張してしまう方も、\n安心して会いに来てくださいね。\n僕が優しくエスコートします。\n\n数あるセラピストの中から僕を選んでいただくからには、\n「今日、会いに来てよかった」と\n思ってもらえる時間を大切にしたいです。\n\nそして、お別れするときにふと\n「またイブキに会いたいな」と思っていただけたら、\n何より嬉しいです。\n\nお会いできる日を楽しみにしています。",
+      recommend: ["大人っぽさと人懐っこさのギャップが魅力。親しみやすさと大人の安心感を持つ、かっこかわいい男子です。", "初対面でも自然に打ち解けられて、相手の話を聞くのが得意。さりげないエスコートで、緊張もゆっくりほどけていきます。", "優しく寄り添う癒し系。ときには男らしくリードする、落ち着いたムーディーな時間が得意です。", "自然体で一緒に過ごしたい方、甘えたい方も、甘えられたい方も大歓迎です。"],
+      scheduleUrl: 'https://love-secret-fukuoka.com/cast-ibuki.html#shukkin'
     }
   };
 
@@ -690,7 +717,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
   var SHUKKIN_DOW = ['日','月','火','水','木','金','土'];
   var shukkinBaseDate = new Date();
   shukkinBaseDate.setHours(0,0,0,0);
-  var shiftBusyByCast = { yuri: [], natsuki: [], hajime: [], leo: [] };
+  var shiftBusyByCast = { yuri: [], natsuki: [], hajime: [], leo: [], ibuki: [] };
   var shiftLoaded = false;
   var shiftError = false;
 
@@ -749,7 +776,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
     var grid = document.getElementById('todayShiftGrid');
     if(!grid) return;
     var today = shukkinDateFor(0);
-    var order = ['yuri','natsuki','hajime','leo'];
+    var order = ['yuri','natsuki','hajime','leo','ibuki'];
     grid.innerHTML = order.map(function(id){
       var c = castData[id];
       var label = shiftLoaded ? shukkinDayRangeLabel(shiftBusyByCast[id], today) : null;
@@ -911,7 +938,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
   var reserveResultText = document.getElementById('reserveResultText');
   var reserveCopyBtn = document.getElementById('reserveCopyBtn');
   var reserveCopyMsg = document.getElementById('reserveCopyMsg');
-  var castNameMap = { yuri: '立凪ゆうり', natsuki: '菜月', hajime: 'はじめ', leo: 'LEO' };
+  var castNameMap = { yuri: '立凪ゆうり', natsuki: '菜月', hajime: 'はじめ', leo: 'LEO', ibuki: 'IBUKI' };
   // arriving from a therapist page (top.html?cast=yuri#reserve): preselect that therapist
   try{
     var qCast = new URLSearchParams(window.location.search).get('cast');
@@ -982,13 +1009,13 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
   // load live shift data (today's shift strip + 10-day list in cast modal)
   renderTodayShift();
   (async function loadShukkin(){
-    var ids = ['yuri','natsuki','hajime','leo'].map(function(id){ return castData[id].shiftCal; }).filter(Boolean);
+    var ids = ['yuri','natsuki','hajime','leo','ibuki'].map(function(id){ return castData[id].shiftCal; }).filter(Boolean);
     var timeMin = shukkinBaseDate.toISOString();
     var lastDay = shukkinDateFor(SHUKKIN_DAYS - 1);
     var timeMax = new Date(lastDay.getFullYear(), lastDay.getMonth(), lastDay.getDate(), 26, 0, 0).toISOString();
     try{
       var calendars = await shukkinFetchBusy(ids, timeMin, timeMax);
-      ['yuri','natsuki','hajime','leo'].forEach(function(id){
+      ['yuri','natsuki','hajime','leo','ibuki'].forEach(function(id){
         if(!castData[id].shiftCal) return;
         var cal = calendars[castData[id].shiftCal];
         shiftBusyByCast[id] = (cal && cal.busy) || [];

@@ -285,6 +285,22 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,250,250,.95);border-
     </div>
   </section>
 
+  <!-- Team banner（12/10〜12/25はクリスマス用に自動で切り替え） -->
+  <a href="#cast" class="m3-banner-wrap" id="teamBannerLink">
+    <img id="teamBanner" src="banner-top.jpg" alt="LOVE&amp;SECRET FUKUOKA 在籍セラピスト">
+  </a>
+  <script>
+  (function(){
+    try{
+      var n=Date.now();
+      if(n>=Date.parse('2026-12-10T00:00:00+09:00') && n<=Date.parse('2026-12-25T23:59:59+09:00')){
+        var im=document.getElementById('teamBanner');
+        if(im){ im.src='banner-xmas.jpg'; im.alt='クリスマスキャンペーン 12/10〜12/25 施術代1万円OFF'; }
+      }
+    }catch(e){}
+  })();
+  </script>
+
   <!-- Today's shift -->
   <section id="today-shift" style="background:#FFF3EC;padding:40px 28px">
     <div style="max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:20px">
